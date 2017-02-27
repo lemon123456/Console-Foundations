@@ -1,0 +1,408 @@
+1
+00:00:00,000 --> 00:00:06,360
+[Deep Dive-Console-Processes: Pausing & Resuming Jobs with Jim Hoskins] ?[music]?
+
+2
+00:00:06,360 --> 00:00:10,870
+From a single console window, it seems like it is only possible to do one thing at once.
+
+3
+00:00:10,870 --> 00:00:13,830
+When we start an application--like the Nano Editor--
+
+4
+00:00:13,830 --> 00:00:18,840
+it consumes our entire window, and the command line isn't available for us to do anything else.
+
+5
+00:00:19,450 --> 00:00:22,010
+We can--however--do multiple things at the same time.
+
+6
+00:00:22,010 --> 00:00:24,610
+And the concept of a job makes it very easy.
+
+7
+00:00:25,070 --> 00:00:29,820
+A job is just a process that you own, and you started from your console window.
+
+8
+00:00:29,820 --> 00:00:32,470
+Let's see how to manage jobs on our computer.
+
+9
+00:00:33,100 --> 00:00:37,010
+Now I have my console open; let's open a file with Nano.
+
+10
+00:00:37,560 --> 00:00:43,690
+And I am just going to open up Nano to a new file we'll call demo.txt.
+
+11
+00:00:43,690 --> 00:00:46,110
+So this will create a new file for us to edit.
+
+12
+00:00:46,110 --> 00:00:49,510
+So I have Nano open; it takes up my entire screen.
+
+13
+00:00:49,510 --> 00:00:52,120
+But what if I want to run another command?
+
+14
+00:00:52,120 --> 00:00:54,150
+I can't because Nano is blocking me.
+
+15
+00:00:54,150 --> 00:01:00,810
+So if I type some words like, "hello, this is some text." and I want 
+
+16
+00:01:00,810 --> 00:01:03,280
+to--maybe--move my cursor back.
+
+17
+00:01:03,280 --> 00:01:06,510
+And I want to go and run another command--well I could
+
+18
+00:01:06,510 --> 00:01:10,850
+exit out of the program which probably means I need to write out my file,
+
+19
+00:01:10,850 --> 00:01:12,850
+and maybe I am not ready to save.
+
+20
+00:01:12,850 --> 00:01:16,370
+Or even if I am, I could lose my place in the file, and it is really inconvenient 
+
+21
+00:01:16,370 --> 00:01:20,500
+to have to close my text editor to simply run another command.
+
+22
+00:01:20,810 --> 00:01:24,730
+Now right now I do have the option of opening up another tab and running it there,
+
+23
+00:01:24,730 --> 00:01:27,400
+but sometimes that's not the ideal solution.
+
+24
+00:01:27,400 --> 00:01:30,220
+I may only have 1 terminal available to me.
+
+25
+00:01:30,220 --> 00:01:35,330
+So what can I do? Well--we could simply pause this job.
+
+26
+00:01:35,790 --> 00:01:39,890
+We refer to a job as a process that really belongs to you.
+
+27
+00:01:39,890 --> 00:01:44,600
+We saw that processes have IDs, and they are usually 4 or 5 digits long
+
+28
+00:01:44,600 --> 00:01:48,340
+because they are allocated to the system, and there are a lot of processes.
+
+29
+00:01:48,340 --> 00:01:52,530
+Jobs--however--belong to you in your session, so they can have 
+
+30
+00:01:52,530 --> 00:01:56,330
+job numbers like 1, 2, and 3 which are easier to work with.
+
+31
+00:01:56,890 --> 00:02:00,310
+So this process is a job that i'm running, and I can pause it.
+
+32
+00:02:00,310 --> 00:02:04,730
+In order to do that, I'll hold down the CTRL key and hit Z.
+
+33
+00:02:05,560 --> 00:02:08,919
+So we can see that Nano has apparently closed.
+
+34
+00:02:08,919 --> 00:02:12,740
+We see some info here; this may not be displayed to you every time
+
+35
+00:02:12,740 --> 00:02:17,670
+you do this or on every system, and it's useful to see, but let's take a look at what's going on.
+
+36
+00:02:17,670 --> 00:02:21,950
+It says use "fg" to return to Nano, which we will see in a moment.
+
+37
+00:02:21,950 --> 00:02:24,440
+Then we see a list of our jobs.
+
+38
+00:02:24,440 --> 00:02:27,490
+The number in the square brackets is the job number.
+
+39
+00:02:27,490 --> 00:02:32,800
+This is not the process ID, but this is the job number we can use to refer to it.
+
+40
+00:02:33,090 --> 00:02:36,080
+Then it gives us its state, and right now it's stopped.
+
+41
+00:02:36,080 --> 00:02:39,580
+That's more like paused because it can be resumed easy.
+
+42
+00:02:39,580 --> 00:02:44,070
+It doesn't mean that we've killed it entirely; its state still exists and we can
+
+43
+00:02:44,070 --> 00:02:47,650
+resume right where we left off, but it's not running in the forefront,
+
+44
+00:02:47,650 --> 00:02:51,570
+and it's really not running at all. It's sort of in a suspended state.
+
+45
+00:02:51,570 --> 00:02:54,890
+And then it gives us the name of the process that is that job.
+
+46
+00:02:54,890 --> 00:02:57,720
+In this case it was nano demo.txt.
+
+47
+00:02:57,720 --> 00:03:03,020
+So i am free to run commands as normal--ls, cd documents.
+
+48
+00:03:03,020 --> 00:03:08,180
+And if I want to go back to Nano, I can use the "fg" or foreground command.
+
+49
+00:03:08,180 --> 00:03:12,290
+Now it's going to just simply resume the last stopped process we have.
+
+50
+00:03:12,290 --> 00:03:15,550
+In our case, we only have 1 process in a stopped state.
+
+51
+00:03:15,550 --> 00:03:19,430
+So it's simply going to take the thing that we most recently paused
+
+52
+00:03:19,430 --> 00:03:22,440
+and bring it back to the foreground for us to work with.
+
+53
+00:03:22,440 --> 00:03:24,680
+As you can see, all of our info is here.
+
+54
+00:03:24,680 --> 00:03:29,430
+We never saved it, but my cursor was in the same place, and it maintained its state.
+
+55
+00:03:29,960 --> 00:03:32,820
+Now by hitting CTRL + Z I can stop it again.
+
+56
+00:03:32,820 --> 00:03:35,860
+And you can see it gave us more information on how to get back to it.
+
+57
+00:03:36,400 --> 00:03:39,360
+We can find out more by using the jobs command.
+
+58
+00:03:39,360 --> 00:03:44,270
+Here we can see we have 1 job; it's stopped, and it's the one we were working on.
+
+59
+00:03:44,270 --> 00:03:49,590
+And notice--it now says, "wd" that's because the process started in a different working directory.
+
+60
+00:03:49,590 --> 00:03:52,760
+So it is giving us some information that the process is running 
+
+61
+00:03:52,760 --> 00:03:55,770
+from a home directory even though we're in a different one.
+
+62
+00:03:55,770 --> 00:03:59,830
+It may or may not be useful information to you, but that's what's changed now.
+
+63
+00:03:59,830 --> 00:04:04,140
+So we could do other things--for instance--I could start up top.
+
+64
+00:04:04,140 --> 00:04:09,890
+Now generally I don't necessarily pause this because it's easy enough to get back into,
+
+65
+00:04:09,890 --> 00:04:12,430
+but for demonstration I can do the same thing.
+
+66
+00:04:12,430 --> 00:04:17,450
+Holding down the CTRL key, hitting Z, and now we can see it's stopped top.
+
+67
+00:04:17,450 --> 00:04:20,290
+And we can see that it has job number 2.
+
+68
+00:04:20,290 --> 00:04:25,300
+If I run jobs one more time, we can see we now have 2 jobs.
+
+69
+00:04:25,850 --> 00:04:28,400
+So if I hit "fg" what is going to happen?
+
+70
+00:04:29,240 --> 00:04:32,730
+You'll see that it foregrounded the last job that I stopped.
+
+71
+00:04:32,730 --> 00:04:35,730
+And if I go ahead and I stop it or pause it again--
+
+72
+00:04:35,730 --> 00:04:38,640
+let's take a look at jobs one more time--I still have 2 things.
+
+73
+00:04:38,640 --> 00:04:40,800
+So what if I want to open up Nano?
+
+74
+00:04:40,800 --> 00:04:42,870
+Well this is where the job number comes in.
+
+75
+00:04:42,870 --> 00:04:46,580
+We do "fg" and then the name--number of the job--1.
+
+76
+00:04:46,580 --> 00:04:52,670
+And now I have opened up number 1 even though top is still suspended as job number 2.
+
+77
+00:04:52,670 --> 00:04:55,890
+Once again, I am going to hit CTRL + Z to stop it again.
+
+78
+00:04:55,890 --> 00:04:58,100
+And let's take a look at our jobs one more time.
+
+79
+00:04:58,100 --> 00:05:01,230
+You'll notice that it's mostly the same--our Nano is still 
+
+80
+00:05:01,230 --> 00:05:03,750
+job number 1, and top is still job number 2.
+
+81
+00:05:03,750 --> 00:05:06,970
+But now you can see what the plus and minus indicator means.
+
+82
+00:05:06,970 --> 00:05:10,270
+Plus means it's going to be the one that runs by default.
+
+83
+00:05:10,270 --> 00:05:13,750
+So if I were to "fg" again, it is going to open up Nano.
+
+84
+00:05:13,750 --> 00:05:17,900
+I am going to exit out without saving by holding down CTRL and hitting X.
+
+85
+00:05:17,900 --> 00:05:21,190
+And I am going to answer no, and now I only have one job.
+
+86
+00:05:21,190 --> 00:05:24,630
+If I take a look at jobs though, we can see we only have 1 job.
+
+87
+00:05:24,630 --> 00:05:26,700
+And it is still job ID number 2.
+
+88
+00:05:26,700 --> 00:05:29,220
+It's not going to change as I move around.
+
+89
+00:05:29,220 --> 00:05:33,760
+So job number 2 is still top, so by hitting "fg" I can bring it up,
+
+90
+00:05:33,760 --> 00:05:36,150
+and I'll hit Q to exit out of it normally.
+
+91
+00:05:36,880 --> 00:05:39,580
+Now if we take a look at jobs, it's empty.
+
+92
+00:05:39,580 --> 00:05:42,930
+Now there's one more technique for managing how jobs are handled.
+
+93
+00:05:42,930 --> 00:05:48,490
+If I run top and then end it with an ampersand, something interesting is going to happen.
+
+94
+00:05:48,490 --> 00:05:51,250
+You'll notice that top didn't come up.
+
+95
+00:05:51,250 --> 00:05:56,640
+However--if I do jobs again we can see that it was automatically put in the background.
+
+96
+00:05:56,640 --> 00:06:01,620
+Now this is sometimes useful if we have a program running that we want
+
+97
+00:06:01,620 --> 00:06:05,380
+to not interrupt our current flow, so we can use the ampersand
+
+98
+00:06:05,380 --> 00:06:07,690
+to send it to the background immediately.
+
+99
+00:06:07,690 --> 00:06:11,750
+It still has the same properties; we can simply "fg" to foreground it,
+
+100
+00:06:11,750 --> 00:06:14,380
+and we have it back up.
+
+101
+00:06:14,380 --> 00:06:17,160
+So if you ever need to immediately background something
+
+102
+00:06:17,160 --> 00:06:20,550
+ending it with the ampersand can do that for you.
+

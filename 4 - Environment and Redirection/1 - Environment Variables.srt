@@ -1,0 +1,1400 @@
+1
+00:00:00,000 --> 00:00:06,270
+? music playing? [Deep Dive] [Console] 
+
+2
+00:00:06,270 --> 00:00:09,200
+We've seen that our programs and commands can take arguments
+
+3
+00:00:09,200 --> 00:00:12,840
+and options as the input that affects the behavior of the program.
+
+4
+00:00:12,840 --> 00:00:15,690
+But there is another thing that a program can use to change
+
+5
+00:00:15,690 --> 00:00:17,180
+the options around--
+
+6
+00:00:17,180 --> 00:00:18,420
+the environment.
+
+7
+00:00:18,420 --> 00:00:21,020
+Specifically, environment variables.
+
+8
+00:00:21,020 --> 00:00:23,840
+Environment variables are just like variables in any
+
+9
+00:00:23,840 --> 00:00:26,060
+programming language in that they store
+
+10
+00:00:26,060 --> 00:00:28,210
+a value associated with a name.
+
+11
+00:00:28,210 --> 00:00:29,920
+When it comes to the console,
+
+12
+00:00:29,920 --> 00:00:33,070
+our environment variables will be written in all upper case
+
+13
+00:00:33,070 --> 00:00:35,650
+and the values they hold will be strings.
+
+14
+00:00:35,650 --> 00:00:38,020
+We can create our own environment variables,
+
+15
+00:00:38,020 --> 00:00:41,780
+but there are many that the system uses and expects to be defined.
+
+16
+00:00:41,780 --> 00:00:45,860
+Some of these are home, path, and PS1.
+
+17
+00:00:45,860 --> 00:00:48,470
+Home is the path to your home directory,
+
+18
+00:00:48,470 --> 00:00:53,230
+and the path variable is a list of locations where programs are stored.
+
+19
+00:00:53,230 --> 00:00:56,930
+The PS1 variable defines the format of your command line prompt.
+
+20
+00:00:56,930 --> 00:01:00,970
+Changing any of these variables will change how the system behaves.
+
+21
+00:01:00,970 --> 00:01:03,880
+Let's take a look at how to work with environment variables.
+
+22
+00:01:03,880 --> 00:01:09,380
+Our console session has many environment variables already set.
+
+23
+00:01:09,380 --> 00:01:12,080
+If we want to explore what those variables are,
+
+24
+00:01:12,080 --> 00:01:15,800
+we can use the command env for environment.
+
+25
+00:01:15,800 --> 00:01:17,690
+Now by running this, 
+
+26
+00:01:17,690 --> 00:01:20,280
+it will print out all of the environment variables.
+
+27
+00:01:20,280 --> 00:01:25,950
+You'll notice that each line takes the format of a name, equals, and then some value.
+
+28
+00:01:25,950 --> 00:01:29,030
+The names are the names of our environment variables,
+
+29
+00:01:29,030 --> 00:01:32,000
+and you'll notice that they're all capitalized.
+
+30
+00:01:32,000 --> 00:01:36,250
+This is a convention for environment variables to be in all caps.
+
+31
+00:01:36,250 --> 00:01:39,590
+On the right hand side of the equal sign is the value that
+
+32
+00:01:39,590 --> 00:01:42,110
+that variable currently holds.
+
+33
+00:01:42,110 --> 00:01:46,110
+Now many of these are set by different configurations files on our system,
+
+34
+00:01:46,110 --> 00:01:49,650
+but if we take a look at a few of them they might seem familiar.
+
+35
+00:01:49,650 --> 00:01:52,630
+For instance, you'll notice our home variable,
+
+36
+00:01:52,630 --> 00:01:56,730
+which currently has the value of /home/treehouse.
+
+37
+00:01:56,730 --> 00:01:59,840
+Another interesting one is our PS1.
+
+38
+00:01:59,840 --> 00:02:01,840
+This defines what our prompt is.
+
+39
+00:02:01,840 --> 00:02:07,960
+Right now it holds the value of /u /w and the dollar sign.
+
+40
+00:02:07,960 --> 00:02:12,980
+These backslash characters are special sequences that allow us to 
+
+41
+00:02:12,980 --> 00:02:15,410
+insert dynamic information into our prompt,
+
+42
+00:02:15,410 --> 00:02:18,400
+and it's used by bash to dynamically create this prompt.
+
+43
+00:02:18,400 --> 00:02:24,000
+So our prompt isn't defined to literally say treehouse or literally have the tilde.
+
+44
+00:02:24,000 --> 00:02:27,010
+Instead when the prompt is actually printed,
+
+45
+00:02:27,010 --> 00:02:30,490
+this /u is replaced with our user name
+
+46
+00:02:30,490 --> 00:02:34,640
+and the /w is replaced with our current working directory.
+
+47
+00:02:34,640 --> 00:02:38,800
+This is what allows our prompt to change as we move around.
+
+48
+00:02:38,800 --> 00:02:43,120
+You'll notice our prompt just changed.
+
+49
+00:02:43,120 --> 00:02:45,680
+Now many of these we don't have to worry about.
+
+50
+00:02:45,680 --> 00:02:48,210
+For instance, this long one here is set by 
+
+51
+00:02:48,210 --> 00:02:50,030
+some configuration file and it actually 
+
+52
+00:02:50,030 --> 00:02:52,400
+defines the colors that are used when we 
+
+53
+00:02:52,400 --> 00:02:53,390
+use the ls command.
+
+54
+00:02:53,390 --> 00:02:56,290
+If we were to change this particular string,
+
+55
+00:02:56,290 --> 00:02:59,430
+we would get different colors based on the different file types.
+
+56
+00:02:59,430 --> 00:03:02,870
+Some of this is set by the environment that we are logging in with.
+
+57
+00:03:02,870 --> 00:03:07,560
+But this nth command isn't really what we use the environment variables for.
+
+58
+00:03:07,560 --> 00:03:11,210
+This is just a useful command for seeing what our current environment is.
+
+59
+00:03:11,210 --> 00:03:13,680
+Let me clear out the screen.
+
+60
+00:03:13,680 --> 00:03:18,200
+We can actually retrieve the values stored in our environment variables 
+
+61
+00:03:18,200 --> 00:03:20,200
+from our command line.
+
+62
+00:03:20,200 --> 00:03:23,410
+The way we do this is with the dollar sign
+
+63
+00:03:23,410 --> 00:03:25,520
+and the name of the environment variable.
+
+64
+00:03:25,520 --> 00:03:27,160
+When we use such a thing,
+
+65
+00:03:27,160 --> 00:03:29,470
+it will be replaced as though the value
+
+66
+00:03:29,470 --> 00:03:32,160
+was placed into the command, not the variable itself.
+
+67
+00:03:32,160 --> 00:03:34,660
+I'm going to use a command called echo.
+
+68
+00:03:34,660 --> 00:03:36,700
+Let me show you how it works.
+
+69
+00:03:36,700 --> 00:03:40,080
+It literally just echoes back the arguments that we give it.
+
+70
+00:03:40,080 --> 00:03:42,470
+So for instance if I said echo hello,
+
+71
+00:03:42,470 --> 00:03:46,420
+the command will print out hello.
+
+72
+00:03:46,420 --> 00:03:48,950
+But if we use an environment variable,
+
+73
+00:03:48,950 --> 00:03:51,300
+echo $HOME,
+
+74
+00:03:51,300 --> 00:03:54,300
+the command line will expand $HOME into the actual value
+
+75
+00:03:54,300 --> 00:03:59,080
+before evaluating and passing to to echo,
+
+76
+00:03:59,080 --> 00:04:03,130
+which means echo won't receive the characters $HOME,
+
+77
+00:04:03,130 --> 00:04:06,130
+instead it will receive the actual value.
+
+78
+00:04:06,130 --> 00:04:08,980
+So if we do echo $HOME,
+
+79
+00:04:08,980 --> 00:04:11,480
+it's going to print out what it got,
+
+80
+00:04:11,480 --> 00:04:13,390
+which is /home /treehouse,
+
+81
+00:04:13,390 --> 00:04:16,160
+which means any time we use an environment variable like this
+
+82
+00:04:16,160 --> 00:04:19,890
+it allows us to use the value of that variable.
+
+83
+00:04:19,890 --> 00:04:23,270
+So if we were to do cd $HOME,
+
+84
+00:04:23,270 --> 00:04:24,940
+what would happen?
+
+85
+00:04:24,940 --> 00:04:29,830
+Well this is equivalent to calling cd /home /treehouse.
+
+86
+00:04:29,830 --> 00:04:31,700
+So it would take us home.
+
+87
+00:04:31,700 --> 00:04:33,180
+Let's clear this out again.
+
+88
+00:04:33,180 --> 00:04:37,570
+We remember there is another variable called PS1.
+
+89
+00:04:37,570 --> 00:04:39,220
+If we want to see the current value,
+
+90
+00:04:39,220 --> 00:04:41,440
+we can use the echo command again.
+
+91
+00:04:41,440 --> 00:04:42,420
+PS1.
+
+92
+00:04:42,420 --> 00:04:45,520
+We can see the value printed out.
+
+93
+00:04:45,520 --> 00:04:48,710
+Now this variable is set in the configuration file
+
+94
+00:04:48,710 --> 00:04:51,070
+that's run whenever we start a new session.
+
+95
+00:04:51,070 --> 00:04:53,840
+But we can actually change PS1.
+
+96
+00:04:53,840 --> 00:04:57,640
+The way we do that is by typing the name of the variable
+
+97
+00:04:57,640 --> 00:04:58,730
+PS1.
+
+98
+00:04:58,730 --> 00:05:01,080
+This is without the dollar sign.
+
+99
+00:05:01,080 --> 00:05:03,980
+When we're setting it, we do not use the dollar sign.
+
+100
+00:05:03,980 --> 00:05:07,120
+However, when we are expanding it, we do use the dollar sign.
+
+101
+00:05:07,120 --> 00:05:09,970
+So the dollar sign is not part of the variable name itself.
+
+102
+00:05:09,970 --> 00:05:13,660
+Its actually what specifies that we want to expand it out.
+
+103
+00:05:13,660 --> 00:05:16,020
+So when we're setting it, we give it the name
+
+104
+00:05:16,020 --> 00:05:17,470
+without any spaces.
+
+105
+00:05:17,470 --> 00:05:18,330
+We put an equal sign,
+
+106
+00:05:18,330 --> 00:05:20,510
+and now we can give it a value.
+
+107
+00:05:20,510 --> 00:05:22,560
+Now we can use quotes around it,
+
+108
+00:05:22,560 --> 00:05:24,450
+which will make it slightly easier for us to use.
+
+109
+00:05:24,450 --> 00:05:27,640
+Quotes on the command line allow us to use some characters
+
+110
+00:05:27,640 --> 00:05:29,950
+that would normally be expanded differently,
+
+111
+00:05:29,950 --> 00:05:34,640
+but allow us to use multiple words and some other special characters.
+
+112
+00:05:34,640 --> 00:05:38,720
+So if I were to simply put /w
+
+113
+00:05:38,720 --> 00:05:42,220
+and maybe we didn't want a dollar sign--
+
+114
+00:05:42,220 --> 00:05:43,910
+we wanted a greater than sign--
+
+115
+00:05:43,910 --> 00:05:45,600
+we could do this.
+
+116
+00:05:45,600 --> 00:05:47,520
+Now as soon as I change this,
+
+117
+00:05:47,520 --> 00:05:48,710
+you'll notice our prompt change.
+
+118
+00:05:48,710 --> 00:05:52,450
+That's because the prompt is always using the value of PS1
+
+119
+00:05:52,450 --> 00:05:55,450
+to determine how the prompt will be set.
+
+120
+00:05:55,450 --> 00:05:59,790
+We could change it to whatever we want.
+
+121
+00:06:03,230 --> 00:06:04,840
+Now our prompt is changed.
+
+122
+00:06:04,840 --> 00:06:07,370
+Now if we wanted to see if this was really set,
+
+123
+00:06:07,370 --> 00:06:10,590
+we can echo PS1,
+
+124
+00:06:10,590 --> 00:06:13,760
+which would of course give us the prompt.
+
+125
+00:06:13,760 --> 00:06:16,340
+This prints out the value of PS1.
+
+126
+00:06:16,340 --> 00:06:18,340
+Then this is our actual prompt
+
+127
+00:06:18,340 --> 00:06:19,850
+Because they're the same thing,
+
+128
+00:06:19,850 --> 00:06:21,470
+it appears that it printed out twice.
+
+129
+00:06:21,470 --> 00:06:24,530
+But this one is the output of the echo command,
+
+130
+00:06:24,530 --> 00:06:26,960
+and this one is our actual prompt.
+
+131
+00:06:26,960 --> 00:06:30,980
+If we were to do env and find PS1,
+
+132
+00:06:30,980 --> 00:06:34,430
+we can see that the value has been updated.
+
+133
+00:06:34,430 --> 00:06:36,780
+Let me go ahead and clear the screen.
+
+134
+00:06:36,780 --> 00:06:38,010
+Now here's something interesting.
+
+135
+00:06:38,010 --> 00:06:41,420
+We talked about how bash is the program we're interacting with.
+
+136
+00:06:41,420 --> 00:06:43,720
+It's the thing that is actually interpreting the prompt
+
+137
+00:06:43,720 --> 00:06:46,570
+and printing it out and handling our keystrokes
+
+138
+00:06:46,570 --> 00:06:48,940
+and things like our tab completion.
+
+139
+00:06:48,940 --> 00:06:51,950
+Bash is actually a program that's started for you
+
+140
+00:06:51,950 --> 00:06:53,260
+when you connect to the machine.
+
+141
+00:06:53,260 --> 00:06:54,670
+You don't start it yourself.
+
+142
+00:06:54,670 --> 00:06:57,040
+However, you can start a new session.
+
+143
+00:06:57,040 --> 00:07:01,210
+If I type in bash, it looks like it changed our prompt back.
+
+144
+00:07:01,210 --> 00:07:05,000
+But what's actually happened is we've started a new instance of bash.
+
+145
+00:07:05,000 --> 00:07:08,140
+Our old one is still running with our old prompt.
+
+146
+00:07:08,140 --> 00:07:11,310
+However, inside of it we're now running a new version, and
+
+147
+00:07:11,310 --> 00:07:15,570
+because our prompt is set in a script that is run as soon as
+
+148
+00:07:15,570 --> 00:07:16,820
+we start up our bash script,
+
+149
+00:07:16,820 --> 00:07:19,980
+our changes to PS1 have been erased,
+
+150
+00:07:19,980 --> 00:07:21,280
+at least in our session.
+
+151
+00:07:21,280 --> 00:07:23,240
+If we take a look at the environment,
+
+152
+00:07:23,240 --> 00:07:26,820
+we can see PS1 has been reverted.
+
+153
+00:07:26,820 --> 00:07:29,830
+Now I'm in a bash right now, 
+
+154
+00:07:29,830 --> 00:07:33,260
+and if I were to exit it by using the exit command,
+
+155
+00:07:33,260 --> 00:07:37,150
+this is going to stop the instance of bash that I started a moment ago
+
+156
+00:07:37,150 --> 00:07:40,150
+and take up back to the original one we connected with,
+
+157
+00:07:40,150 --> 00:07:41,410
+which is still running.
+
+158
+00:07:41,410 --> 00:07:44,860
+You'll notice our prompt changed.
+
+159
+00:07:44,860 --> 00:07:46,580
+Now exit will take you out of your prompt.
+
+160
+00:07:46,580 --> 00:07:48,260
+Now we're kind of at the top level now.
+
+161
+00:07:48,260 --> 00:07:52,090
+We're at the bash that was started for us when we connected to our machine.
+
+162
+00:07:52,090 --> 00:07:53,260
+If we were to type it again,
+
+163
+00:07:53,260 --> 00:07:55,170
+it's actually going to stop that,
+
+164
+00:07:55,170 --> 00:07:57,180
+which will actually disconnect us.
+
+165
+00:07:57,180 --> 00:08:00,760
+You'll notice our tab disappeared because our connection is gone.
+
+166
+00:08:00,760 --> 00:08:01,810
+If that ever happens,
+
+167
+00:08:01,810 --> 00:08:03,850
+just go ahead and click plus there to create a new tab
+
+168
+00:08:03,850 --> 00:08:05,920
+and give it a moment to connect.
+
+169
+00:08:05,920 --> 00:08:09,090
+Now we've created a whole new session,
+
+170
+00:08:09,090 --> 00:08:12,360
+and of course our PS1 has been updated.
+
+171
+00:08:12,360 --> 00:08:14,560
+We can set any variables that we want.
+
+172
+00:08:14,560 --> 00:08:17,070
+For instance, if I wanted to create an environment variable
+
+173
+00:08:17,070 --> 00:08:18,130
+called message,
+
+174
+00:08:18,130 --> 00:08:23,860
+all I have to do is set message equals hello world, and
+
+175
+00:08:23,860 --> 00:08:25,820
+I can use this however I want.
+
+176
+00:08:25,820 --> 00:08:29,030
+I could do echo $MESSAGE,
+
+177
+00:08:29,030 --> 00:08:31,310
+and our message would be printed out.
+
+178
+00:08:31,310 --> 00:08:33,390
+Now here's something--
+
+179
+00:08:33,390 --> 00:08:36,110
+what if I start up a new bash session?
+
+180
+00:08:36,110 --> 00:08:38,530
+In this one, I've set message to hello world.
+
+181
+00:08:38,530 --> 00:08:41,370
+If I open up a new bash,
+
+182
+00:08:41,370 --> 00:08:43,490
+it appears nothing has changed,
+
+183
+00:08:43,490 --> 00:08:45,410
+but now we're in a new copy of bash.
+
+184
+00:08:45,410 --> 00:08:50,450
+If I were to echo $MESSAGE,
+
+185
+00:08:50,450 --> 00:08:52,230
+we get nothing.
+
+186
+00:08:52,230 --> 00:08:53,800
+Now this is interesting.
+
+187
+00:08:53,800 --> 00:08:55,780
+We created an environment variable.
+
+188
+00:08:55,780 --> 00:08:58,090
+However, when we started a new process--
+
+189
+00:08:58,090 --> 00:08:58,980
+a new bash--
+
+190
+00:08:58,980 --> 00:09:00,460
+it went away.
+
+191
+00:09:00,460 --> 00:09:04,950
+This is not because it was overwritten in some file like our PS1 is.
+
+192
+00:09:04,950 --> 00:09:09,610
+It's because our message variable by default will stay in its own session
+
+193
+00:09:09,610 --> 00:09:11,000
+or its own process.
+
+194
+00:09:11,000 --> 00:09:13,890
+Now the bash that I created on this line is 
+
+195
+00:09:13,890 --> 00:09:17,550
+a new process that is a child of our original one.
+
+196
+00:09:17,550 --> 00:09:21,750
+However, the message was not passed down to it in the environment.
+
+197
+00:09:21,750 --> 00:09:23,480
+We can, however, do that.
+
+198
+00:09:23,480 --> 00:09:27,060
+So I'm going to go ahead and exit the new bash that I created
+
+199
+00:09:27,060 --> 00:09:28,170
+just a moment ago.
+
+200
+00:09:28,170 --> 00:09:32,010
+Now we're back at our original bash session.
+
+201
+00:09:32,010 --> 00:09:34,080
+So if I were to do echo message,
+
+202
+00:09:34,080 --> 00:09:36,030
+we'll see it's still there.
+
+203
+00:09:36,030 --> 00:09:41,100
+It's actually a very important feature to allow our variables to be
+
+204
+00:09:41,100 --> 00:09:45,670
+passed down to processes that are created by our current session
+
+205
+00:09:45,670 --> 00:09:47,200
+or our current process.
+
+206
+00:09:47,200 --> 00:09:52,460
+The mechanism that we do this with is called exporting.
+
+207
+00:09:52,460 --> 00:09:55,250
+Right now, message is a local environment variable,
+
+208
+00:09:55,250 --> 00:09:57,380
+which means it's only visible to us.
+
+209
+00:09:57,380 --> 00:09:58,940
+If we run another program,
+
+210
+00:09:58,940 --> 00:10:02,210
+programs have access to our environment.
+
+211
+00:10:02,210 --> 00:10:06,170
+But it only has access to the environment variables that are exported
+
+212
+00:10:06,170 --> 00:10:08,700
+from the session that created it.
+
+213
+00:10:08,700 --> 00:10:10,340
+Since message isn't exported, 
+
+214
+00:10:10,340 --> 00:10:13,820
+it's not going to show up as we saw when we created our bash.
+
+215
+00:10:13,820 --> 00:10:16,710
+So if we wanted to make message export
+
+216
+00:10:16,710 --> 00:10:18,490
+to any processes that we run
+
+217
+00:10:18,490 --> 00:10:27,740
+we can do export MESSAGE equals "Hi world." 
+
+218
+00:10:27,740 --> 00:10:29,750
+Now we can still access it the same way--
+
+219
+00:10:29,750 --> 00:10:32,540
+echo MESSAGE,
+
+220
+00:10:32,540 --> 00:10:34,510
+and we see "Hi world."
+
+221
+00:10:34,510 --> 00:10:39,440
+However, if I start a new bash process from this bash process,
+
+222
+00:10:39,440 --> 00:10:42,890
+where before we lost our message.
+
+223
+00:10:42,890 --> 00:10:47,230
+If we take a look at echo MESSAGE,
+
+224
+00:10:47,230 --> 00:10:50,020
+we'll see that the environment variable
+
+225
+00:10:50,020 --> 00:10:51,880
+has been transferred down to us.
+
+226
+00:10:51,880 --> 00:10:55,190
+It's been communicated down to the new bash that we created.
+
+227
+00:10:55,190 --> 00:10:59,330
+So environment variables or custom environment variables
+
+228
+00:10:59,330 --> 00:11:00,530
+that aren't set by the system
+
+229
+00:11:00,530 --> 00:11:03,630
+are particularly useful for controlling programs.
+
+230
+00:11:03,630 --> 00:11:06,110
+Programs we write and other people write
+
+231
+00:11:06,110 --> 00:11:10,340
+have access to the environment variables of its own process,
+
+232
+00:11:10,340 --> 00:11:15,820
+which means any environment variable exported will be available to that program.
+
+233
+00:11:15,820 --> 00:11:18,370
+This provides us a mechanism for communicating 
+
+234
+00:11:18,370 --> 00:11:21,080
+and configuring our programs.
+
+235
+00:11:21,080 --> 00:11:23,500
+For example, the LS command 
+
+236
+00:11:23,500 --> 00:11:26,680
+uses the environment variable LS colors
+
+237
+00:11:26,680 --> 00:11:29,050
+to determine how things are colored.
+
+238
+00:11:29,050 --> 00:11:31,090
+You'll notice that our current configuration 
+
+239
+00:11:31,090 --> 00:11:33,430
+has directories colored blue.
+
+240
+00:11:33,430 --> 00:11:36,820
+But different file extensions will have different colors.
+
+241
+00:11:36,820 --> 00:11:38,380
+This is what we see here.
+
+242
+00:11:38,380 --> 00:11:42,220
+The colors that we see here aren't hard-coded into LS.
+
+243
+00:11:42,220 --> 00:11:45,140
+Instead, it's configured by our environment.
+
+244
+00:11:45,140 --> 00:11:48,500
+These variables are often used in all sorts of programs that we write.
+
+245
+00:11:48,500 --> 00:11:52,370
+For instance, to configure port numbers or environments
+
+246
+00:11:52,370 --> 00:11:54,350
+or even credentials to data bases--
+
+247
+00:11:54,350 --> 00:11:56,160
+you can store in the environment,
+
+248
+00:11:56,160 --> 00:11:58,310
+which allows you to store information 
+
+249
+00:11:58,310 --> 00:11:59,690
+not in a configuration file
+
+250
+00:11:59,690 --> 00:12:02,240
+but in your computer's environment itself. 
+
+251
+00:12:02,240 --> 00:12:06,630
+One last environment variable that is very important for you to understand
+
+252
+00:12:06,630 --> 00:12:09,900
+because it's the one you'll probably be modifying the most
+
+253
+00:12:09,900 --> 00:12:11,440
+is called the path.
+
+254
+00:12:11,440 --> 00:12:13,770
+Let me clear the screen.
+
+255
+00:12:13,770 --> 00:12:18,640
+If I echo an environment variable called path,
+
+256
+00:12:18,640 --> 00:12:20,850
+we're going to see this string.
+
+257
+00:12:20,850 --> 00:12:25,540
+This is a list of directories separated by colons.
+
+258
+00:12:25,540 --> 00:12:29,190
+What this represents is the list of directories to search for
+
+259
+00:12:29,190 --> 00:12:31,280
+when we run an executable.
+
+260
+00:12:31,280 --> 00:12:34,790
+For instance, when we run echo,
+
+261
+00:12:34,790 --> 00:12:35,710
+this is a command.
+
+262
+00:12:35,710 --> 00:12:39,570
+It's a program that actually exists as a file on our computer.
+
+263
+00:12:39,570 --> 00:12:42,660
+We can find out by typing which echo
+
+264
+00:12:42,660 --> 00:12:45,060
+exactly where it exists.
+
+265
+00:12:45,060 --> 00:12:49,260
+It exists as a file in /bin/echo.
+
+266
+00:12:49,260 --> 00:12:55,120
+Now we can run that by typing /bin/echo
+
+267
+00:12:55,120 --> 00:12:57,760
+and give it some information.
+
+268
+00:12:57,760 --> 00:13:01,560
+This is a way we would run our programs with absolute paths.
+
+269
+00:13:01,560 --> 00:13:04,270
+However, nobody wants to type the full path
+
+270
+00:13:04,270 --> 00:13:06,820
+to every command that they want to run.
+
+271
+00:13:06,820 --> 00:13:09,200
+Instead, we simply want to type the name of the command.
+
+272
+00:13:09,200 --> 00:13:12,020
+Well the way we do that is by using the path.
+
+273
+00:13:12,020 --> 00:13:13,590
+If we type a command
+
+274
+00:13:13,590 --> 00:13:15,780
+and it's not the full path to a command,
+
+275
+00:13:15,780 --> 00:13:19,570
+our computer will search in order of all of these directories,
+
+276
+00:13:19,570 --> 00:13:22,630
+looking for the echo executable.
+
+277
+00:13:22,630 --> 00:13:25,910
+It will first look in /user /local /sbin.
+
+278
+00:13:25,910 --> 00:13:28,340
+If there is no echo there,
+
+279
+00:13:28,340 --> 00:13:29,130
+it would go to this directory
+
+280
+00:13:29,130 --> 00:13:31,520
+looking for echo until it finally finds it.
+
+281
+00:13:31,520 --> 00:13:34,520
+As we see, bin is actually in /bin,
+
+282
+00:13:34,520 --> 00:13:36,000
+which is in our path.
+
+283
+00:13:36,000 --> 00:13:41,280
+Now the reason we use this is because sometimes we install executables
+
+284
+00:13:41,280 --> 00:13:43,440
+that are not in any of these directories.
+
+285
+00:13:43,440 --> 00:13:46,200
+However, we want them to be available to us.
+
+286
+00:13:46,200 --> 00:13:48,520
+We went them to be in our path.
+
+287
+00:13:48,520 --> 00:13:51,980
+So we can update this fairly easily.
+
+288
+00:13:51,980 --> 00:13:53,970
+From left to right is the search order.
+
+289
+00:13:53,970 --> 00:13:56,590
+So if we wanted to set a high priority.
+
+290
+00:13:56,590 --> 00:13:58,670
+For instance, we created a new folder 
+
+291
+00:13:58,670 --> 00:14:00,660
+called bin in our home directory.
+
+292
+00:14:00,660 --> 00:14:04,380
+If we wanted to put files in here,
+
+293
+00:14:04,380 --> 00:14:07,340
+which will be programs that we could run without giving the full path,
+
+294
+00:14:07,340 --> 00:14:09,260
+we would have to add this to our path.
+
+295
+00:14:09,260 --> 00:14:13,170
+So we would do export PATH equals,
+
+296
+00:14:13,170 --> 00:14:14,780
+and we want to modify it.
+
+297
+00:14:14,780 --> 00:14:18,780
+So one way we can do that is by giving our path--
+
+298
+00:14:18,780 --> 00:14:23,020
+we'll say /home/treehouse/bin.
+
+299
+00:14:23,020 --> 00:14:26,290
+This is the directory we want at the front of our list.
+
+300
+00:14:26,290 --> 00:14:29,530
+Each entry is separated by a colon.
+
+301
+00:14:29,530 --> 00:14:32,590
+Then we can tack on the rest of our list,
+
+302
+00:14:32,590 --> 00:14:35,220
+which is still in dollar path.
+
+303
+00:14:35,220 --> 00:14:36,390
+So what we are doing is we're saying
+
+304
+00:14:36,390 --> 00:14:38,000
+we're going to give path a new value.
+
+305
+00:14:38,000 --> 00:14:40,510
+It's going to be this path--a colon.
+
+306
+00:14:40,510 --> 00:14:44,250
+Then we are going to just put in the rest of the path.
+
+307
+00:14:44,250 --> 00:14:47,460
+So we don't have to type in the old one to modify it.
+
+308
+00:14:47,460 --> 00:14:50,320
+So if we run that and we check our path
+
+309
+00:14:50,320 --> 00:14:52,140
+by typing echo path,
+
+310
+00:14:52,140 --> 00:14:55,260
+we'll see our path has been updated now
+
+311
+00:14:55,260 --> 00:14:59,590
+If we were to put executables in this bin directory, it would be accessible
+
+312
+00:14:59,590 --> 00:15:02,040
+just like any other executable.
+
+313
+00:15:02,040 --> 00:15:05,560
+You'll notice if we type in bash and start a new process,
+
+314
+00:15:05,560 --> 00:15:07,990
+or we were to log in again,
+
+315
+00:15:07,990 --> 00:15:11,840
+and take a look at our path,
+
+316
+00:15:11,840 --> 00:15:13,680
+you'll notice it's been transferred down.
+
+317
+00:15:13,680 --> 00:15:16,070
+However, this isn't how we want to do this
+
+318
+00:15:16,070 --> 00:15:18,030
+because usually we have a start-up script
+
+319
+00:15:18,030 --> 00:15:20,150
+that will set the path itself.
+
+320
+00:15:20,150 --> 00:15:24,180
+Instead, what we want to do is place it in a file that will run.
+
+321
+00:15:24,180 --> 00:15:28,630
+If we were to close this session and start a new one
+
+322
+00:15:28,630 --> 00:15:31,960
+and we were to check out our path.
+
+323
+00:15:32,020 --> 00:15:35,640
+Now we wouldn't want to normally just export the path from our command line
+
+324
+00:15:35,640 --> 00:15:37,110
+because if the computer restarted 
+
+325
+00:15:37,110 --> 00:15:38,460
+we would lose all of that--
+
+326
+00:15:38,460 --> 00:15:39,580
+it's not stored anywhere.
+
+327
+00:15:39,580 --> 00:15:41,930
+Instead, there is a file that exists
+
+328
+00:15:41,930 --> 00:15:44,070
+that will run every time we start up bash.
+
+329
+00:15:44,070 --> 00:15:46,400
+If we do ls - la,
+
+330
+00:15:46,400 --> 00:15:49,620
+we'll notice that there is a file called bashrc.
+
+331
+00:15:49,620 --> 00:15:51,130
+Now depending on your system,
+
+332
+00:15:51,130 --> 00:15:52,370
+this might be a different file
+
+333
+00:15:52,370 --> 00:15:55,710
+and you'll have to look up specifically which one you need to edit.
+
+334
+00:15:55,710 --> 00:15:58,290
+On some systems it's .bash profile.
+
+335
+00:15:58,290 --> 00:16:00,070
+If you're using a shell that is not bash,
+
+336
+00:16:00,070 --> 00:16:02,110
+it's going to be a completely different file.
+
+337
+00:16:02,110 --> 00:16:04,090
+But we can actually edit it.
+
+338
+00:16:04,090 --> 00:16:08,300
+So if I type in nano .bashrc,
+
+339
+00:16:08,300 --> 00:16:12,610
+this is a file that runs every time we start up.
+
+340
+00:16:12,610 --> 00:16:15,460
+Now most of this we don't have to worry about.
+
+341
+00:16:15,460 --> 00:16:18,960
+If I scroll down to the very bottom,
+
+342
+00:16:18,960 --> 00:16:21,720
+you'll notice our PS1 is exported.
+
+343
+00:16:21,720 --> 00:16:25,250
+Generally what you will do whenever you want to add something to your path
+
+344
+00:16:25,250 --> 00:16:36,290
+is type export PATH equals /home/treehouse/bin and path like that.
+
+345
+00:16:36,290 --> 00:16:39,730
+Usually you're doing this because a program you're installing
+
+346
+00:16:39,730 --> 00:16:41,410
+has asked you to update the path,
+
+347
+00:16:41,410 --> 00:16:43,040
+so you will update the path as needed.
+
+348
+00:16:43,040 --> 00:16:45,400
+But when you save this out,
+
+349
+00:16:45,400 --> 00:16:48,920
+the next time you log in that will run
+
+350
+00:16:48,920 --> 00:16:53,020
+and it will update your path for you.
+

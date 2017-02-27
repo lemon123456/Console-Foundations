@@ -1,0 +1,260 @@
+1
+00:00:00,000 --> 00:00:06,210
+[Deep Dive-Console: Users & Permissions: File Ownership with Jim Hoskins] ?[music]?
+
+2
+00:00:06,210 --> 00:00:08,270
+So we've seen how to change the permissions 
+
+3
+00:00:08,270 --> 00:00:11,070
+for users, groups, and others, but we can also change
+
+4
+00:00:11,070 --> 00:00:13,250
+who is the user owner and the group owner.
+
+5
+00:00:13,250 --> 00:00:15,560
+Now this is independent of the actual permissions.
+
+6
+00:00:15,560 --> 00:00:18,510
+When we change the owner, the permissions given for the owner
+
+7
+00:00:18,510 --> 00:00:22,100
+of the file are still the same, however, it just refers to a new owner.
+
+8
+00:00:23,230 --> 00:00:27,030
+We can actually use chown which is like chmod, but instead of changing the
+
+9
+00:00:27,030 --> 00:00:29,940
+mode of it we are going to be changing the owner of it.
+
+10
+00:00:30,070 --> 00:00:35,110
+Let us take a look--so we type in LS-L, and we can see for hello.txt
+
+11
+00:00:35,110 --> 00:00:38,510
+you see the owner of the file can read and write, the group owner can
+
+12
+00:00:38,510 --> 00:00:40,620
+read, and everybody else can do nothing.
+
+13
+00:00:40,620 --> 00:00:44,370
+And that applies to the Treehouse user and the group as a Treehouse group.
+
+14
+00:00:44,370 --> 00:00:49,360
+But what if I wanted to change the user that this hello.txt file belongs to?
+
+15
+00:00:49,720 --> 00:00:54,210
+Well, let us try it out; what we can do is we could type in chown
+
+16
+00:00:54,210 --> 00:00:56,290
+and the name of the user we want to switch it to.
+
+17
+00:00:56,290 --> 00:00:59,180
+And since we created that Mike user let us use that.
+
+18
+00:00:59,290 --> 00:01:04,459
+We do chown Mike, and we will say that hello.txt should now belong to Mike.
+
+19
+00:01:05,500 --> 00:01:09,170
+Now what we have got here is an error that says we are not allowed to do that.
+
+20
+00:01:09,490 --> 00:01:14,930
+Now this is something we saw similar before where we had to type in SUDO
+
+21
+00:01:15,650 --> 00:01:19,720
+in order to run the command because of the permissions associated with running that command.
+
+22
+00:01:19,720 --> 00:01:25,190
+So we can type with a SUDO in front of it Mike Hello.txt.
+
+23
+00:01:25,350 --> 00:01:27,770
+Now when changing ownership this may be necessary 
+
+24
+00:01:27,770 --> 00:01:30,590
+because this will override any permissions.
+
+25
+00:01:31,250 --> 00:01:34,260
+Now--like before--it is going to ask us for our password for our current user
+
+26
+00:01:34,260 --> 00:01:37,230
+which is still Mike D Frog.
+
+27
+00:01:38,260 --> 00:01:42,480
+So now if we type in LS-L we will now see the Hello.txt file
+
+28
+00:01:42,480 --> 00:01:46,700
+belongs to Mike; now it still belongs to the group Treehouse
+
+29
+00:01:46,700 --> 00:01:50,880
+which means that now me--as the Treehouse user and member of the Treehouse group--
+
+30
+00:01:50,880 --> 00:01:54,280
+the most I can do with this is read the file.
+
+31
+00:01:54,690 --> 00:01:57,450
+I cannot write to it. Let us see what that means.
+
+32
+00:01:57,800 --> 00:02:03,170
+So I could type in cat Hello.txt.
+
+33
+00:02:03,610 --> 00:02:07,060
+And we can see that the file is able to be printed to our screen
+
+34
+00:02:07,060 --> 00:02:11,780
+which means I read it. Let us try typing nano Hello.txt.
+
+35
+00:02:12,180 --> 00:02:16,690
+Now it opened it up fine because all that needs to do is read the file into our text editor.
+
+36
+00:02:16,690 --> 00:02:19,630
+But you will see we are even getting a warning at the bottom
+
+37
+00:02:19,630 --> 00:02:22,360
+warning there is no right permission
+
+38
+00:02:22,360 --> 00:02:26,860
+which means that if I try to change this I may be changing this to high
+
+39
+00:02:27,690 --> 00:02:33,390
+And I try to save the file by doing control O to write out saying file name to write
+
+40
+00:02:33,390 --> 00:02:35,850
+Hello.txt which is the current one.
+
+41
+00:02:36,210 --> 00:02:40,270
+And we now see error writing Hello.txt permission denied
+
+42
+00:02:40,270 --> 00:02:44,250
+because I no longer am the owner of that file, and I no longer have
+
+43
+00:02:44,250 --> 00:02:46,370
+enough permissions to write to it.
+
+44
+00:02:46,700 --> 00:02:50,100
+So I am going to exit by holding down control and hitting X.
+
+45
+00:02:50,670 --> 00:02:54,550
+It is going to ask me if I want to save; I do not because I am not allowed
+
+46
+00:02:54,550 --> 00:02:57,050
+to save, and this really is not that important.
+
+47
+00:02:57,050 --> 00:03:00,500
+If it were, we could just try to say yes and save it under a different name
+
+48
+00:03:00,500 --> 00:03:03,790
+that would allow us to save a new copy of it that belongs to us,
+
+49
+00:03:03,790 --> 00:03:06,370
+but it is not really worth it right now.
+
+50
+00:03:06,370 --> 00:03:11,630
+So I am going to just type in N, so we will discard that change it was trying to make.
+
+51
+00:03:13,670 --> 00:03:18,290
+Now we saw chown can change the user, but if you want to change the group
+
+52
+00:03:18,290 --> 00:03:21,720
+it comes after a colon; so if we want to change it to the user Mike
+
+53
+00:03:21,720 --> 00:03:25,440
+and the group Mike we can do it just like that.
+
+54
+00:03:26,020 --> 00:03:31,410
+If we type in LS-L we will now see that the user and group are both Mike.
+
+55
+00:03:31,820 --> 00:03:35,890
+Now if I wanted to edit it, one thing I could do is just su to Mike--
+
+56
+00:03:36,260 --> 00:03:38,290
+remember this is Mike's password it is prompting us for.
+
+57
+00:03:38,290 --> 00:03:41,860
+So HTML5 in my case.
+
+58
+00:03:42,580 --> 00:03:47,930
+Now if I typed in nano Hello.txt I could modify it.
+
+59
+00:03:47,930 --> 00:03:50,590
+You will see there are no errors being displayed at the bottom.
+
+60
+00:03:51,200 --> 00:03:56,770
+I could type control X; I will save it by typing Y, and it did it just fine.
+
+61
+00:03:58,010 --> 00:04:05,610
+If we do cat Hello.txt, and if we scroll up we will see the change that has been reflected.
+
+62
+00:04:05,780 --> 00:04:09,480
+So I am going to exit out of that--switch user so we get back to the Treehouse command.
+
+63
+00:04:09,790 --> 00:04:14,070
+And I want to switch it back to being our file, so SUDO chown
+
+64
+00:04:14,990 --> 00:04:21,510
+Treehouse, Treehouse Hello.txt.
+
+65
+00:04:22,120 --> 00:04:27,660
+Now if we take a look with LS-L, we will see everything is back how we left it.
+

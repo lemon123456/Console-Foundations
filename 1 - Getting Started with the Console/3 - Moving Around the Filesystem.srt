@@ -1,0 +1,732 @@
+1
+00:00:00,000 --> 00:00:02,360
+So, we saw how to run a basic command. 
+
+2
+00:00:02,360 --> 00:00:03,440
+Now, let's learn a few more. 
+
+3
+00:00:04,320 --> 00:00:07,680
+In the command line, you're always somewhere in the filesystem of the computer. 
+
+4
+00:00:08,520 --> 00:00:12,380
+Much like how you navigate through folders using Windows Explorer or Mac OS Finder, 
+
+5
+00:00:12,380 --> 00:00:16,870
+there are multiple levels of folders that you can navigate through in the console. 
+
+6
+00:00:18,040 --> 00:00:21,380
+Folders contain other folders, often nested several levels deep. 
+
+7
+00:00:22,290 --> 00:00:24,850
+You've probably seen this represented as the file tree
+
+8
+00:00:24,850 --> 00:00:27,560
+with each level of depth indented another level 
+
+9
+00:00:27,560 --> 00:00:29,690
+representing the file system as a whole. 
+
+10
+00:00:30,500 --> 00:00:33,060
+When using Linux or other POSIX operating systems, 
+
+11
+00:00:33,060 --> 00:00:36,210
+what you call a folder is usually called a directory. 
+
+12
+00:00:36,960 --> 00:00:39,750
+This is because they were called directories long before the desktop 
+
+13
+00:00:39,750 --> 00:00:44,200
+was invented, and metaphors to real items like desktops, windows, 
+
+14
+00:00:44,200 --> 00:00:46,010
+and folders were used. 
+
+15
+00:00:46,760 --> 00:00:50,430
+Folders and directories are the same thing, but we'll be referring to them as directories. 
+
+16
+00:00:51,190 --> 00:00:52,490
+So, let's find out where we are. 
+
+17
+00:00:53,560 --> 00:00:57,680
+In order to find out the directory you are in, there's a command called "pwd." 
+
+18
+00:00:59,110 --> 00:01:01,990
+Pwd stands for print working directory. 
+
+19
+00:01:01,990 --> 00:01:07,530
+Again, like any other command, we can type in "pwd" and then hit enter. 
+
+20
+00:01:07,530 --> 00:01:12,290
+The output of this command is the path to where we currently are in the file system. 
+
+21
+00:01:12,290 --> 00:01:16,840
+Right now, we are in the default location that we were placed when we logged in to the computer. 
+
+22
+00:01:17,940 --> 00:01:23,660
+This is /home/treehouse, and this is something called our home directory. 
+
+23
+00:01:24,450 --> 00:01:28,570
+In most operating systems, you have a special directory called your home directory. 
+
+24
+00:01:29,300 --> 00:01:32,860
+This is where directories like my documents and pictures exist. 
+
+25
+00:01:33,440 --> 00:01:36,400
+There's a different home directory for each user on the computer. 
+
+26
+00:01:37,300 --> 00:01:40,800
+On Linux, this directory is in /home/username. 
+
+27
+00:01:40,800 --> 00:01:47,230
+In our case, our username is treehouse, so our home directory is in /home/treehouse.
+
+28
+00:01:47,230 --> 00:01:51,440
+On the Mac, the home directories are in /users/username. 
+
+29
+00:01:52,360 --> 00:01:56,440
+This directory is so special that it has it's own shortcut name--tilde. 
+
+30
+00:01:56,440 --> 00:01:58,930
+This means "my home directory." 
+
+31
+00:01:59,680 --> 00:02:02,120
+In fact, that's why there's a tilde on your prompt. 
+
+32
+00:02:02,120 --> 00:02:05,750
+Instead of showing you the full path, it's showing you the abbreviated path. 
+
+33
+00:02:05,750 --> 00:02:08,370
+So, the tilde just means that you're at home. 
+
+34
+00:02:09,009 --> 00:02:10,300
+Now, let's move around. 
+
+35
+00:02:11,160 --> 00:02:15,380
+So, we see where we are--we're in our home directory--and we can move around. 
+
+36
+00:02:16,630 --> 00:02:19,660
+Now, we saw LS before, so we can get our bearings a little bit more. 
+
+37
+00:02:19,660 --> 00:02:25,970
+Pwd tells us where we are, and LS tells us what's available in the directory we're currently in. 
+
+38
+00:02:25,970 --> 00:02:30,690
+We're currently in our home directory, which contains a documents directory that we could move into, 
+
+39
+00:02:30,690 --> 00:02:32,990
+and a hello.txt file. 
+
+40
+00:02:32,990 --> 00:02:35,970
+So, let's move into the documents file. 
+
+41
+00:02:35,970 --> 00:02:39,660
+So, how do we do that? We use the "cd" command. 
+
+42
+00:02:39,660 --> 00:02:47,220
+Cd stands for change directory, and like it would imply, it changes the current directory we are in. 
+
+43
+00:02:47,220 --> 00:02:52,460
+So, the way we use that is type in "cd" and then wherever we want to go. 
+
+44
+00:02:52,460 --> 00:02:55,420
+In our case, we want to move into the documents folder, 
+
+45
+00:02:55,420 --> 00:02:57,850
+so we can type in "documents." 
+
+46
+00:02:57,850 --> 00:03:04,630
+Now, here's a cool tip: In most environments, not all--again, this is a luxury not a necessity--
+
+47
+00:03:04,630 --> 00:03:07,900
+there is something called tab completion. 
+
+48
+00:03:08,710 --> 00:03:12,030
+The console that we're interacting with or something we call the shell
+
+49
+00:03:12,030 --> 00:03:16,520
+that is actually handling our keystrokes, can actually do some pretty cool things 
+
+50
+00:03:16,520 --> 00:03:20,960
+with tab completion. Since it knows all about the files and folders on our computer,
+
+51
+00:03:20,960 --> 00:03:23,350
+It can fill in things for us. 
+
+52
+00:03:24,070 --> 00:03:30,190
+For instance, after we type in "cd" if we type in "do" and we could just hit tab,
+
+53
+00:03:30,190 --> 00:03:33,330
+it's going to fill in the rest for us. 
+
+54
+00:03:34,010 --> 00:03:37,880
+If there's multiple options, we may be able to tab through it using multiple tab presses, 
+
+55
+00:03:37,880 --> 00:03:41,880
+or it may tell us what our options are so we can type in a little bit more of our option. 
+
+56
+00:03:41,880 --> 00:03:47,230
+This tab completion is really nice because it allows us to move around fairly quickly. 
+
+57
+00:03:47,230 --> 00:03:49,720
+You'll notice the trailing slash. 
+
+58
+00:03:49,720 --> 00:03:54,230
+It doesn't matter in this case. The slashes separate multiple levels of directories 
+
+59
+00:03:54,230 --> 00:03:55,790
+that we want to move through. 
+
+60
+00:03:55,790 --> 00:03:59,640
+So, if there was another directory inside of documents, we could type in another directory. 
+
+61
+00:03:59,640 --> 00:04:02,230
+However, I only want to move into documents, so this is fine. 
+
+62
+00:04:03,140 --> 00:04:05,980
+The trailing slash could be there or it could just do without. 
+
+63
+00:04:06,960 --> 00:04:09,100
+So, now that we see, though, there's something a little bit different. 
+
+64
+00:04:09,100 --> 00:04:10,730
+Our prompt has changed. 
+
+65
+00:04:10,730 --> 00:04:15,620
+It still has our username, but now our current directory has changed a little bit. 
+
+66
+00:04:15,620 --> 00:04:21,160
+Instead of being the shortened home path of just tilde, it's now tilde/documents, 
+
+67
+00:04:21,160 --> 00:04:22,640
+which means it's our home directory, 
+
+68
+00:04:22,640 --> 00:04:25,710
+and inside of that we're currently in our documents directory. 
+
+69
+00:04:26,480 --> 00:04:28,310
+And this is where our prompt is very useful. 
+
+70
+00:04:28,310 --> 00:04:32,170
+It's telling us where we are, which gives us some context as to what we can do. 
+
+71
+00:04:33,110 --> 00:04:36,510
+So, now if I were to type in "pwd" or print working directory, 
+
+72
+00:04:36,510 --> 00:04:40,730
+it's now /home/treehouse/documents. 
+
+73
+00:04:40,730 --> 00:04:47,200
+And if I type in "ls," we can see that there's a file here called "How to go home.txt."
+
+74
+00:04:47,200 --> 00:04:51,470
+Now, we'll learn about how to actually read and edit that document in a little bit. 
+
+75
+00:04:52,290 --> 00:04:53,820
+But, let's keep learning how to move around. 
+
+76
+00:04:53,820 --> 00:04:58,170
+What we did in this command here is type in "cd documents," 
+
+77
+00:04:58,170 --> 00:05:01,010
+and this is what we call a relative path. 
+
+78
+00:05:01,010 --> 00:05:06,410
+Because we were currently at the time in /home/treehouse which had a documents folder, 
+
+79
+00:05:06,410 --> 00:05:10,330
+we're able to specify in relative terms where we wanted to go
+
+80
+00:05:10,330 --> 00:05:14,880
+because the documents existed in our current directory. 
+
+81
+00:05:14,880 --> 00:05:17,970
+However, we can use an absolute path as well. 
+
+82
+00:05:17,970 --> 00:05:19,460
+But, let me show you something. 
+
+83
+00:05:19,460 --> 00:05:23,330
+If you type in "os," you see that there's only that one file. 
+
+84
+00:05:23,330 --> 00:05:28,310
+So if I were to type in "cd documents" again, it wouldn't make sense
+
+85
+00:05:28,310 --> 00:05:31,210
+because there's not a documents folder in our current directory, 
+
+86
+00:05:31,210 --> 00:05:35,410
+and so we can't go into documents through a relative command like this 
+
+87
+00:05:35,410 --> 00:05:39,480
+because relative to where we are now, there is no documents folder 
+
+88
+00:05:39,480 --> 00:05:42,430
+because we're in it and there's no extra folder called documents inside. 
+
+89
+00:05:43,320 --> 00:05:47,090
+So, if we run into it, we're going to get a different output. 
+
+90
+00:05:47,090 --> 00:05:49,100
+In this case, it says "-bash." 
+
+91
+00:05:49,100 --> 00:05:53,690
+Now, bash is a program which we're actually interacting with right now. 
+
+92
+00:05:53,690 --> 00:05:55,260
+It's called our shell. 
+
+93
+00:05:56,600 --> 00:06:00,230
+Now, there are different shells, but bash is going to be the one you're going to probably 
+
+94
+00:06:00,230 --> 00:06:02,350
+be interacting with the most. 
+
+95
+00:06:02,350 --> 00:06:09,500
+Others are ZSH, CSH, TCSH, and pretty much anything that ends with "sh." 
+
+96
+00:06:10,660 --> 00:06:13,880
+Now, most of them are similar; however, there are differences. 
+
+97
+00:06:13,880 --> 00:06:18,410
+But when you see "bash," it just means the program that's taking our input 
+
+98
+00:06:18,410 --> 00:06:22,250
+and handling things like coloring, as well as tab completion, 
+
+99
+00:06:22,250 --> 00:06:28,340
+so it's something we can configure, but it's just the program that's really handling our input and output. 
+
+100
+00:06:28,340 --> 00:06:31,960
+And because we typed in "cd documents," there's an error, 
+
+101
+00:06:31,960 --> 00:06:34,540
+and so it's saying that cd had an error 
+
+102
+00:06:34,540 --> 00:06:37,900
+that documents--there's no such file or directory, 
+
+103
+00:06:37,900 --> 00:06:42,050
+so we can't just use the same relative path if the relative path doesn't exist. 
+
+104
+00:06:43,270 --> 00:06:46,580
+However, we can move around with absolute paths. 
+
+105
+00:06:46,580 --> 00:06:51,470
+Now, an absolute path differs in that it starts with one of a couple of characters. 
+
+106
+00:06:51,470 --> 00:06:55,480
+One of those characters is a slash and the other is a tilde. 
+
+107
+00:06:55,480 --> 00:06:58,400
+Now, there's some other ways to specify an absolute path, 
+
+108
+00:06:58,400 --> 00:07:02,130
+but the idea is the absolute path starts with some point. 
+
+109
+00:07:02,130 --> 00:07:06,790
+In the case of a slash, it means that we're specifying the full path of the directory 
+
+110
+00:07:06,790 --> 00:07:10,020
+from the root or the top of our document tree. 
+
+111
+00:07:10,020 --> 00:07:13,750
+You'll notice that in our pwd, the full path starts with a slash--
+
+112
+00:07:13,750 --> 00:07:17,110
+which means the top of our directory--and then there's a home folder
+
+113
+00:07:17,110 --> 00:07:19,840
+and then there's a treehouse folder, so we can use that exact same format 
+
+114
+00:07:19,840 --> 00:07:21,450
+to move around with cd. 
+
+115
+00:07:22,520 --> 00:07:28,800
+For instance, if we wanted to move home, we could do a cd/home/treehouse. 
+
+116
+00:07:31,590 --> 00:07:32,710
+And you can see we're home. 
+
+117
+00:07:32,710 --> 00:07:36,660
+Again, in our prompt we see the tilde which is the shortened version of our home directory, 
+
+118
+00:07:36,660 --> 00:07:40,830
+but if we type in pwd, we can see we are exactly where we wanted to be. 
+
+119
+00:07:41,530 --> 00:07:45,540
+And so that was an absolute path, because it began with a slash meaning our root. 
+
+120
+00:07:46,770 --> 00:07:50,450
+There's also another one we can use, our tilde as our starting point
+
+121
+00:07:51,310 --> 00:07:56,160
+which means that we want to give a full path starting at our home directory. 
+
+122
+00:07:56,160 --> 00:08:02,360
+For instance, if I was in the /home directory by going to cd/home, 
+
+123
+00:08:02,360 --> 00:08:06,250
+we could type in "pwd," and we see our home directory. 
+
+124
+00:08:06,250 --> 00:08:09,060
+Now, I'm going to clear it to bring our prompt a little bit higher, 
+
+125
+00:08:09,060 --> 00:08:12,380
+so we can see everything, so I'm going to type in "clear." 
+
+126
+00:08:12,920 --> 00:08:15,280
+And the only thing this does is it just moves our prompt to the top. 
+
+127
+00:08:15,280 --> 00:08:18,950
+We could still scroll up to see our previous inputs. 
+
+128
+00:08:19,680 --> 00:08:21,900
+So, if we type in "pwd" we can see we're at /home, 
+
+129
+00:08:21,900 --> 00:08:25,400
+but if we wanted to go to the documents directory inside of our home directory, 
+
+130
+00:08:25,400 --> 00:08:31,360
+we could use cd/home/treehouse/documents. 
+
+131
+00:08:32,559 --> 00:08:36,690
+But remember, /home/treehouse is the same as our tilde. 
+
+132
+00:08:36,690 --> 00:08:40,240
+So, instead we could use a different absolute path by starting with our tilde 
+
+133
+00:08:40,240 --> 00:08:43,490
+and then typing in "/documents."
+
+134
+00:08:44,190 --> 00:08:47,440
+And this is really useful, because a lot of the files we want to get to are often 
+
+135
+00:08:47,440 --> 00:08:50,910
+relative to our home directory, so the tilde is a nice shortcut.
+
+136
+00:08:50,910 --> 00:08:54,910
+No matter where we are in the file system, we can move to a directory
+
+137
+00:08:54,910 --> 00:08:57,650
+relative to our home directory by using the tilde. 
+
+138
+00:08:58,960 --> 00:09:04,710
+So, if I go to cd ~ /documents, we can now see we are in ~/documents, 
+
+139
+00:09:04,710 --> 00:09:08,720
+and typing in "pwd" prints out /home/treehouse which is our home directory, 
+
+140
+00:09:08,720 --> 00:09:11,030
+and then we're in the documents directory. 
+
+141
+00:09:11,030 --> 00:09:13,700
+Now, what if we want to go back to our home directory? 
+
+142
+00:09:13,700 --> 00:09:15,330
+We saw a couple ways we could do that. 
+
+143
+00:09:15,330 --> 00:09:18,210
+Another is to just type in "cd ~." 
+
+144
+00:09:18,210 --> 00:09:20,200
+Because that's our home directory. 
+
+145
+00:09:20,200 --> 00:09:21,420
+That should be pretty expected. 
+
+146
+00:09:23,310 --> 00:09:25,660
+So, if I move back into documents, 
+
+147
+00:09:26,820 --> 00:09:29,430
+we're going down into our documents directory from our home directory, 
+
+148
+00:09:29,430 --> 00:09:31,100
+but what if we want to go back up?
+
+149
+00:09:32,040 --> 00:09:34,300
+We can use another type of relative URL, 
+
+150
+00:09:34,300 --> 00:09:39,330
+and this is a special thing called the ".." which represents going up a directory. 
+
+151
+00:09:39,330 --> 00:09:43,070
+So, right now we're currently in /home/treehouse/documents, 
+
+152
+00:09:43,070 --> 00:09:48,360
+if we wanted to go back up a directory, and let's ignore the fact that's the home directory, 
+
+153
+00:09:48,360 --> 00:09:49,980
+so there are a ton of different ways we could get there. 
+
+154
+00:09:49,980 --> 00:09:54,360
+If we wanted to get there by going up, then we can use the ".."
+
+155
+00:09:54,880 --> 00:10:00,840
+So, if we type in "cd.." we've actually gone up a directory,  
+
+156
+00:10:00,840 --> 00:10:04,780
+and now we're in /home/treehouse. 
+
+157
+00:10:04,780 --> 00:10:09,140
+And this works just like any other path name, so we could go ".." going up a directory, 
+
+158
+00:10:09,140 --> 00:10:13,950
+but we can also separate it with slashes and maybe use another ".." 
+
+159
+00:10:13,950 --> 00:10:15,350
+to go up another directory. 
+
+160
+00:10:16,000 --> 00:10:17,650
+And now we can see we're at the root directory, 
+
+161
+00:10:17,650 --> 00:10:21,060
+and if we typed in "pwd," we're at the very top of our tree. 
+
+162
+00:10:21,060 --> 00:10:23,670
+So, we actually can't go up any higher. 
+
+163
+00:10:23,670 --> 00:10:26,140
+If we type that, we're just going to end up at the same place. 
+
+164
+00:10:27,260 --> 00:10:31,460
+Now, it's interesting to note that the ".." can be used as part of any file path. 
+
+165
+00:10:31,460 --> 00:10:38,490
+So, for instance, if we type in "cd/home/treehouse--our home directory--
+
+166
+00:10:38,490 --> 00:10:44,500
+if we were to type in ".." that means we want to go to the home/treehouse but then up a level. 
+
+167
+00:10:44,500 --> 00:10:46,230
+So, we're actually saying "home." 
+
+168
+00:10:47,280 --> 00:10:49,060
+And that's exactly where we end up. 
+
+169
+00:10:49,060 --> 00:10:51,120
+So, if we were to do something like that again, 
+
+170
+00:10:52,200 --> 00:10:56,390
+we could actually make a pretty complicated path by going up and down and around 
+
+171
+00:10:56,390 --> 00:10:59,870
+and you can just use it as any other folder name. 
+
+172
+00:11:00,530 --> 00:11:02,980
+I'm going to show you something cool. Another thing that bash provides us,
+
+173
+00:11:02,980 --> 00:11:05,550
+along with tab completion, is history. 
+
+174
+00:11:05,550 --> 00:11:09,430
+So, if you use the up arrow key, in most situations it should give you the last command. 
+
+175
+00:11:10,720 --> 00:11:13,210
+If you continue going up, you can scroll through your history, 
+
+176
+00:11:13,210 --> 00:11:16,060
+and use down to go either direction. 
+
+177
+00:11:16,740 --> 00:11:20,190
+So, if I want to recall the last cd command I did, I just scroll up until I find it, 
+
+178
+00:11:21,350 --> 00:11:24,700
+So, this says we want to go to /home/treehouse, back up to home, 
+
+179
+00:11:24,700 --> 00:11:30,940
+we can go to treehouse again, and that would have the effect of going to our home directory. 
+
+180
+00:11:31,750 --> 00:11:35,500
+That's pretty convoluted, but if you're in a directory and you need to go up some levels 
+
+181
+00:11:35,500 --> 00:11:38,540
+and then back down, you can use the ".." just like that. 
+
+182
+00:11:39,300 --> 00:11:40,810
+So, now we know where we are. 
+
+183
+00:11:40,810 --> 00:11:43,660
+Next, let's actually manipulate some of the files. 
+

@@ -1,0 +1,396 @@
+1
+00:00:00,000 --> 00:00:03,080
+?music? [Deep Dive] 
+
+2
+00:00:03,080 --> 00:00:06,190
+[Console Foundations] [Getting Started with the Console with Jim Hoskins] 
+
+3
+00:00:10,030 --> 00:00:13,980
+Hi, I'm Jim, and we're going to be learning about the console. 
+
+4
+00:00:13,980 --> 00:00:18,950
+The console is just another way to interact with your computer. 
+
+5
+00:00:20,380 --> 00:00:22,590
+You really shouldn't be afraid of it. You should just try it. 
+
+6
+00:00:25,810 --> 00:00:26,730
+Delicious. 
+
+7
+00:00:28,200 --> 00:00:32,150
+Anyway, with the console, instead of working with windows, toolbars, 
+
+8
+00:00:32,150 --> 00:00:34,840
+menus, and buttons, you're just interacting with text. 
+
+9
+00:00:35,900 --> 00:00:37,740
+You perform actions by writing commands, 
+
+10
+00:00:37,740 --> 00:00:41,160
+and you get your information back from the computer in the form of text. 
+
+11
+00:00:42,550 --> 00:00:44,740
+Why would we ever want to do this? 
+
+12
+00:00:44,740 --> 00:00:49,400
+Even though it seems complex and difficult to use a text-only interfaced computer, 
+
+13
+00:00:49,400 --> 00:00:51,360
+it's actually quite liberating. 
+
+14
+00:00:51,360 --> 00:00:55,080
+That's because when you use the console, there's much more flexibility 
+
+15
+00:00:55,080 --> 00:00:59,330
+and consistency than when you're using a graphical user interface. 
+
+16
+00:01:00,190 --> 00:01:03,450
+Programs can be linked together to perform really powerful actions 
+
+17
+00:01:03,450 --> 00:01:06,990
+that would be impossible to create using simple menus and buttons. 
+
+18
+00:01:07,690 --> 00:01:09,870
+Why should we bother learning the console? 
+
+19
+00:01:09,870 --> 00:01:14,260
+It's how we used to interact with computers, but now we have graphical interfaces
+
+20
+00:01:14,260 --> 00:01:16,560
+with desktops, menus, and windows. 
+
+21
+00:01:16,560 --> 00:01:19,310
+Well, when you're programming or doing web development or design, 
+
+22
+00:01:19,310 --> 00:01:23,450
+some of the tools you may use may not have a graphical interface. 
+
+23
+00:01:24,400 --> 00:01:26,570
+These tools must run on the console. 
+
+24
+00:01:26,570 --> 00:01:28,340
+And if you're not familiar with the console, 
+
+25
+00:01:28,340 --> 00:01:30,650
+it will be a very frustrating experience. 
+
+26
+00:01:31,630 --> 00:01:35,680
+Websites and web applications will be deployed on remote computers called servers
+
+27
+00:01:35,680 --> 00:01:39,690
+and most of the time, the only way to interact directly with these machines 
+
+28
+00:01:39,690 --> 00:01:44,470
+is to use a command line over a remote connection called SSH. 
+
+29
+00:01:45,670 --> 00:01:47,990
+The fact is, it's hard to avoid running into the console. 
+
+30
+00:01:48,760 --> 00:01:49,470
+And why would you want to? 
+
+31
+00:01:49,470 --> 00:01:52,020
+Once you become familiar with the environment, 
+
+32
+00:01:52,020 --> 00:01:55,880
+reaching for your mouse to mess with some menu will seem like a big waste of time
+
+33
+00:01:55,880 --> 00:01:58,250
+when you could just type a couple of words and be done with it. 
+
+34
+00:02:01,100 --> 00:02:03,690
+Now, I've been talking a lot about the console, 
+
+35
+00:02:03,690 --> 00:02:05,230
+but we should get more specific. 
+
+36
+00:02:05,230 --> 00:02:08,970
+Most operating systems actually provide a console or a command prompt 
+
+37
+00:02:08,970 --> 00:02:10,229
+in some form or another. 
+
+38
+00:02:10,229 --> 00:02:12,730
+Because it's just a way to interact with your computer. 
+
+39
+00:02:13,650 --> 00:02:16,790
+To understand the console, is to understand your operating system better. 
+
+40
+00:02:17,730 --> 00:02:19,860
+But there are so many different operating systems out there. 
+
+41
+00:02:19,860 --> 00:02:21,300
+Which one should we choose? 
+
+42
+00:02:21,300 --> 00:02:25,590
+Linux. Now, I hear you saying, "I don't use Linux." Hear me out. 
+
+43
+00:02:26,460 --> 00:02:29,120
+You may have heard of something called Unix. 
+
+44
+00:02:29,120 --> 00:02:31,910
+It's an operating system first developed in the 1960s. 
+
+45
+00:02:33,260 --> 00:02:36,150
+It created a lot of great ideas on how an operating system should work.
+
+46
+00:02:37,070 --> 00:02:41,820
+More importantly, a lot of operating systems were created using the same ideas 
+
+47
+00:02:41,820 --> 00:02:44,210
+and philosophies, and they mimic Unix. 
+
+48
+00:02:44,740 --> 00:02:47,730
+Many of these are free and open source, unlike the original Unix,
+
+49
+00:02:47,730 --> 00:02:49,310
+and some are not. 
+
+50
+00:02:50,130 --> 00:02:54,270
+Linux, or GNU/Linux to be more precise, is one of those open source descendants. 
+
+51
+00:02:55,160 --> 00:02:57,290
+Now, why is Linux important to us? 
+
+52
+00:02:57,290 --> 00:03:01,200
+The vast majority of servers on-line run some flavor of Linux. 
+
+53
+00:03:02,170 --> 00:03:05,660
+Another operating system that is based on Unix is called Darwin. 
+
+54
+00:03:06,230 --> 00:03:09,210
+Darwin is what powers Apple's Mac OS10. 
+
+55
+00:03:09,210 --> 00:03:14,300
+That means nearly everything you learn about Linux will apply to Mac OS10 as well. 
+
+56
+00:03:15,050 --> 00:03:18,640
+Now, there are some other operating systems like BSD and Solaris, 
+
+57
+00:03:18,640 --> 00:03:20,300
+all of which share this common heritage. 
+
+58
+00:03:21,410 --> 00:03:24,310
+In fact, there is a standard that these operating systems share with each other
+
+59
+00:03:24,310 --> 00:03:29,360
+called POSIX, or portable operating system interface. 
+
+60
+00:03:29,360 --> 00:03:33,920
+This is a standard that makes sure that all of these different yet related operating systems 
+
+61
+00:03:33,920 --> 00:03:36,370
+stay consistent to some degree. 
+
+62
+00:03:37,130 --> 00:03:39,450
+So, that once you know one, you can use another. 
+
+63
+00:03:40,620 --> 00:03:44,350
+This is one reason why OS10 is so popular with web developers. 
+
+64
+00:03:44,940 --> 00:03:46,890
+If our apps are going to be deployed on Linux, 
+
+65
+00:03:46,890 --> 00:03:50,080
+it makes sense to develop them in a similar environment. 
+
+66
+00:03:50,080 --> 00:03:52,960
+Now, you could use Linux on your desktop to develop, 
+
+67
+00:03:52,960 --> 00:03:54,850
+and many do--it's a great choice--
+
+68
+00:03:54,850 --> 00:03:59,150
+however, Mac OS10 provides a full POSIX compatible environment 
+
+69
+00:03:59,150 --> 00:04:02,060
+and a finally tuned graphical interface to go with it. 
+
+70
+00:04:03,720 --> 00:04:05,630
+Now, that brings us to Microsoft Windows. 
+
+71
+00:04:05,630 --> 00:04:06,750
+Now, where does it stand? 
+
+72
+00:04:06,750 --> 00:04:10,640
+Well, it's not a POSIX compatible operating system at all. 
+
+73
+00:04:11,320 --> 00:04:13,360
+The way Windows works is actually quite different. 
+
+74
+00:04:14,570 --> 00:04:17,769
+This makes Windows a less desirable choice when doing web development
+
+75
+00:04:17,769 --> 00:04:20,190
+because it's not compatible with the operating systems 
+
+76
+00:04:20,190 --> 00:04:22,360
+that we're likely to use on her web servers. 
+
+77
+00:04:23,020 --> 00:04:25,980
+Now, that's not to say you can't use it; you certainly can. 
+
+78
+00:04:25,980 --> 00:04:30,270
+If you're developing with Microsoft technologies like the .net suite of tools, 
+
+79
+00:04:30,270 --> 00:04:32,850
+you must use Windows. 
+
+80
+00:04:32,850 --> 00:04:36,680
+Now, it has a command prompt and some of the basics appear similar
+
+81
+00:04:36,680 --> 00:04:39,680
+between Windows and POSIX compatible operating systems, 
+
+82
+00:04:39,680 --> 00:04:42,710
+but those similarities are largely superficial. 
+
+83
+00:04:43,720 --> 00:04:45,150
+Even if you use Windows as your personal computer, 
+
+84
+00:04:45,150 --> 00:04:48,210
+it's still a huge value to learn to navigate Linux 
+
+85
+00:04:49,280 --> 00:04:51,960
+because chances are, you're going to run into it sooner or later. 
+
+86
+00:04:51,960 --> 00:04:55,000
+So, chances are you're not using Linux right at this moment. 
+
+87
+00:04:55,000 --> 00:04:56,970
+So, how are we going to learn it? 
+
+88
+00:04:56,970 --> 00:04:58,510
+Well, we've built something just for you. 
+
+89
+00:04:59,400 --> 00:05:01,600
+Click the "Launch Console" button on this page. 
+
+90
+00:05:01,600 --> 00:05:05,910
+It's going to open up a command line window to a Linux computer we set up for you. 
+
+91
+00:05:06,800 --> 00:05:09,780
+This is a real computer running on the Internet that you can use to follow along
+
+92
+00:05:09,780 --> 00:05:11,220
+and experiment with us. 
+
+93
+00:05:11,980 --> 00:05:16,610
+If you're using Mac or Linux or BSD or another POSIX operating system, 
+
+94
+00:05:16,610 --> 00:05:19,780
+you can use the console on your own computer if you'd like. 
+
+95
+00:05:19,780 --> 00:05:22,260
+Later on, however, we will be using some programs 
+
+96
+00:05:22,260 --> 00:05:25,600
+that are specific to our flavor of Linux--Ubuntu. 
+
+97
+00:05:26,350 --> 00:05:30,330
+We recommend that you follow along as well using the Treehouse console. 
+
+98
+00:05:31,090 --> 00:05:34,190
+Go ahead and make sure that your Treehouse console window is open. 
+
+99
+00:05:34,190 --> 00:05:38,210
+When you see the dollar sign followed by a blinking rectangle, you're ready to go. 
+

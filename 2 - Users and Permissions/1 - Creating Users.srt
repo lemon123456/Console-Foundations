@@ -1,0 +1,776 @@
+1
+00:00:01,080 --> 00:00:03,140
+[Deep Dive]
+
+2
+00:00:03,140 --> 00:00:06,430
+[Console Users & Permissions: Users with Jim Hoskins]
+
+3
+00:00:06,430 --> 00:00:08,870
+[Jim Hoskins]: Like most computers, multiple users can be set up
+
+4
+00:00:08,870 --> 00:00:10,250
+ on the machine.
+
+5
+00:00:10,250 --> 00:00:12,830
+Each user has a login, password, 
+
+6
+00:00:12,830 --> 00:00:14,280
+and a home directory. 
+
+7
+00:00:14,280 --> 00:00:16,680
+On the Treehouse console, we have set you up with a user 
+
+8
+00:00:16,680 --> 00:00:19,260
+called, "treehouse" and logged you in automatically. 
+
+9
+00:00:19,260 --> 00:00:22,190
+The password for the Treehouse account is "mike the frog"
+
+10
+00:00:22,190 --> 00:00:24,530
+with space in between each word. 
+
+11
+00:00:24,530 --> 00:00:26,200
+As we saw before, 
+
+12
+00:00:26,200 --> 00:00:28,810
+the home directory for the Treehouse user on this machine
+
+13
+00:00:28,810 --> 00:00:31,610
+is in /home/treehouse. 
+
+14
+00:00:31,610 --> 00:00:33,810
+The reason we have a home directory
+
+15
+00:00:33,810 --> 00:00:36,540
+is it's a place for each user to put their stuff. 
+
+16
+00:00:36,540 --> 00:00:38,940
+If you're writing code or have files to store, 
+
+17
+00:00:38,940 --> 00:00:41,860
+each user has a place that they can put all of their files. 
+
+18
+00:00:42,620 --> 00:00:45,480
+Outside of the home directories are where files and directories
+
+19
+00:00:45,480 --> 00:00:47,700
+are for the computer as a whole. 
+
+20
+00:00:47,700 --> 00:00:50,840
+By default, these files that exist outside of our home directory
+
+21
+00:00:50,840 --> 00:00:53,440
+are not accessible by us. 
+
+22
+00:00:53,440 --> 00:00:55,460
+Well we might be able to read the file,
+
+23
+00:00:55,460 --> 00:00:57,900
+but we won't be able to update it, delete it, 
+
+24
+00:00:57,900 --> 00:00:59,320
+or create new files
+
+25
+00:00:59,320 --> 00:01:01,060
+in those directories. 
+
+26
+00:01:01,060 --> 00:01:03,640
+Let's see how to create a new user on our machine. 
+
+27
+00:01:04,530 --> 00:01:06,240
+Before we get started,
+
+28
+00:01:06,240 --> 00:01:10,010
+we are going to ask that you run this one command
+
+29
+00:01:10,010 --> 00:01:12,520
+if you're using the Treehouse console. 
+
+30
+00:01:12,520 --> 00:01:14,740
+You may encounter an error in this stage
+
+31
+00:01:14,740 --> 00:01:17,350
+ when attempting to create a new user. 
+
+32
+00:01:17,350 --> 00:01:19,090
+This patch when you apply it 
+
+33
+00:01:19,090 --> 00:01:21,840
+will make sure that error does not happen. 
+
+34
+00:01:21,840 --> 00:01:24,470
+We recommend you run this.
+
+35
+00:01:24,470 --> 00:01:26,200
+This will make sure your system 
+
+36
+00:01:26,200 --> 00:01:29,200
+is ready for this upcoming stage. 
+
+37
+00:01:29,200 --> 00:01:33,480
+From the console type: curl-L
+
+38
+00:01:33,480 --> 00:01:40,550
+trhou.se/patch01
+
+39
+00:01:40,550 --> 00:01:45,330
+then hit Space and the Pipe key, which is shift-backslash,
+
+40
+00:01:45,330 --> 00:01:47,670
+and it's usually above your Return key. 
+
+41
+00:01:47,670 --> 00:01:50,770
+Then type: bash. 
+
+42
+00:01:50,770 --> 00:01:52,870
+Go ahead and hit Enter. 
+
+43
+00:01:52,870 --> 00:01:54,450
+It's going to ask you for the password
+
+44
+00:01:54,450 --> 00:01:56,880
+which should be "mike the frog"
+
+45
+00:01:56,880 --> 00:01:59,140
+if you're using the Treehouse console. 
+
+46
+00:02:00,790 --> 00:02:02,820
+If you get this message, you should be good to go,
+
+47
+00:02:02,820 --> 00:02:05,450
+and you're ready to continue on with this section.
+
+48
+00:02:06,230 --> 00:02:09,210
+Right now, we're signed in as the Treehouse user,
+
+49
+00:02:09,210 --> 00:02:12,150
+and we can see that because our prompt is telling us
+
+50
+00:02:12,150 --> 00:02:14,070
+we're "treehouse."
+
+51
+00:02:14,070 --> 00:02:18,030
+We can also use a command to find out which user we are currently signed in as. 
+
+52
+00:02:18,030 --> 00:02:22,830
+The command is: whoami--W-H-O-A-M-I. 
+
+53
+00:02:22,830 --> 00:02:25,930
+When you run that command, it'll print out the name of the user
+
+54
+00:02:25,930 --> 00:02:27,790
+you are currently signed in as, 
+
+55
+00:02:27,790 --> 00:02:29,950
+which is "treehouse," as we knew. 
+
+56
+00:02:29,950 --> 00:02:32,680
+Now let's add a new user. 
+
+57
+00:02:32,680 --> 00:02:35,250
+The command is: adduser. 
+
+58
+00:02:35,250 --> 00:02:37,250
+The thing is, we need to be running
+
+59
+00:02:37,250 --> 00:02:39,270
+this in a special mode. 
+
+60
+00:02:39,270 --> 00:02:43,750
+So what we're actually going to type is: sudo adduser. 
+
+61
+00:02:43,750 --> 00:02:45,610
+What is sudo?
+
+62
+00:02:45,610 --> 00:02:48,840
+We'll be taking a look at that in just a couple of minutes,
+
+63
+00:02:48,840 --> 00:02:51,870
+but if we type this in with adduser, 
+
+64
+00:02:51,870 --> 00:02:54,240
+it's going to ask us for our password. 
+
+65
+00:02:54,240 --> 00:02:57,370
+That's the password for our currently logged-in user, Treehouse. 
+
+66
+00:02:57,370 --> 00:02:59,140
+As we can see, by default
+
+67
+00:02:59,140 --> 00:03:01,030
+the password is "mike the frog" 
+
+68
+00:03:01,030 --> 00:03:03,370
+with the spaces between the words. 
+
+69
+00:03:03,370 --> 00:03:05,390
+So I can just type that in,
+
+70
+00:03:05,390 --> 00:03:08,470
+[typing]
+
+71
+00:03:08,470 --> 00:03:10,990
+and you'll see when the password is prompted on the command line, 
+
+72
+00:03:10,990 --> 00:03:13,120
+it does not give you feedback as to what you're typing
+
+73
+00:03:13,120 --> 00:03:16,820
+so you're not typing your password for everyone to see. 
+
+74
+00:03:16,820 --> 00:03:19,430
+If you hit Enter, and it succeeds, 
+
+75
+00:03:19,430 --> 00:03:21,350
+it'll begin the program.
+
+76
+00:03:21,350 --> 00:03:24,480
+One thing I left off is the name of the user we want to add
+
+77
+00:03:24,480 --> 00:03:26,120
+so I'm going to try that one more time.
+
+78
+00:03:26,120 --> 00:03:29,180
+I'm going to hit Up just to do "sudo adduser" again,
+
+79
+00:03:29,180 --> 00:03:32,350
+and, first, we need to supply the name of the user
+
+80
+00:03:32,350 --> 00:03:34,130
+we want to add. 
+
+81
+00:03:34,130 --> 00:03:36,400
+For instance, let's add a user for Mike. 
+
+82
+00:03:36,400 --> 00:03:38,830
+If I hit Enter, 
+
+83
+00:03:38,830 --> 00:03:40,960
+you'll notice it didn't ask me for my password again
+
+84
+00:03:40,960 --> 00:03:43,690
+because I recently typed it in. 
+
+85
+00:03:43,690 --> 00:03:45,410
+Let's take a look at the lines. 
+
+86
+00:03:45,410 --> 00:03:47,190
+It's creating a new user, "mike,"
+
+87
+00:03:47,190 --> 00:03:49,210
+and it's creating a new group, "mike,"
+
+88
+00:03:49,210 --> 00:03:51,250
+and associating that user with the group. 
+
+89
+00:03:51,250 --> 00:03:54,690
+We'll learn more about groups when we learn about permissions next. 
+
+90
+00:03:54,690 --> 00:03:56,820
+Then it creates a home directory.
+
+91
+00:03:56,820 --> 00:03:59,740
+Remember, the home directory is in /home/username
+
+92
+00:03:59,740 --> 00:04:02,480
+so it created a directory called "/home/mike"
+
+93
+00:04:02,480 --> 00:04:06,560
+and it copied some files to get that home directory started. 
+
+94
+00:04:06,560 --> 00:04:10,820
+Now it's asking us for a password for the Mike user. 
+
+95
+00:04:10,820 --> 00:04:12,650
+I'm going to type one in.
+
+96
+00:04:12,650 --> 00:04:15,750
+I'm going to give him the password, "html5."
+
+97
+00:04:16,720 --> 00:04:18,910
+Then we have to type it again. 
+
+98
+00:04:19,820 --> 00:04:21,519
+We should see that the password
+
+99
+00:04:21,519 --> 00:04:23,900
+ was updated successfully. 
+
+100
+00:04:23,900 --> 00:04:25,330
+Now the adduser command
+
+101
+00:04:25,330 --> 00:04:28,270
+ is going to ask us for some information about the user. 
+
+102
+00:04:28,270 --> 00:04:30,910
+This is not all strictly necessary.
+
+103
+00:04:30,910 --> 00:04:32,940
+It's really just data about the user
+
+104
+00:04:32,940 --> 00:04:35,240
+so if you wanted to know the user's full name
+
+105
+00:04:35,240 --> 00:04:37,010
+or other information about them, 
+
+106
+00:04:37,010 --> 00:04:39,220
+you'd have a way to look it up. 
+
+107
+00:04:39,220 --> 00:04:41,750
+It's not entirely required for us to type it in,
+
+108
+00:04:41,750 --> 00:04:44,230
+but it's nice to put a little bit of information.
+
+109
+00:04:44,230 --> 00:04:47,860
+So I'm going to type in "mike the frog"
+
+110
+00:04:47,860 --> 00:04:49,400
+and you'll see things like "room number"
+
+111
+00:04:49,400 --> 00:04:51,790
+and these are sort of outdated. 
+
+112
+00:04:51,790 --> 00:04:54,430
+You can think of them as where their office is located
+
+113
+00:04:54,430 --> 00:04:56,020
+or other information. 
+
+114
+00:04:56,020 --> 00:04:58,700
+If you don't want to type it in, you can just hit Enter to leave it blank. 
+
+115
+00:04:58,700 --> 00:05:00,410
+Phone numbers we don't have,
+
+116
+00:05:00,410 --> 00:05:02,170
+and if you just want to have some other information
+
+117
+00:05:02,170 --> 00:05:04,360
+associated with the user, 
+
+118
+00:05:04,360 --> 00:05:06,050
+you can.
+
+119
+00:05:06,050 --> 00:05:08,770
+Now it's going to give you a chance to review the information. 
+
+120
+00:05:08,770 --> 00:05:11,700
+We can type in "Y" for yes
+
+121
+00:05:11,700 --> 00:05:13,130
+or "N." 
+
+122
+00:05:13,130 --> 00:05:15,340
+These types of prompts are pretty common,
+
+123
+00:05:15,340 --> 00:05:18,270
+and you'll notice that gives us 2 different options, Y or N, 
+
+124
+00:05:18,270 --> 00:05:20,110
+that it's expecting. 
+
+125
+00:05:20,110 --> 00:05:22,930
+You'll notice that one of them is capitalized--the Y. 
+
+126
+00:05:22,930 --> 00:05:25,740
+This convention means that Y is the default option
+
+127
+00:05:25,740 --> 00:05:27,560
+if we don't hit anything. 
+
+128
+00:05:27,560 --> 00:05:29,710
+So I don't even have to press Y,
+
+129
+00:05:29,710 --> 00:05:31,340
+I can just hit Enter. 
+
+130
+00:05:31,340 --> 00:05:34,190
+We're still logged in as "treehouse."
+
+131
+00:05:34,190 --> 00:05:37,370
+We can find that out by typing "whoami" again. 
+
+132
+00:05:37,370 --> 00:05:40,120
+But now there's a new user called, "mike."
+
+133
+00:05:40,120 --> 00:05:42,330
+How do we log in as that user?
+
+134
+00:05:42,330 --> 00:05:45,620
+Well one way we can do that is to use the "su"
+
+135
+00:05:45,620 --> 00:05:47,820
+or "switch user" command. 
+
+136
+00:05:47,820 --> 00:05:51,190
+The way we use that is to type in "su"
+
+137
+00:05:51,190 --> 00:05:53,530
+and then the name of the user we want to switch to. 
+
+138
+00:05:53,530 --> 00:05:55,430
+In this case, "mike."
+
+139
+00:05:55,430 --> 00:05:57,140
+All we have to do is hit Enter, 
+
+140
+00:05:57,140 --> 00:05:59,420
+and now it's going to ask us for a password. 
+
+141
+00:05:59,420 --> 00:06:02,330
+This is Mike's password. 
+
+142
+00:06:02,330 --> 00:06:05,330
+So, in this case, since I set it up as "html5,"
+
+143
+00:06:05,330 --> 00:06:07,050
+I'm going to type it in,
+
+144
+00:06:07,050 --> 00:06:09,710
+and you'll see that it is not typing the password into the screen.
+
+145
+00:06:09,710 --> 00:06:12,100
+However, I am typing it. 
+
+146
+00:06:12,100 --> 00:06:14,000
+Hit Enter, and you'll notice
+
+147
+00:06:14,000 --> 00:06:16,490
+that the prompt has changed. 
+
+148
+00:06:16,490 --> 00:06:19,030
+This is because the prompt is something that can be configured
+
+149
+00:06:19,030 --> 00:06:21,420
+from user to user. 
+
+150
+00:06:21,420 --> 00:06:23,810
+For instance, the Treehouse user has the prompt set up simply 
+
+151
+00:06:23,810 --> 00:06:27,920
+as the username, the current directory, $. 
+
+152
+00:06:27,920 --> 00:06:29,330
+However, when we logged in as Mike, 
+
+153
+00:06:29,330 --> 00:06:31,140
+he doesn't have that same configuration. 
+
+154
+00:06:31,140 --> 00:06:33,380
+So we see a little bit more information. 
+
+155
+00:06:33,380 --> 00:06:35,380
+We have the username, @, 
+
+156
+00:06:35,380 --> 00:06:37,550
+and the name of the computer,
+
+157
+00:06:37,550 --> 00:06:40,820
+which looks a little bit random but that's just the name of the computer that we set up, 
+
+158
+00:06:40,820 --> 00:06:44,980
+a colon and then the full path to where you are
+
+159
+00:06:44,980 --> 00:06:46,740
+and then $. 
+
+160
+00:06:46,740 --> 00:06:48,810
+But the idea is the same. 
+
+161
+00:06:48,810 --> 00:06:51,060
+So we can hit Enter just to bring it down,
+
+162
+00:06:51,060 --> 00:06:54,450
+and if we type in "whoami"
+
+163
+00:06:54,450 --> 00:06:57,600
+we can see we are now "mike." 
+
+164
+00:06:57,600 --> 00:07:00,190
+We can take a look at where we are with "pwd"
+
+165
+00:07:00,190 --> 00:07:04,390
+and see that we're currently in home/treehouse. 
+
+166
+00:07:04,390 --> 00:07:07,550
+Remember, the home directory is really a part of the user. 
+
+167
+00:07:07,550 --> 00:07:10,030
+So that's not my home directory, 
+
+168
+00:07:10,030 --> 00:07:12,160
+but since that's the directory I was in
+
+169
+00:07:12,160 --> 00:07:14,600
+when I used the "su" or "switch user" command, 
+
+170
+00:07:14,600 --> 00:07:16,230
+I remain in the same directory.
+
+171
+00:07:16,230 --> 00:07:18,540
+I just switched to a different user. 
+
+172
+00:07:18,540 --> 00:07:21,760
+If I wanted to go home, I could use a normal home command, 
+
+173
+00:07:21,760 --> 00:07:24,020
+like "cd" with no arguments,
+
+174
+00:07:24,020 --> 00:07:27,210
+and you'll see it took me to my own home directory
+
+175
+00:07:27,210 --> 00:07:30,030
+represented by the ~ in our prompt. 
+
+176
+00:07:30,030 --> 00:07:32,230
+If we type in "pwd"
+
+177
+00:07:32,230 --> 00:07:35,840
+we can see we're now in /home/mike. 
+
+178
+00:07:35,840 --> 00:07:38,860
+Now how do we switch back to the Treehouse user?
+
+179
+00:07:38,860 --> 00:07:42,510
+Well we could switch the user by going "su treehouse"
+
+180
+00:07:42,510 --> 00:07:45,510
+and typing in the password
+
+181
+00:07:45,510 --> 00:07:47,220
+after hitting Enter,
+
+182
+00:07:47,220 --> 00:07:50,180
+but if we're going to revert back to the user we previously were, 
+
+183
+00:07:50,180 --> 00:07:52,720
+we can use the "exit" command. 
+
+184
+00:07:53,880 --> 00:07:56,520
+What "exit" did is it took us out of the switch user
+
+185
+00:07:56,520 --> 00:07:58,360
+ that we were running before. 
+
+186
+00:07:58,360 --> 00:08:01,280
+We were running as Treehouse and then we ran "su"
+
+187
+00:08:01,280 --> 00:08:04,910
+to switch users and then the exit stopped that switch user command
+
+188
+00:08:04,910 --> 00:08:07,400
+so now we're back to where we were. 
+
+189
+00:08:07,400 --> 00:08:10,070
+If we "pwd" we can see 
+
+190
+00:08:10,070 --> 00:08:13,250
+we're still in /home/treehouse. 
+
+191
+00:08:13,250 --> 00:08:16,100
+The current location we were in when we were using "su"
+
+192
+00:08:16,100 --> 00:08:19,960
+ to switch to Mike has not affected our current location 
+
+193
+00:08:19,960 --> 00:08:21,950
+in the Treehouse account. 
+
+194
+00:08:22,830 --> 00:08:24,570
+Next we'll take a look at how permissions work. 
+

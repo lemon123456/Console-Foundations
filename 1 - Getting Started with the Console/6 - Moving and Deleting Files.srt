@@ -1,0 +1,612 @@
+1
+00:00:00,000 --> 00:00:04,330
+And let's learn a little bit on how to move files and copy files. 
+
+2
+00:00:04,330 --> 00:00:09,640
+Now if we take a look at ls here, we can see our file called hello.txt. 
+
+3
+00:00:09,640 --> 00:00:13,820
+Now if I wanted to change this to be called hi.text    
+
+4
+00:00:13,820 --> 00:00:16,580
+that would be something we normally call renaming.
+
+5
+00:00:16,580 --> 00:00:23,470
+But we can think of it another way instead of renaming hello.txt to something like hi.txt,
+
+6
+00:00:23,470 --> 00:00:27,000
+we can think of it as moving the file from one location to another.
+
+7
+00:00:27,000 --> 00:00:32,590
+Currently, it's in hello.txt, we want to move that file to hi.txt
+
+8
+00:00:32,590 --> 00:00:35,130
+and that's where the move command comes in handy.
+
+9
+00:00:35,130 --> 00:00:39,560
+Move is shortened to mv and it takes 2 arguments.        
+
+10
+00:00:39,560 --> 00:00:44,220
+It takes from where we want to move something to where we want to move it.
+
+11
+00:00:44,220 --> 00:00:49,140
+So in our case we'll type in hello.txt and I can use tab completion for that        
+
+12
+00:00:49,140 --> 00:00:52,080
+but our second argument that we need to move it to a place.
+
+13
+00:00:52,080 --> 00:00:56,460
+I can't use our text completion because we're moving it to a place that does not exist.
+
+14
+00:00:56,670 --> 00:00:59,650
+So I want to move it to hi.txt.   
+
+15
+00:00:59,650 --> 00:01:05,300
+So I'm saying move hello.txt to hi.txt which is equivalent to renaming it.     
+
+16
+00:01:05,300 --> 00:01:13,270
+And so if I hit enter and now we type in ls, we'll know see is hi.txt.
+
+17
+00:01:13,270 --> 00:01:20,510
+And if I type in less hi.txt, we'll see it's the exact same file and I just hit Q to exit ls again.
+
+18
+00:01:20,510 --> 00:01:23,940
+Now that's a simple case if we move a file within a directory
+
+19
+00:01:23,940 --> 00:01:28,330
+it's really just sort of renaming but we can actually move that one directory to another.   
+
+20
+00:01:28,330 --> 00:01:33,520
+So for instance, if we want to move hi.txt into our documents directory,
+
+21
+00:01:33,520 --> 00:01:36,910
+well I can do this into documents.
+
+22
+00:01:36,910 --> 00:01:41,910
+Now since documents is a directory, I can just pass that as my second argument    
+
+23
+00:01:41,910 --> 00:01:44,909
+and what it's going to do is it's going to move the hi.txt from my current directory
+
+24
+00:01:44,909 --> 00:01:51,170
+into the documents directory but with the same filename.  
+
+25
+00:01:51,170 --> 00:01:57,200
+So if I execute this and now I type ls, we are going to see we only have our documents directory,
+
+26
+00:01:57,200 --> 00:02:02,550
+but if I do ls and passing documents as the directory that I want to list.
+
+27
+00:02:02,550 --> 00:02:06,920
+Again, I'm not moving into documents, I am just listing it from where I currently am.
+
+28
+00:02:08,030 --> 00:02:13,460
+Now we see the documents directory have hi.txt and how to go home.txt.     
+
+29
+00:02:13,460 --> 00:02:16,140
+And I can move it back by doing the opposite.  
+
+30
+00:02:16,140 --> 00:02:24,100
+So if I move documents, I can tab complete hi.txt again tab completing to our current directory
+
+31
+00:02:24,100 --> 00:02:33,910
+which I could do like that with a tilde or we saw how .. represents the directory above us
+
+32
+00:02:33,910 --> 00:02:39,820
+but there's another special directory called . which is our current directory.  
+
+33
+00:02:39,820 --> 00:02:42,250
+So by simply typing . what I'm saying is I want to move
+
+34
+00:02:42,250 --> 00:02:48,600
+the document/hi.txt from its current location into my current directory
+
+35
+00:02:48,600 --> 00:02:53,520
+and . represents my current directory which in our case right now is our home directory.
+
+36
+00:02:54,220 --> 00:02:59,770
+So by doing that, I move it back into our current directory and we can see hi.txt is back.     
+
+37
+00:02:59,770 --> 00:03:05,090
+Now remember before I use hi.txt and move it into documents without getting it a full filename
+
+38
+00:03:05,090 --> 00:03:12,350
+but if I gave it document/hello.txt, it would not only move the file into the documents directory
+
+39
+00:03:12,350 --> 00:03:15,920
+but also rename it to hello.txt within that directory.
+
+40
+00:03:15,920 --> 00:03:18,710
+So I type ls, we can see it's no longer in our current directory
+
+41
+00:03:19,090 --> 00:03:25,230
+and if I type in ls documents we can see it now exists in our documents directory as hello.txt.
+
+42
+00:03:25,450 --> 00:03:29,380
+So we've not only moved it from one location to another but we've also renamed it.  
+
+43
+00:03:29,380 --> 00:03:34,290
+So that's how move can be a very powerful tool and then clear once again
+
+44
+00:03:34,290 --> 00:03:37,970
+and move will not only work for files but also directories as well.
+
+45
+00:03:37,970 --> 00:03:43,860
+So if I type in move documents and I want to rename it to docs, I can just do that.
+
+46
+00:03:43,860 --> 00:03:47,300
+And now if I type in ls, we can see that folder is now called docs    
+
+47
+00:03:47,300 --> 00:03:52,480
+and we move it back to documents so by just typing in move docs to documents,    
+
+48
+00:03:52,480 --> 00:03:56,610
+I can rename it back and again I can move document into another folder 
+
+49
+00:03:56,610 --> 00:04:01,620
+and all the files and directories and site of that directory will be moved along with it.   
+
+50
+00:04:01,620 --> 00:04:06,290
+Now we move our hello.txt back, so it's in our documents directory now.
+
+51
+00:04:06,290 --> 00:04:10,170
+It's in hello.txt and I want to move it back to our current directory.
+
+52
+00:04:11,070 --> 00:04:16,500
+So now were back to where we started and what if I want to make a copy of hello.txt 
+
+53
+00:04:16,500 --> 00:04:18,030
+Well, I can use the copy command.
+
+54
+00:04:18,030 --> 00:04:22,360
+Let's clear out our console once again by typing clear.
+
+55
+00:04:23,040 --> 00:04:28,500
+And copy is shortened by cp for copy and copy works a lot like move
+
+56
+00:04:28,500 --> 00:04:31,280
+except it leaves the original one in place.
+
+57
+00:04:31,280 --> 00:04:37,520
+And if I wanted to copy hello.txt to hi.txt that's what I can do.  
+
+58
+00:04:37,520 --> 00:04:41,460
+It's a lot like move but it leaves the original in place, so I hit it, type in ls.
+
+59
+00:04:41,460 --> 00:04:48,360
+We can see there's hello.txt so if I type in less hello.txt, we can see is that file.
+
+60
+00:04:48,360 --> 00:04:54,640
+And if I type in less hi.txt, you'll see it's the same file.  
+
+61
+00:04:54,640 --> 00:04:56,620
+So I've just created a copy of it. 
+
+62
+00:04:56,620 --> 00:05:00,350
+So if I wanted to copy a directory, however, it's a little bit different. Let's see what happens.
+
+63
+00:05:00,350 --> 00:05:04,349
+Now if I want to copy my documents directory into a docs directory,       
+
+64
+00:05:04,349 --> 00:05:10,040
+I can try the same thing--documents to docs but I have a problem.
+
+65
+00:05:10,040 --> 00:05:17,750
+I can't just copy a directory--actually I have to pass this special option called -r.
+
+66
+00:05:17,750 --> 00:05:21,340
+This stands for recursive which means it will copy everything recursively.    
+
+67
+00:05:21,340 --> 00:05:26,540
+By default, copy will only work on files but we need to do a directory and all the files within it 
+
+68
+00:05:26,540 --> 00:05:34,490
+by typing cp -r, the source directory and the new directory you want to create from it
+
+69
+00:05:34,490 --> 00:05:40,380
+it'll recursively create all the files that exist in documents inside of a new folder call docs.
+
+70
+00:05:40,380 --> 00:05:43,120
+So by typing ls because there's docs and documents,
+
+71
+00:05:43,120 --> 00:05:49,180
+and if I type in ls docs, you can see it retains a copy how to go home.txt.
+
+72
+00:05:49,260 --> 00:05:55,610
+Again, that's a copy of the how to go home.txt that exists in documents.   
+
+73
+00:05:55,610 --> 00:05:59,540
+There are two different files so it's recursively created a copy      
+
+74
+00:05:59,540 --> 00:06:04,470
+of not only the directory but every file and every sub directory in that directory. 
+
+75
+00:06:04,470 --> 00:06:09,990
+So that's why we need to do -r if we're copying directories from one place to another.  
+
+76
+00:06:09,990 --> 00:06:14,020
+So if I want to remove the hi.txt, I would use the rn command which removes it.
+
+77
+00:06:14,020 --> 00:06:19,290
+So I'm going to clear it and will do an ls to see exactly what we have now.
+
+78
+00:06:19,290 --> 00:06:23,580
+And to remove the hi.txt which is a copy of our hello so that we don't really need it.
+
+79
+00:06:23,580 --> 00:06:26,530
+Type in rm for remove. 
+
+80
+00:06:26,530 --> 00:06:31,190
+Now if I wanted to remove hi.txt, that's all I need to do.   
+
+81
+00:06:31,190 --> 00:06:33,130
+Now you need to be very careful with the rm command    
+
+82
+00:06:33,130 --> 00:06:37,340
+because it's not like in our desktop operating systems where we have a recycle bin 
+
+83
+00:06:37,340 --> 00:06:39,190
+and we can go and undo it.
+
+84
+00:06:39,190 --> 00:06:43,610
+It's really just gone. There is not really an easy way to bring back from an rm.
+
+85
+00:06:43,610 --> 00:06:49,370
+So be very, very cautious when deleting files and especially when deleting directories.
+
+86
+00:06:49,370 --> 00:06:54,630
+Be careful not to hit enter too soon and maybe delete something you really needed.
+
+87
+00:06:54,630 --> 00:06:56,680
+So I've reviewed my command.
+
+88
+00:06:56,680 --> 00:07:00,970
+I'm sure I want to get rid of hi.txt and now I've done it.   
+
+89
+00:07:00,970 --> 00:07:05,120
+There is no confirmation or anything so you can see how it could be kind of dangerous.
+
+90
+00:07:05,120 --> 00:07:09,080
+But if type in ls, we can see we're now down to hello.txt.
+
+91
+00:07:09,080 --> 00:07:15,090
+So what if I want to remove our docs. We'll let's try it. Let's clear out.  
+
+92
+00:07:15,090 --> 00:07:18,480
+Let's type in ls to see what's going on. We have docs and documents.  
+
+93
+00:07:18,480 --> 00:07:24,690
+I want to get rid of docs because it's a copy that we don't need to do rm docs.  
+
+94
+00:07:24,690 --> 00:07:29,690
+But we've got a problem. We cannot remove docs because it is a directory.    
+
+95
+00:07:29,690 --> 00:07:32,740
+Remember how in copy we couldn't copy it because of the directory,
+
+96
+00:07:32,740 --> 00:07:34,820
+the same thing works for rm.
+
+97
+00:07:35,790 --> 00:07:40,910
+Again, removing a directory could be way, way more dangerous than just removing a single file
+
+98
+00:07:40,910 --> 00:07:44,650
+because it's not only going to remove the directory but everything within it.     
+
+99
+00:07:44,650 --> 00:07:49,670
+So again we need to signify that we are okay with recursively removing everything
+
+100
+00:07:49,670 --> 00:07:54,260
+not only in the docs directory but any directories inside of a docs directory.
+
+101
+00:07:55,000 --> 00:07:59,000
+So much like we did for copy, we need to pass through the -r flag.
+
+102
+00:07:59,000 --> 00:08:04,910
+So now we can remove the docs directory. Type in os and it's gone.  
+
+103
+00:08:05,909 --> 00:08:07,980
+So what if we want to make a directory.      
+
+104
+00:08:07,980 --> 00:08:13,680
+We have our documents directory and let's say we want to create a pictures directory.  
+
+105
+00:08:13,900 --> 00:08:19,210
+We'll be using this command called make directory and that shortened to mkdir..
+
+106
+00:08:19,340 --> 00:08:24,660
+The mk we could think of as make and dir stands for directory mkdir
+
+107
+00:08:25,480 --> 00:08:28,320
+and we'll just give it the path that we want to do.
+
+108
+00:08:28,320 --> 00:08:30,630
+In our case, we'll say mkdir pictures.   
+
+109
+00:08:32,628 --> 00:08:36,510
+Now we type ls. We can see there's now a new folder called pictures.   
+
+110
+00:08:36,510 --> 00:08:40,010
+We can see that pictures is empty but we could place files in it.
+
+111
+00:08:40,010 --> 00:08:43,679
+Now say I want to create a directory inside of our documents directory
+
+112
+00:08:43,679 --> 00:08:46,140
+and maybe even a directory inside of that.  
+
+113
+00:08:46,140 --> 00:08:51,440
+So let's say I want to have documents/notes/console.   
+
+114
+00:08:51,440 --> 00:08:53,590
+I want to have that level of directory.  
+
+115
+00:08:53,590 --> 00:09:02,040
+Now you might think, we could that by typing mkdir documents/notes/console.       
+
+116
+00:09:02,040 --> 00:09:06,010
+So I want to create notes on my console within my documents.
+
+117
+00:09:06,010 --> 00:09:12,460
+Now the reason this won't work is because even though documents exists,
+
+118
+00:09:12,460 --> 00:09:18,160
+the notes directory inside of it does not exist so we can't create the console directory inside of that.
+
+119
+00:09:18,160 --> 00:09:19,930
+Now, there's two different things we can do.
+
+120
+00:09:19,930 --> 00:09:24,400
+We could mkdir documents/notes    
+
+121
+00:09:26,399 --> 00:09:31,740
+and then mkdir documents/notes/console and that'll work.
+
+122
+00:09:31,740 --> 00:09:33,270
+But I'm going to show you another neat tip   
+
+123
+00:09:33,270 --> 00:09:38,090
+for creating nested directories when you need them like that.
+
+124
+00:09:38,090 --> 00:09:40,150
+So now we have them, I'm going to ahead and remove       
+
+125
+00:09:40,150 --> 00:09:44,510
+the notes directory by doing rm -r documents/notes.
+
+126
+00:09:45,230 --> 00:09:50,670
+Now if we take a look at documents, we're back to our beginning state.
+
+127
+00:09:51,290 --> 00:09:59,540
+If we mkdir -p, the -p option will allows us to create any level deep documents.
+
+128
+00:09:59,540 --> 00:10:02,780
+So we can see, say you wanted to create inside of the documents directory  
+
+129
+00:10:02,780 --> 00:10:05,120
+which does exist--it happens to exist.
+
+130
+00:10:05,120 --> 00:10:08,550
+We're going to create notes directory and inside of that, we'll say console
+
+131
+00:10:08,550 --> 00:10:12,060
+and even inside of that we can say we can say part 1.
+
+132
+00:10:13,690 --> 00:10:17,320
+And it's going to go ahead and created all those levels deep. 
+
+133
+00:10:17,320 --> 00:10:19,420
+So if we take a look at ls, we can see we have a documents directory.
+
+134
+00:10:19,420 --> 00:10:23,460
+We can go into documents--the ls, we can see there's now a notes directory.
+
+135
+00:10:23,460 --> 00:10:28,130
+We can go into that by typing notes. We ls that.
+
+136
+00:10:28,130 --> 00:10:29,990
+We can see we have a console directory. 
+
+137
+00:10:29,990 --> 00:10:33,070
+We can go into that and if we can just continue tabbing through
+
+138
+00:10:33,070 --> 00:10:36,050
+we can see that there's even a part 1 directory.
+
+139
+00:10:36,050 --> 00:10:38,800
+So we see our prompt has gotten pretty long, let me clear it out.
+
+140
+00:10:39,610 --> 00:10:43,960
+And if we type in pwd, we can see our current location now is in our
+
+141
+00:10:43,960 --> 00:10:49,040
+home/treehouse/documents/notes/console/part1.
+
+142
+00:10:49,040 --> 00:10:53,180
+If you want to get home, let's use the .. to get home.   
+
+143
+00:10:53,180 --> 00:10:59,330
+So we can do cd .. which would place us in the console directory/..
+
+144
+00:10:59,330 --> 00:11:02,640
+which would now place us in the notes directory/..     
+
+145
+00:11:02,640 --> 00:11:06,550
+which would now place us in the documents directory /..
+
+146
+00:11:06,650 --> 00:11:08,560
+which would place us in the home directory.
+
+147
+00:11:08,560 --> 00:11:11,550
+Each.. takes us one level up. 
+
+148
+00:11:12,380 --> 00:11:15,520
+And so now, if I calculate that right, we should end up in our home directory.   
+
+149
+00:11:15,520 --> 00:11:17,910
+Bam! We did.
+
+150
+00:11:17,910 --> 00:11:20,740
+So there you are. You can now move around the computer freely.  
+
+151
+00:11:20,740 --> 00:11:23,790
+You can add and edit and delete files in directories.   
+
+152
+00:11:23,790 --> 00:11:26,630
+You now know enough console to be dangerous.  
+
+153
+00:11:26,630 --> 00:11:29,690
+Next, we'll learn a little bit more about how the operation system works.  
+

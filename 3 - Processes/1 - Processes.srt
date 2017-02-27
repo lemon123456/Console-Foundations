@@ -1,0 +1,616 @@
+1
+00:00:01,380 --> 00:00:06,340
+[Deep Dive: Console: Processes: What is Process with Jim Hoskins]
+
+2
+00:00:06,340 --> 00:00:10,650
+Processes are a core component of the POSIX operating systems.
+
+3
+00:00:10,650 --> 00:00:12,020
+Much like files and directories, 
+
+4
+00:00:12,020 --> 00:00:15,820
+processes are what make it possible to run the operating system.
+
+5
+00:00:15,820 --> 00:00:18,550
+A process is simply an instance of a program.
+
+6
+00:00:18,550 --> 00:00:23,400
+For instance Nano, the simple text editor we saw earlier is a program.
+
+7
+00:00:23,400 --> 00:00:28,120
+It's essentially a file on disk that describes what a text editor should do.
+
+8
+00:00:28,120 --> 00:00:31,560
+When we call nano from the command line we are executing the program,
+
+9
+00:00:31,560 --> 00:00:35,820
+which creates a new process, which is the running instance of nano.
+
+10
+00:00:35,820 --> 00:00:39,750
+We could open nano at the same time in different console tabs or windows
+
+11
+00:00:39,750 --> 00:00:43,510
+and it would work just fine because even though they're the same program
+
+12
+00:00:43,510 --> 00:00:46,080
+they are distinct processes.
+
+13
+00:00:46,080 --> 00:00:51,110
+Like files, processes have information attached to them like a unique i.d,
+
+14
+00:00:51,110 --> 00:00:54,190
+ who owns the process, when and where it started, 
+
+15
+00:00:54,190 --> 00:00:59,180
+and how many resources like CPU and ram the process is consuming.
+
+16
+00:00:59,180 --> 00:01:02,780
+Let's take a look at the running processes on our computer.
+
+17
+00:01:02,780 --> 00:01:05,760
+From the console there are a couple of different tools we can use
+
+18
+00:01:05,760 --> 00:01:09,610
+to explore what processes are running on our machine.
+
+19
+00:01:09,610 --> 00:01:12,880
+One of the most useful ones is called top.
+
+20
+00:01:12,880 --> 00:01:17,970
+Top is like the task manager in windows or the activity monitor in OS 10.
+
+21
+00:01:17,970 --> 00:01:23,850
+You can run it by simply typing top and executing the top program.
+
+22
+00:01:23,850 --> 00:01:27,130
+This is program that will take up our entire screen and it will give us
+
+23
+00:01:27,130 --> 00:01:30,190
+up to date information on the processes that are running 
+
+24
+00:01:30,190 --> 00:01:35,300
+and the resources that are being consumed on our machine.
+
+25
+00:01:35,300 --> 00:01:39,240
+This is particularly useful if you want to know if a process is taking up
+
+26
+00:01:39,240 --> 00:01:42,460
+a large amount of memory or CPU on your machine
+
+27
+00:01:42,460 --> 00:01:45,470
+in order to manage your resources.
+
+28
+00:01:45,470 --> 00:01:47,380
+At the top we can see some basic information 
+
+29
+00:01:47,380 --> 00:01:52,550
+like how many tasks are running, how busy the CPU or CPUs are,
+
+30
+00:01:52,550 --> 00:01:56,530
+the memory that's being used, as well as some information about the swap
+
+31
+00:01:56,530 --> 00:02:00,610
+which is related to how much memory is being used.
+
+32
+00:02:00,610 --> 00:02:02,820
+Then we see this table.
+
+33
+00:02:02,820 --> 00:02:05,960
+As you can see it's updating every couple of seconds
+
+34
+00:02:05,960 --> 00:02:09,060
+based on it's current sort.
+
+35
+00:02:09,060 --> 00:02:11,650
+Each row represents a process.
+
+36
+00:02:11,650 --> 00:02:15,750
+The first column represents the process i.d.
+
+37
+00:02:15,750 --> 00:02:19,780
+As you can see right now, they start from 1 and go on up.
+
+38
+00:02:19,780 --> 00:02:24,350
+Every process on our system is actually spawned from another process.
+
+39
+00:02:24,350 --> 00:02:29,160
+Process number 1 the init is actually the first thing that runs
+
+40
+00:02:29,160 --> 00:02:30,340
+on our machine.
+
+41
+00:02:30,340 --> 00:02:33,220
+Init is responsible for actually bringing our entire system up
+
+42
+00:02:33,220 --> 00:02:36,340
+and everything works off of that.
+
+43
+00:02:36,340 --> 00:02:39,460
+Right now most of what we see are system based processes.
+
+44
+00:02:39,460 --> 00:02:42,460
+These are things we don't generally need to worry about.
+
+45
+00:02:42,460 --> 00:02:46,330
+It's generally not a good idea to try to stop these processes
+
+46
+00:02:46,330 --> 00:02:48,560
+but it's good to know what's going on.
+
+47
+00:02:48,560 --> 00:02:50,870
+As you begin running programs on your computer
+
+48
+00:02:50,870 --> 00:02:55,950
+ you'll probably see those programs show up, as they consume CPU or memory.
+
+49
+00:02:55,950 --> 00:02:58,300
+Right now since we're not running very much, 
+
+50
+00:02:58,300 --> 00:03:01,830
+all we can see is our system processes.
+
+51
+00:03:01,830 --> 00:03:06,270
+You'll notice that every once in awhile PID 902 which is our top process,
+
+52
+00:03:06,270 --> 00:03:07,790
+comes to the top.
+
+53
+00:03:07,790 --> 00:03:11,550
+That's because it's running and every once in awhile it does use a little extra CPU
+
+54
+00:03:11,550 --> 00:03:14,440
+and it appears at the top of our list.
+
+55
+00:03:14,440 --> 00:03:18,340
+This is an interactive program and you can find out more about how to sort on it  
+
+56
+00:03:18,340 --> 00:03:21,920
+by hitting the question mark key, and this brings up the help.
+
+57
+00:03:21,920 --> 00:03:25,370
+The particular help that's available may change from system to system,
+
+58
+00:03:25,370 --> 00:03:28,610
+however one interesting thing to look at is how to sort, 
+
+59
+00:03:28,610 --> 00:03:32,180
+in this case it's using capital F or capital O.
+
+60
+00:03:32,180 --> 00:03:36,610
+So let's go back by hitting another key, and if we type in capital F
+
+61
+00:03:36,610 --> 00:03:39,490
+we can select what we want to sort on.
+
+62
+00:03:39,490 --> 00:03:41,620
+Here it's giving us an interactive list.
+
+63
+00:03:41,620 --> 00:03:46,500
+The star indicates that we are currently sorting on CPU but if we want to sort on memory,
+
+64
+00:03:46,500 --> 00:03:51,160
+right now that's under the key n, so by typing n and then typing another key like enter
+
+65
+00:03:51,160 --> 00:03:54,610
+to go back, we are now sorting on memory as you can see.
+
+66
+00:03:54,610 --> 00:03:57,040
+We can go back and change this to whatever we want.
+
+67
+00:03:57,040 --> 00:03:59,930
+For instance the Pid,
+
+68
+00:03:59,930 --> 00:04:01,930
+and now it's sorting the Pid.
+
+69
+00:04:01,930 --> 00:04:05,510
+This is a nice program to know exactly what's going on on your computer,
+
+70
+00:04:05,510 --> 00:04:10,830
+particularly what's using the largest amount of resources if you are interested.
+
+71
+00:04:10,830 --> 00:04:15,950
+To leave this program all you need to do is hit the letter Q, and we're back.
+
+72
+00:04:15,950 --> 00:04:20,390
+Another tool we can use when we want to find out about the processes on our system,
+
+73
+00:04:20,390 --> 00:04:23,220
+is a tool called Ps.
+
+74
+00:04:23,220 --> 00:04:26,940
+I'm going to clear our screen so we can move the prompt to the top
+
+75
+00:04:26,940 --> 00:04:28,430
+by typing clear.
+
+76
+00:04:28,430 --> 00:04:32,420
+Ps is a program that will simply list out the processes.
+
+77
+00:04:32,420 --> 00:04:37,120
+In its simplest form if we just type ps, what we're going to see is just a couple of things
+
+78
+00:04:37,120 --> 00:04:38,750
+in a very small form.
+
+79
+00:04:38,750 --> 00:04:42,510
+These represent the processes that I'm running.
+
+80
+00:04:42,510 --> 00:04:47,980
+We talked about Bash briefly, and that's the program that's interpreting our keystrokes
+
+81
+00:04:47,980 --> 00:04:50,540
+and formatting the output on our screen.
+
+82
+00:04:50,540 --> 00:04:55,120
+It's the program we're interacting with, and we see that there's a process for Ps.
+
+83
+00:04:55,120 --> 00:04:59,790
+Which is interesting because Ps itself is a program that creates a process
+
+84
+00:04:59,790 --> 00:05:02,950
+and because that process is querying all the other processes
+
+85
+00:05:02,950 --> 00:05:06,140
+it always shows up in it's own search.
+
+86
+00:05:06,140 --> 00:05:09,140
+So you can see that when this ran we only had Bash running,
+
+87
+00:05:09,140 --> 00:05:11,400
+but we also had the Ps command running.
+
+88
+00:05:11,400 --> 00:05:13,680
+Now this usually isn't particularly interesting.
+
+89
+00:05:13,680 --> 00:05:17,660
+We want to know usually about more of the processes that are running on our computer,
+
+90
+00:05:17,660 --> 00:05:20,800
+rather than just the ones that are in our current session.
+
+91
+00:05:20,800 --> 00:05:26,650
+There are arguments we can pass to modify this, but the most common one is aux.
+
+92
+00:05:26,650 --> 00:05:29,350
+So Ps aux.
+
+93
+00:05:29,350 --> 00:05:32,920
+Now there is an interesting story in that these are technically options 
+
+94
+00:05:32,920 --> 00:05:36,110
+which would normally be defined with a dash.
+
+95
+00:05:36,110 --> 00:05:40,430
+However based on different compatibility issues and historical reasons,
+
+96
+00:05:40,430 --> 00:05:44,630
+this is the most compatible way to define the options that we want.
+
+97
+00:05:44,630 --> 00:05:48,350
+Historically it means that we want to view all processes for the user x, 
+
+98
+00:05:48,350 --> 00:05:50,080
+which means all users.
+
+99
+00:05:50,080 --> 00:05:52,460
+Now it's a bit confusing but just remember aux
+
+100
+00:05:52,460 --> 00:05:55,590
+will allow you to see all the processes on your machine.
+
+101
+00:05:55,590 --> 00:05:58,590
+So if I run that it's going to print it out.
+
+102
+00:05:58,590 --> 00:06:01,210
+Now notice this isn't an interactive program.
+
+103
+00:06:01,210 --> 00:06:04,210
+It simply returned all the data to me in the console.
+
+104
+00:06:04,210 --> 00:06:09,740
+So we could scroll up and see all of our commands right here.
+
+105
+00:06:09,740 --> 00:06:13,020
+Now the reason we usually want to use this tool is to find out:
+
+106
+00:06:13,020 --> 00:06:18,280
+A- what's running and B- the process i.d for a specific task.
+
+107
+00:06:18,280 --> 00:06:22,120
+In order to demonstrate this, I am going to run two programs at once.
+
+108
+00:06:22,120 --> 00:06:24,890
+Right now the easiest way for me to do that is with the Treehouse console
+
+109
+00:06:24,890 --> 00:06:27,620
+opening up a new tab.
+
+110
+00:06:27,620 --> 00:06:33,730
+This sends a brand new tab into our system and allows us to run two programs at once.
+
+111
+00:06:33,730 --> 00:06:39,830
+From this tab here I am going to simply run top, and I'm gonna leave this running.
+
+112
+00:06:39,830 --> 00:06:45,160
+So now if I were to do a Ps with aux to list all of the processes,
+
+113
+00:06:45,160 --> 00:06:48,910
+we can see that top shows up in our process list.
+
+114
+00:06:48,910 --> 00:06:52,160
+Now if we wanted to find out what process i.d it is, 
+
+115
+00:06:52,160 --> 00:06:56,840
+for instance if we needed to maybe kill the process, this is how we would do it.
+
+116
+00:06:56,840 --> 00:07:02,720
+We could find it in this column here, and it has a process i.d of 1012.
+
+117
+00:07:02,720 --> 00:07:06,830
+You'll notice that this column here says pts/something
+
+118
+00:07:06,830 --> 00:07:10,730
+and these represent the actual terminals or windows into our system.
+
+119
+00:07:10,730 --> 00:07:13,200
+Because we have two different tabs here they represent two different
+
+120
+00:07:13,200 --> 00:07:14,940
+connections into the system.
+
+121
+00:07:14,940 --> 00:07:18,980
+So one of them is arbitrarily labeled number 2, and one of them 1.
+
+122
+00:07:18,980 --> 00:07:24,040
+Now if we're looking for something specific this can be a lot of stuff to parse through.
+
+123
+00:07:24,040 --> 00:07:29,160
+So we can use a special syntax in order to search the current processes.
+
+124
+00:07:29,160 --> 00:07:33,310
+We're going to learn a little bit more about the details of how this works in a little bit,
+
+125
+00:07:33,310 --> 00:07:35,990
+but right now let's just take a look at a simple example.
+
+126
+00:07:35,990 --> 00:07:40,700
+I still have top running in tab 2 and I want to find out the process i.d of it.
+
+127
+00:07:40,700 --> 00:07:44,370
+However I really don't care much about all the other stuff that's going on.
+
+128
+00:07:44,370 --> 00:07:46,860
+You can imagine in a system that's doing a lot more work, 
+
+129
+00:07:46,860 --> 00:07:49,870
+this could be a much larger process list.
+
+130
+00:07:49,870 --> 00:07:55,540
+So if I'm looking for top what I can do is Ps, and we're going to use aux
+
+131
+00:07:55,540 --> 00:07:56,910
+so we can list everything.
+
+132
+00:07:56,910 --> 00:08:00,930
+Then we're gonna put a space and use the pipe character.
+
+133
+00:08:00,930 --> 00:08:04,550
+This usually involves holding shift and pressing the backslash key
+
+134
+00:08:04,550 --> 00:08:08,170
+which is usually the key above the enter key on your keyboard.
+
+135
+00:08:08,170 --> 00:08:11,030
+However it may be different based on your keyboard layout.
+
+136
+00:08:11,030 --> 00:08:13,590
+It should be this vertical bar right here.
+
+137
+00:08:13,590 --> 00:08:17,710
+We call this a pipe, and this allows us to combine programs together.
+
+138
+00:08:17,710 --> 00:08:20,360
+We're going to take the output of all of our process lists
+
+139
+00:08:20,360 --> 00:08:23,850
+and run it through a new toll called grep. G, r,e,p.???
+
+140
+00:08:23,850 --> 00:08:28,550
+Grep is a tool that allows us to take some input, search for a certain pattern,
+
+141
+00:08:28,550 --> 00:08:31,640
+and filter only the lines with that pattern on it.
+
+142
+00:08:31,640 --> 00:08:34,700
+In this case I only wanna see the pattern top.
+
+143
+00:08:34,700 --> 00:08:37,900
+So now, what we should see is two lines.
+
+144
+00:08:37,900 --> 00:08:43,250
+It took the entire list of processes and filtered it out to only the lines that have top in it.
+
+145
+00:08:43,250 --> 00:08:47,460
+It's also given us a color highlighting top itself.
+
+146
+00:08:47,460 --> 00:08:51,980
+Now you'll notice that it gave us two lines. Remember that the process that's 
+
+147
+00:08:51,980 --> 00:08:55,330
+actually running it shows up in the process list itself.
+
+148
+00:08:55,330 --> 00:09:00,530
+So by running Ps through grep, that created another process that has the word top in it
+
+149
+00:09:00,530 --> 00:09:02,900
+because that's what we're searching for.
+
+150
+00:09:02,900 --> 00:09:06,290
+So to find the one that's top, we're going to ignore this grep line here
+
+151
+00:09:06,290 --> 00:09:12,120
+because this is the one that just completed, and we could find out that it's still on 1012.
+
+152
+00:09:12,120 --> 00:09:16,420
+If you are looking for a specific process i.d you can use PS aux,
+
+153
+00:09:16,420 --> 00:09:21,140
+a pipe character, grep, and the pattern you want to find.
+
+154
+00:09:21,140 --> 00:09:25,840
+This will particularly useful when you want to pause or kill a process.
+

@@ -1,0 +1,416 @@
+1
+00:00:00,000 --> 00:00:04,720
+Now, we're oriented in the console. We can move around, and we can see where we are.
+
+2
+00:00:04,720 --> 00:00:09,350
+Let's actually start doing some work. File manipulation is important.
+
+3
+00:00:09,350 --> 00:00:13,470
+Just like on a desktop, we often want to add or delete files or directories. 
+
+4
+00:00:13,470 --> 00:00:19,290
+We also want to view or edit the contents of a file or even copy or move it around the file system.
+
+5
+00:00:19,290 --> 00:00:21,970
+Let's learn how to do that.
+
+6
+00:00:21,970 --> 00:00:25,710
+So, we've seen how to move around and list files in our directory
+
+7
+00:00:25,710 --> 00:00:29,400
+for instance typing ls in our home directory shows us that there is a directory
+
+8
+00:00:29,400 --> 00:00:31,730
+and a file called hello.txt.
+
+9
+00:00:31,730 --> 00:00:35,470
+But that's not really helping us any. We're not getting any work done.
+
+10
+00:00:35,470 --> 00:00:37,810
+We're just traveling around and exploring.
+
+11
+00:00:37,810 --> 00:00:42,370
+Let's actually start looking at files and how we can manipulate them. 
+
+12
+00:00:42,370 --> 00:00:47,470
+So, one thing we commonly want to do is see what's inside of that hello.txt file.
+
+13
+00:00:47,470 --> 00:00:49,880
+Now, there is a couple of different ways to do this.
+
+14
+00:00:49,880 --> 00:00:53,040
+One of these is a program called less.
+
+15
+00:00:53,040 --> 00:00:58,700
+Now, less is an interesting name for a program that will show you what's inside of a file
+
+16
+00:00:58,700 --> 00:01:03,570
+and that's because it's actually patterned after a different program called more.
+
+17
+00:01:03,570 --> 00:01:07,300
+Again, more is one of those programs that came with Unix.
+
+18
+00:01:07,300 --> 00:01:11,210
+Now, a lot of other operating systems can't just steal that program
+
+19
+00:01:11,210 --> 00:01:13,640
+so instead they create their own versions.
+
+20
+00:01:13,640 --> 00:01:19,360
+Sometimes, they have quirky names that somehow mimic the previous command that it's imitating. 
+
+21
+00:01:19,360 --> 00:01:24,470
+So, in order to view the context of hello.txt, we are using the program called less.
+
+22
+00:01:24,470 --> 00:01:28,890
+Now, less takes out its argument the file that you want to view.
+
+23
+00:01:28,890 --> 00:01:35,460
+In our case, the file is hello.txt and you'll notice I use the tab completion
+
+24
+00:01:35,460 --> 00:01:38,800
+that Bash provided to me to fill in hello.txt.
+
+25
+00:01:38,800 --> 00:01:41,100
+And I just type a couple of letters and hit tab
+
+26
+00:01:41,100 --> 00:01:43,910
+and it knew exactly what I was talking about.
+
+27
+00:01:43,910 --> 00:01:47,690
+And I notice again this is what we called the relative path.
+
+28
+00:01:47,690 --> 00:01:51,530
+Because I am in our home directory and hello.txt is in it
+
+29
+00:01:51,530 --> 00:01:54,350
+I could just type in hello.txt.
+
+30
+00:01:54,350 --> 00:02:00,370
+I can also path the full path like /home/treehouse/hello.txt
+
+31
+00:02:00,370 --> 00:02:03,020
+but that's a lot of work especially since it's right here
+
+32
+00:02:03,020 --> 00:02:06,040
+but an absolute path will work just like it work in CD.
+
+33
+00:02:06,040 --> 00:02:10,870
+But we can also use any sort of relative way to get to our file.
+
+34
+00:02:10,870 --> 00:02:14,210
+Type in less and the file that I want to view and hit enter.
+
+35
+00:02:14,210 --> 00:02:17,280
+And I noticed something interesting here has happened. 
+
+36
+00:02:17,280 --> 00:02:20,200
+Our prompt went away so did our history.
+
+37
+00:02:20,200 --> 00:02:25,170
+This is actually the program less, and it's taking up our entire console.
+
+38
+00:02:25,170 --> 00:02:30,430
+Some programs just print some output after our command and then show us a prompt
+
+39
+00:02:30,430 --> 00:02:33,630
+but some are interactive and take up our entire screen.
+
+40
+00:02:33,630 --> 00:02:35,860
+Less is one of those programs.
+
+41
+00:02:35,860 --> 00:02:39,880
+So, what we're seeing is the context of our hello.txt file 
+
+42
+00:02:39,880 --> 00:02:42,940
+And I noticed there is a cursor at the bottom of the screen.
+
+43
+00:02:42,940 --> 00:02:47,030
+Now, this is not a normal command line, and this is actually how we interact with less.
+
+44
+00:02:47,030 --> 00:02:49,680
+So, we see there's a couple of paragraphs
+
+45
+00:02:49,680 --> 00:02:53,400
+and I've actually made this file longer than it needs to be
+
+46
+00:02:53,400 --> 00:02:57,290
+by splitting up one of the paragraphs to one word per line
+
+47
+00:02:57,290 --> 00:02:59,890
+so there's actually some more text that we can't see.
+
+48
+00:02:59,890 --> 00:03:05,630
+So, less is nice because it allows us to scroll through our text using our keyboard interactively.
+
+49
+00:03:05,630 --> 00:03:10,590
+If I hit the down arrow, you'll see that I can move up and down through the file.
+
+50
+00:03:10,590 --> 00:03:12,830
+Now, the cursor has changed a little bit
+
+51
+00:03:12,830 --> 00:03:16,300
+and that's because there are some commands we can use to move around.
+
+52
+00:03:16,300 --> 00:03:20,930
+Now, I'm not going to go over how to use less because there is a lot of cool things in less
+
+53
+00:03:20,930 --> 00:03:25,270
+as far as finding specific patterns within the file if you want to jump somewhere
+
+54
+00:03:25,270 --> 00:03:28,780
+but if we use our arrow keys it will scroll less one line at a time.
+
+55
+00:03:28,780 --> 00:03:33,630
+And another nice thing is if we use a spacebar it will scroll us one page at a time.
+
+56
+00:03:33,630 --> 00:03:35,880
+And for very long files that's nice.
+
+57
+00:03:35,880 --> 00:03:38,840
+Now, we can see at the bottom it has the end in parenthesis.
+
+58
+00:03:38,840 --> 00:03:42,110
+That's actually less telling us that's the end of the file.
+
+59
+00:03:42,110 --> 00:03:45,780
+The end of the file is after now here is the last line of the file. 
+
+60
+00:03:45,780 --> 00:03:49,890
+That's the actual end of the file, but at the bottom is our prompt.
+
+61
+00:03:49,890 --> 00:03:55,060
+But we can still use our arrow keys to move around, but how do we get out of here. 
+
+62
+00:03:55,060 --> 00:03:58,630
+Well, in less we use the q command
+
+63
+00:03:58,630 --> 00:04:04,310
+which means by simply typing q, it's going to quit out of the less command.
+
+64
+00:04:05,780 --> 00:04:09,870
+Awesome. Now, you remember I told you that less is modeled after more.
+
+65
+00:04:09,870 --> 00:04:14,380
+In fact it is, and one of the interesting things is sometimes when these programs
+
+66
+00:04:14,380 --> 00:04:19,610
+intend to replace or mimic a more historical program from Unix
+
+67
+00:04:19,610 --> 00:04:21,480
+that it definitely include like more
+
+68
+00:04:21,480 --> 00:04:25,180
+they'll actually assign the old name to the new program
+
+69
+00:04:25,180 --> 00:04:29,370
+so we can in fact type more hello.txt.
+
+70
+00:04:29,370 --> 00:04:33,590
+And it's more or less the same. You'll notice that it's a little bit different.
+
+71
+00:04:33,590 --> 00:04:36,790
+It's actually the same program running, but it's running in a way
+
+72
+00:04:36,790 --> 00:04:42,140
+to more closely emulate the older more program even though it's less handling it.
+
+73
+00:04:42,140 --> 00:04:45,140
+You'll notice I hit space, and it took us to the end
+
+74
+00:04:45,140 --> 00:04:47,410
+and it actually quit as soon as we got to the end.
+
+75
+00:04:47,410 --> 00:04:51,110
+So, that's a little bit how the more and less differentiate. 
+
+76
+00:04:51,110 --> 00:04:54,300
+I would recommend using less over more because less is more
+
+77
+00:04:54,300 --> 00:05:00,070
+but less generally has some nicer features, although either of them will work.
+
+78
+00:05:00,070 --> 00:05:06,070
+So, now we've seen how to view the file in less or more, and this is something we called a pager.
+
+79
+00:05:06,070 --> 00:05:09,940
+We called it a pager because it showed us one page at a time.
+
+80
+00:05:09,940 --> 00:05:12,740
+But there are other ways we can see what's in that file.
+
+81
+00:05:12,740 --> 00:05:16,150
+One of those ways is to use a program called cat.
+
+82
+00:05:16,150 --> 00:05:20,460
+I'm going to use the clear commands to get our prompt to the top of the screen here
+
+83
+00:05:20,460 --> 00:05:25,370
+and cat will really just sort of concatenate all files together.
+
+84
+00:05:25,370 --> 00:05:29,060
+That's actually why it's called cat but it has this nice sort of side effect
+
+85
+00:05:29,060 --> 00:05:33,020
+is if we type cat and hello.txt
+
+86
+00:05:33,020 --> 00:05:38,400
+it just spits out the context of the file under the prompt like a normal program.
+
+87
+00:05:38,400 --> 00:05:43,700
+Now, what cat did differently from less is that it just printed out the entire text onto 
+
+88
+00:05:43,700 --> 00:05:46,220
+our command line like some other files.
+
+89
+00:05:46,220 --> 00:05:49,500
+So if I scroll back up, you can see that it just printed it out
+
+90
+00:05:49,500 --> 00:05:51,360
+and we're back to another prompt.
+
+91
+00:05:52,680 --> 00:05:56,740
+Now, what cat is actually really useful for is concatenating different files together.
+
+92
+00:05:56,740 --> 00:05:58,560
+So, you can actually pass in multiple.
+
+93
+00:05:58,560 --> 00:06:07,810
+So for instance if we were to take a look at the document here about how to go home.txt 
+
+94
+00:06:07,810 --> 00:06:13,960
+you can see the text here starts here and goes here so this is a different file
+
+95
+00:06:13,960 --> 00:06:19,720
+and what cat is really for is a way to actually print out one file after the other
+
+96
+00:06:19,720 --> 00:06:23,200
+which is useful in some ways that you may not think immediately
+
+97
+00:06:23,200 --> 00:06:26,870
+but later on cat can be useful for concatenating different files together.
+
+98
+00:06:26,870 --> 00:06:33,620
+So if we pass two different files like hello.txt and our documents how to go home.txt
+
+99
+00:06:33,620 --> 00:06:35,250
+by simply separating them by a space
+
+100
+00:06:35,250 --> 00:06:36,800
+There are two different arguments now.
+
+101
+00:06:36,860 --> 00:06:43,900
+And now if we scroll up, you can see that both files are printed one after the other.
+
+102
+00:06:45,640 --> 00:06:47,610
+So here's where it starts
+
+103
+00:06:49,860 --> 00:06:52,050
+and we scroll down and we can see the rest of the file.
+
+104
+00:06:52,170 --> 00:06:54,520
+So these are two different ways we can view a file.
+

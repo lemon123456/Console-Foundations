@@ -1,0 +1,540 @@
+1
+00:00:00,000 --> 00:00:06,500
+[Deep Dive-Console: Users & Permissions: SUDO with Jim Hoskins] ?[music]?
+
+2
+00:00:06,500 --> 00:00:09,820
+So we have seen how permissions can be used to secure files and folders,
+
+3
+00:00:09,820 --> 00:00:12,700
+but what happens if you do not have the permissions needed
+
+4
+00:00:12,700 --> 00:00:14,840
+to do what you need to do.
+
+5
+00:00:14,840 --> 00:00:17,510
+Well, it may be that you are on a system that does not belong to you,
+
+6
+00:00:17,510 --> 00:00:20,490
+and you just are not allowed to muck around with those files period.
+
+7
+00:00:20,490 --> 00:00:24,700
+But often you are the owner of your computer or server, then what can you do?
+
+8
+00:00:24,700 --> 00:00:29,080
+One option is to log in to a user that does have permissions to operate on that file.
+
+9
+00:00:29,080 --> 00:00:32,870
+We saw this earlier with the SU or switch user command.
+
+10
+00:00:32,870 --> 00:00:36,630
+There is a special user on nearly every computer called root.
+
+11
+00:00:36,630 --> 00:00:39,980
+The root user overrides every permission on every file
+
+12
+00:00:39,980 --> 00:00:41,990
+and can do anything.
+
+13
+00:00:41,990 --> 00:00:44,050
+If you know the password for the root user you can use
+
+14
+00:00:44,050 --> 00:00:46,770
+the SU command to switch to the root user.
+
+15
+00:00:46,770 --> 00:00:50,080
+Then you can do what you have to do and switch back.
+
+16
+00:00:50,080 --> 00:00:54,230
+Now this is less than ideal because it requires 3 steps.
+
+17
+00:00:54,230 --> 00:00:58,360
+Root is all powerful, and this can be convenient, but very dangerous.
+
+18
+00:00:58,360 --> 00:01:03,500
+Executing a dangerous command as root accidentally is a very real problem.
+
+19
+00:01:03,500 --> 00:01:06,710
+Instead--it is better to do your day to day work as a normal user,
+
+20
+00:01:06,710 --> 00:01:10,020
+and then use root privileges only when needed.
+
+21
+00:01:10,020 --> 00:01:12,530
+This is a better solution all around.
+
+22
+00:01:12,530 --> 00:01:15,880
+So if you set up a computer or server and you only have the root user
+
+23
+00:01:15,880 --> 00:01:21,100
+one of the first things you should do is set up a normal user that you can use from day to day.
+
+24
+00:01:21,420 --> 00:01:23,810
+Locking into the root user is also less than ideal
+
+25
+00:01:23,810 --> 00:01:28,060
+because it requires you to switch to root, run a command, and switch back.
+
+26
+00:01:28,060 --> 00:01:33,770
+Also, it requires everybody to have the root password in order to do these tasks.
+
+27
+00:01:33,770 --> 00:01:37,300
+If an employee has the root password and then needs to be revoked
+
+28
+00:01:37,300 --> 00:01:40,890
+access from that machine, it requires changing the root password
+
+29
+00:01:40,890 --> 00:01:44,540
+and communicating it to the remaining authorized users.
+
+30
+00:01:44,540 --> 00:01:47,880
+Instead--there is a command called sudo or sudo
+
+31
+00:01:47,880 --> 00:01:51,510
+that allows you to run a command with the privileges of root
+
+32
+00:01:51,510 --> 00:01:56,620
+without explicitly switching to the root user or needing to know the root password.
+
+33
+00:01:56,620 --> 00:01:59,460
+Let us take a look at how that command works.
+
+34
+00:02:00,170 --> 00:02:02,930
+So the sudo command--we have actually run it before.
+
+35
+00:02:02,930 --> 00:02:05,980
+In fact--the last couple of times we have had to use it in order to
+
+36
+00:02:05,980 --> 00:02:08,000
+get around some permission problems.
+
+37
+00:02:08,000 --> 00:02:10,370
+And that is exactly what it is for
+
+38
+00:02:10,370 --> 00:02:14,080
+in order to execute a command as the super user.
+
+39
+00:02:14,080 --> 00:02:21,070
+So--for instance--when we try to do chown to Mike--our Hello.txt file--
+
+40
+00:02:21,070 --> 00:02:25,960
+we did not have the permission to do that because of how the permissions were calculated.
+
+41
+00:02:25,960 --> 00:02:30,480
+So by running that we had an issue; we are not allowed to
+
+42
+00:02:30,480 --> 00:02:34,380
+because the operation is not permitted, and that is a pretty common error
+
+43
+00:02:34,380 --> 00:02:39,500
+which indicates that you will need to run it as the root user or using sudo.
+
+44
+00:02:39,500 --> 00:02:42,290
+And the syntax of it is pretty easy to remember.
+
+45
+00:02:42,290 --> 00:02:47,010
+We can just type sudo and then the command we want to use.
+
+46
+00:02:47,010 --> 00:02:50,910
+Chown Mike Hello.txt.
+
+47
+00:02:50,910 --> 00:02:55,670
+So we can just add our commands after sudo and a space.
+
+48
+00:02:55,670 --> 00:03:01,450
+Now sudo is--by default--going to require a password for us to use.
+
+49
+00:03:01,450 --> 00:03:05,030
+Now this is not the password of the root user we are running it as;
+
+50
+00:03:05,030 --> 00:03:07,530
+it is our password.
+
+51
+00:03:07,530 --> 00:03:11,950
+Sudo is a system that grants permissions to other users to use it,
+
+52
+00:03:11,950 --> 00:03:16,410
+and so it is going to ask for my password because it says I am allowed
+
+53
+00:03:16,410 --> 00:03:20,820
+to use it as a Treehouse; I am okay to use sudo, but it also
+
+54
+00:03:20,820 --> 00:03:22,870
+requires me to know my own password.
+
+55
+00:03:22,870 --> 00:03:26,200
+And this is just to make sure somebody does not--you know--
+
+56
+00:03:26,200 --> 00:03:28,650
+have your account, and then do something destructive
+
+57
+00:03:28,650 --> 00:03:30,740
+because a lot of the times the commands you will be running 
+
+58
+00:03:30,740 --> 00:03:35,230
+under sudo can be destructive or can mess up your system.
+
+59
+00:03:35,230 --> 00:03:38,510
+So it is really good to make sure that it is not going to happen
+
+60
+00:03:38,510 --> 00:03:40,670
+just by anybody typing it in.
+
+61
+00:03:40,670 --> 00:03:45,040
+It really should be you--the user--and by providing your password you prove that.
+
+62
+00:03:45,760 --> 00:03:50,470
+It also gives you a moment to sort of consider the command that you are running--
+
+63
+00:03:50,470 --> 00:03:53,360
+maybe pause to make sure that is the correct command
+
+64
+00:03:53,360 --> 00:03:57,180
+because if you write an incorrect command you could mess up some files.
+
+65
+00:03:57,490 --> 00:04:00,810
+But in this case I know what I want to do, I have had a second to think about it,
+
+66
+00:04:00,810 --> 00:04:03,640
+I am going to type in the password for the Treehouse user
+
+67
+00:04:03,640 --> 00:04:08,600
+which is still Mike the Frog for me.
+
+68
+00:04:08,600 --> 00:04:11,870
+And if we do not get any errors, then it worked.
+
+69
+00:04:11,870 --> 00:04:15,460
+We can confirm for at least that command by typing LS-L
+
+70
+00:04:15,460 --> 00:04:19,510
+and seeing that the command happened.
+
+71
+00:04:19,510 --> 00:04:21,860
+I am going to go ahead and revert it back by doing a
+
+72
+00:04:21,860 --> 00:04:26,040
+sudo chown Treehouse, and we will hit enter.
+
+73
+00:04:26,600 --> 00:04:30,940
+And you will notice that the sudo did not prompt me for my password that time.
+
+74
+00:04:30,940 --> 00:04:33,520
+That is because with the default set up for sudo
+
+75
+00:04:33,520 --> 00:04:36,060
+it will remember that you have typed in your password
+
+76
+00:04:36,060 --> 00:04:38,810
+for some specified amount of time.
+
+77
+00:04:39,120 --> 00:04:41,540
+If you do not use sudo for a while, you run some other commands,
+
+78
+00:04:41,540 --> 00:04:44,020
+or you step away from your computer and then try to use it again
+
+79
+00:04:44,020 --> 00:04:48,830
+after that short amount of time you will be prompted once again for your password,
+
+80
+00:04:48,830 --> 00:04:52,100
+but after you have typed it in it won't annoy you for a little while.
+
+81
+00:04:52,100 --> 00:04:54,300
+So you can simply use it.
+
+82
+00:04:54,300 --> 00:04:58,180
+Again--be careful because now you do not have that password to--sort of--
+
+83
+00:04:58,180 --> 00:05:00,360
+stop and think about the command that you are running.
+
+84
+00:05:00,360 --> 00:05:03,670
+So if you type in sudo and something dangerous like removing
+
+85
+00:05:03,670 --> 00:05:06,890
+all the files on your computer it is just going to go ahead and do that.
+
+86
+00:05:06,890 --> 00:05:11,480
+So--again--sudo requires extreme caution when using it.
+
+87
+00:05:11,820 --> 00:05:15,060
+Once again, we can just confirm that it worked by typing in LS-L,
+
+88
+00:05:15,060 --> 00:05:18,390
+seeing that the file now belongs to Treehouse again,
+
+89
+00:05:18,390 --> 00:05:20,400
+and everything is good.
+
+90
+00:05:20,400 --> 00:05:22,500
+Now here is a neat little trick.
+
+91
+00:05:22,500 --> 00:05:26,540
+If I type in a command like, "Who am I?"
+
+92
+00:05:26,540 --> 00:05:29,120
+to type it to print out my name,
+
+93
+00:05:29,120 --> 00:05:34,550
+there is a special character shortcut for the last command that we ran.
+
+94
+00:05:34,550 --> 00:05:38,000
+By typing in exclamation point, exclamation point, 
+
+95
+00:05:38,000 --> 00:05:42,480
+when we run this command these 2 characters will be replaced
+
+96
+00:05:42,480 --> 00:05:45,520
+by the previous command that we ran.
+
+97
+00:05:45,520 --> 00:05:47,520
+For instance--it was, "Who am I?"
+
+98
+00:05:47,520 --> 00:05:50,780
+So by typing exclamation point, exclamation point or sometimes
+
+99
+00:05:50,780 --> 00:05:53,410
+referred to as a bang, we can hit enter.
+
+100
+00:05:53,410 --> 00:05:57,580
+You can see it printed out the command that it ran, "Who am I?" as well as
+
+101
+00:05:57,580 --> 00:05:59,790
+the output from the command.
+
+102
+00:05:59,930 --> 00:06:02,720
+Now this is cool when it comes to sudo because it provides you
+
+103
+00:06:02,720 --> 00:06:07,460
+a really easy way to correct a mistake where you should have used sudo.
+
+104
+00:06:07,500 --> 00:06:13,450
+So if we try that chown again to switch to Mike,
+
+105
+00:06:13,450 --> 00:06:16,540
+and we want to change Hello.txt, we forgot to sudo.
+
+106
+00:06:16,540 --> 00:06:19,270
+And we have seen before that it simply will not work.
+
+107
+00:06:19,270 --> 00:06:21,630
+So I hit enter, and we got an error.
+
+108
+00:06:21,630 --> 00:06:23,710
+It does not work; it is not permitted.
+
+109
+00:06:23,710 --> 00:06:26,120
+So--you know--the way around it that we have been doing before
+
+110
+00:06:26,120 --> 00:06:28,600
+is maybe recalling it, moving our cursor to the beginning,
+
+111
+00:06:28,600 --> 00:06:32,830
+and typing sudo, but there is another way.
+
+112
+00:06:33,540 --> 00:06:37,370
+Since our last command was chown Mike Hello.txt
+
+113
+00:06:37,370 --> 00:06:41,890
+it is represented with the 2 bangs.
+
+114
+00:06:41,890 --> 00:06:45,810
+Now if we type in sudo exclamation point, exclamation point--
+
+115
+00:06:46,410 --> 00:06:51,220
+remember that these 2 characters will be replaced by chown Mike Hello.txt.
+
+116
+00:06:51,220 --> 00:06:55,240
+And if we hit run we can see it prints out the command that was actually run,
+
+117
+00:06:55,240 --> 00:06:59,180
+and it has the effect of running it which we can see by typing LS-L. once again
+
+118
+00:06:59,180 --> 00:07:02,170
+seeing it belongs to Mike, and it works.
+
+119
+00:07:02,170 --> 00:07:05,930
+So that is a handy little trick; it is actually kind of nice and coincidental
+
+120
+00:07:05,930 --> 00:07:09,070
+because--sort of--the exclamation point means you are screaming at it
+
+121
+00:07:09,070 --> 00:07:11,700
+because it told us, "No." It is like, "We want to change this file."
+
+122
+00:07:11,700 --> 00:07:13,970
+And it is like, "No." And we are screaming, "Yes."
+
+123
+00:07:13,970 --> 00:07:16,820
+And then it does; so it is sort of a fun little thing because it can kind
+
+124
+00:07:16,820 --> 00:07:18,990
+of make you a little bit angry when you do not have the permissions,
+
+125
+00:07:18,990 --> 00:07:22,560
+and using a little bit of emotion it is kind of a nice little feeling
+
+126
+00:07:22,560 --> 00:07:25,870
+to do sudo exclamation point, exclamation point to yell at your computer
+
+127
+00:07:25,870 --> 00:07:28,960
+to listen to you and do what you want, and it will work.
+
+128
+00:07:29,250 --> 00:07:32,410
+So just to show you that one more time, if I chown back to Treehouse
+
+129
+00:07:32,410 --> 00:07:39,630
+Hello.txt--again--we get that error sudo bang bang, and it worked.
+
+130
+00:07:40,400 --> 00:07:44,620
+Now the sudo command will only work if your user is authorized to use it.
+
+131
+00:07:45,030 --> 00:07:48,600
+Now we are not going to get into all the configuration for setting up 
+
+132
+00:07:48,600 --> 00:07:52,720
+a new user under sudo, but if your computer configuration
+
+133
+00:07:52,720 --> 00:07:55,680
+allows your user to use sudo it is a great tool
+
+134
+00:07:55,680 --> 00:07:59,760
+and will be necessary in future things like installing programs
+
+135
+00:07:59,760 --> 00:08:02,340
+or configuring system files.
+

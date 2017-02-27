@@ -1,0 +1,224 @@
+1
+00:00:00,000 --> 00:00:04,920
+Now, we can actually edit a file. Now, in order to edit a file, we need a text editor.
+
+2
+00:00:04,920 --> 00:00:07,750
+The text editor just allows us to edit text.
+
+3
+00:00:07,750 --> 00:00:11,720
+Now there are quite a few options for text editors that work on the console.
+
+4
+00:00:11,720 --> 00:00:14,590
+The one we'll be using is called nano.
+
+5
+00:00:14,590 --> 00:00:17,390
+Now, nano is another of those programs that actually modeled
+
+6
+00:00:17,390 --> 00:00:20,470
+after Unix program and named slightly differently.
+
+7
+00:00:20,470 --> 00:00:27,060
+The old Unix program is called Pico and this version that's free and open source is called nano.
+
+8
+00:00:27,060 --> 00:00:30,790
+So Pico and nano are both types of small measurements.
+
+9
+00:00:30,790 --> 00:00:33,210
+So you can see to take off from one name to the other
+
+10
+00:00:33,210 --> 00:00:37,080
+which means that Pico and nano are really alias towards the same thing
+
+11
+00:00:37,080 --> 00:00:39,140
+but we'll be using the nano program.
+
+12
+00:00:39,140 --> 00:00:44,510
+So nano works just by typing nano and the text we want to edit.
+
+13
+00:00:44,510 --> 00:00:47,950
+In our case, we'll say our hello.txt.
+
+14
+00:00:47,950 --> 00:00:50,600
+Now, this is another full screen program.
+
+15
+00:00:50,600 --> 00:00:55,630
+So you'll see the top there's a bar that shows us the name of the file
+
+16
+00:00:55,630 --> 00:00:57,940
+and that we're using a program called nano.
+
+17
+00:00:57,940 --> 00:01:00,770
+At the bottom, there are some controls.
+
+18
+00:01:00,770 --> 00:01:04,940
+So this works a lot like a normal editor with keys--arrow keys to move around.
+
+19
+00:01:04,940 --> 00:01:09,530
+If we start typing things, we type another line here.
+
+20
+00:01:11,520 --> 00:01:13,590
+And, how do we actually save this.
+
+21
+00:01:13,590 --> 00:01:15,570
+So you'll see at the bottom, there's something that's a little bit
+
+22
+00:01:15,570 --> 00:01:17,910
+like a menu or really a shortcut sheet.
+
+23
+00:01:19,580 --> 00:01:23,040
+The caret you see here represents the control key.
+
+24
+00:01:23,810 --> 00:01:27,770
+On your keyboard, this should be towards the bottom and either on the left
+
+25
+00:01:27,770 --> 00:01:33,790
+or both left and right side and should be labeled control or Ctrl.
+
+26
+00:01:34,590 --> 00:01:38,420
+Now, this is a modifier key that allows us to use different letters
+
+27
+00:01:38,420 --> 00:01:40,820
+on our keyboard to perform different actions.
+
+28
+00:01:40,820 --> 00:01:44,170
+For instance, if we type Ctrl-G, we get the help,
+
+29
+00:01:44,170 --> 00:01:47,260
+which we can scroll through using our arrow keys.
+
+30
+00:01:48,840 --> 00:01:51,480
+You'll notice that the commands at the bottom have changed,
+
+31
+00:01:51,480 --> 00:01:54,810
+and now if we want to exit we use Ctrl-X.
+
+32
+00:01:55,900 --> 00:01:57,580
+And now we're back into our editing mode.
+
+33
+00:01:58,630 --> 00:02:01,860
+So if we wanted to exit nano, we could type Ctrl-X.
+
+34
+00:02:01,860 --> 00:02:06,260
+Now, it's asking us if we want to save our changes. In our case, we do.
+
+35
+00:02:06,260 --> 00:02:11,200
+So we'll type in the Y-key. If we wanted to cancel out of this, we hit Ctrl-C.
+
+36
+00:02:11,200 --> 00:02:16,880
+So if we'll type in Y, it says--it's now asking the filename to write
+
+37
+00:02:16,880 --> 00:02:20,340
+and it's giving us the current filename, so we're going to overwrite it.
+
+38
+00:02:20,340 --> 00:02:23,090
+So we could just hit enter and it saved it.
+
+39
+00:02:23,950 --> 00:02:28,330
+And so now if we type in less hello.txt, we can see our new
+
+40
+00:02:28,330 --> 00:02:32,060
+hello line has shown up and we saved it.
+
+41
+00:02:36,540 --> 00:02:39,500
+So we can use those commands down at the bottom to move around
+
+42
+00:02:39,500 --> 00:02:46,010
+as well as move through pages, cut and uncut which will be pasting texts, and some other things.
+
+43
+00:02:46,010 --> 00:02:48,390
+We can read the help if we want to know more about it,
+
+44
+00:02:48,390 --> 00:02:50,640
+but if you're on the console and you need to edit a file,
+
+45
+00:02:50,640 --> 00:02:55,750
+I highly recommend nano or maybe Pico if that what's available on the system.
+
+46
+00:02:56,880 --> 00:02:58,080
+It's pretty easy to use.
+
+47
+00:02:58,080 --> 00:03:02,820
+It's not a huge feature set but as far as editing files it should be pretty familiar.
+
+48
+00:03:02,820 --> 00:03:05,970
+It's like a normal text editor that you may use on your system
+
+49
+00:03:05,970 --> 00:03:09,070
+but with some very basic functionality.
+
+50
+00:03:09,070 --> 00:03:12,700
+Now, there are some others you may have heard of like Vim or Emacs,
+
+51
+00:03:12,700 --> 00:03:16,490
+and those are super powerful and are awesome to learn
+
+52
+00:03:16,490 --> 00:03:19,890
+except that they are really sort of difficult to learn.
+
+53
+00:03:19,890 --> 00:03:22,910
+They take a little while to learn, but once you know how to use them,
+
+54
+00:03:22,910 --> 00:03:24,610
+they're extremely powerful.
+
+55
+00:03:24,610 --> 00:03:29,320
+So when you're just beginning, nano is the tool you should reach for when editing a file.
+
+56
+00:03:29,320 --> 00:03:33,890
+So I'm going to exit out of here, and since I didn't make any changes, it didn't modify anything.
+

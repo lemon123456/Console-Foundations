@@ -1,0 +1,620 @@
+1
+00:00:00,000 --> 00:00:06,510
+[Deep Dive-Consoles-Processes: Killing Processes with Jim Hoskins] ?[music]?
+
+2
+00:00:06,510 --> 00:00:09,570
+Sometimes a process can go out of control, and we can't
+
+3
+00:00:09,570 --> 00:00:11,720
+quit it using our normal means.
+
+4
+00:00:12,180 --> 00:00:15,350
+We can take one of a few different steps in order to try to
+
+5
+00:00:15,350 --> 00:00:17,810
+stop the process that isn't responding.
+
+6
+00:00:18,150 --> 00:00:21,530
+We're going to take a look at the different steps--in order of severity--
+
+7
+00:00:21,530 --> 00:00:23,550
+that you can use to kill a process.
+
+8
+00:00:23,770 --> 00:00:27,940
+Now be careful because some of these commands--if executed improperly--
+
+9
+00:00:27,940 --> 00:00:31,570
+could shut down your machine or cause data corruption.
+
+10
+00:00:32,030 --> 00:00:34,510
+So we saw how we can pause and resume processes,
+
+11
+00:00:34,510 --> 00:00:38,460
+but sometimes we need to just kill a process.
+
+12
+00:00:38,460 --> 00:00:43,230
+Now normally when we exit out of a program the process ends normally.
+
+13
+00:00:43,230 --> 00:00:47,310
+However, there may be cases where a process is still running,
+
+14
+00:00:47,310 --> 00:00:49,820
+and you don't have direct access to it.
+
+15
+00:00:49,820 --> 00:00:52,060
+It's not running from your terminal.
+
+16
+00:00:52,060 --> 00:00:56,330
+So exiting out of it using the normal means is not an option.
+
+17
+00:00:56,330 --> 00:00:59,700
+This is particularly true when running servers.
+
+18
+00:00:59,700 --> 00:01:05,400
+The actual processes that run servers aren't attached to any interactive terminal session.
+
+19
+00:01:05,400 --> 00:01:09,380
+So if you need to kill it and the normal means aren't working,
+
+20
+00:01:09,380 --> 00:01:14,780
+you'll need to use the techniques we saw earlier to find its process ID in order to kill it.
+
+21
+00:01:14,780 --> 00:01:19,940
+Killing processes is done by actually sending things called signals.
+
+22
+00:01:19,940 --> 00:01:23,690
+There are different signals that specify different behavior.
+
+23
+00:01:23,690 --> 00:01:28,480
+And these are actually sent to the process which receives that signal and does something.
+
+24
+00:01:28,480 --> 00:01:30,480
+And these are standardized.
+
+25
+00:01:30,480 --> 00:01:34,050
+There's a signal called term or terminate.
+
+26
+00:01:34,050 --> 00:01:38,530
+When a process receives this, it is meant to exit out of the program.
+
+27
+00:01:38,530 --> 00:01:42,350
+The process handles this by receiving that signal, and then doing
+
+28
+00:01:42,350 --> 00:01:44,910
+any clean up it wants and then exiting normally.
+
+29
+00:01:44,910 --> 00:01:49,730
+This is usually the signal we want to send to a process in order to shut it down.
+
+30
+00:01:49,730 --> 00:01:52,200
+But--there are other signals that we could send.
+
+31
+00:01:52,200 --> 00:01:55,880
+In fact--we've already been sending signals to the program.
+
+32
+00:01:55,880 --> 00:01:59,460
+Remember when we hit CTRL + Z to stop a program?
+
+33
+00:01:59,460 --> 00:02:05,190
+Well that CTRL + Z is actually us sending a signal to our current process
+
+34
+00:02:05,190 --> 00:02:07,460
+telling it to stop.
+
+35
+00:02:07,460 --> 00:02:10,419
+Another one we can use is a terminal.
+
+36
+00:02:10,419 --> 00:02:12,860
+And there's another one--for instance--if I open up
+
+37
+00:02:12,860 --> 00:02:16,190
+top--CTRL + Z will stop it.
+
+38
+00:02:16,190 --> 00:02:19,970
+But a different one CTRL + C will send the terminate signal
+
+39
+00:02:19,970 --> 00:02:24,050
+telling the top process that I want it to clean up and exit.
+
+40
+00:02:24,050 --> 00:02:27,190
+So holding CTRL and hitting C, you'll notice I'm back.
+
+41
+00:02:27,190 --> 00:02:30,930
+This has the same effect as hitting Q in this case--however--
+
+42
+00:02:30,930 --> 00:02:34,950
+CTRL + C is a consistent way to signal to a particular process that
+
+43
+00:02:34,950 --> 00:02:38,080
+you're running, that you want it to terminate.
+
+44
+00:02:38,080 --> 00:02:41,540
+You can could see that it's not running by doing jobs, and it's gone.
+
+45
+00:02:41,540 --> 00:02:44,880
+But what if our process isn't in our terminal?
+
+46
+00:02:44,880 --> 00:02:47,220
+I am going to open up this new tab.
+
+47
+00:02:47,910 --> 00:02:52,060
+Just like before, it is another tab into our current computer.
+
+48
+00:02:52,060 --> 00:02:56,950
+Now if I run top and leave it running and return to my first tab--
+
+49
+00:02:56,950 --> 00:03:00,430
+if I look at our jobs--we don't have any.
+
+50
+00:03:00,430 --> 00:03:04,530
+Jobs are per section, which means that we can't foreground it over here
+
+51
+00:03:04,530 --> 00:03:06,870
+But what if we wanted to kill it?
+
+52
+00:03:06,870 --> 00:03:09,880
+For instance--maybe if the process that we don't immediately have
+
+53
+00:03:09,880 --> 00:03:13,270
+a tab available, or the tab is open from another computer,
+
+54
+00:03:13,270 --> 00:03:15,670
+and we need to stop this top process.
+
+55
+00:03:15,670 --> 00:03:17,900
+Well let's go through the steps.
+
+56
+00:03:18,670 --> 00:03:22,910
+So from tab 1, I am going to need to find the process ID.
+
+57
+00:03:22,910 --> 00:03:26,420
+You could do it by looking at top and hoping that it shows up.
+
+58
+00:03:26,420 --> 00:03:29,750
+Oftentimes--if you are killing a process--it might be because it's
+
+59
+00:03:29,750 --> 00:03:34,220
+using too many resources in which case it would be very easy to find using top
+
+60
+00:03:34,220 --> 00:03:37,450
+simply by seeing what is using the most CPU or the most memory.
+
+61
+00:03:37,450 --> 00:03:40,570
+But in our case, it is not really going to be easy to find using top,
+
+62
+00:03:40,570 --> 00:03:49,750
+so instead we use the technique from before, "ps aux" with a pipe "grep" and "top."
+
+63
+00:03:49,750 --> 00:03:54,110
+Now--again--this returned to us 2 results; 1 of them being the grep command we're running,
+
+64
+00:03:54,110 --> 00:03:56,780
+which is a false positive--not the top we are looking for.
+
+65
+00:03:56,780 --> 00:04:02,380
+But the first one is, and this has a process ID of 1450.
+
+66
+00:04:03,060 --> 00:04:07,920
+So--if I want to kill this process I'll use the kill command.
+
+67
+00:04:07,920 --> 00:04:11,110
+Now the kill command is something you want to use with care.
+
+68
+00:04:11,110 --> 00:04:17,250
+Obviously, if you type in the wrong process ID you could kill a process you didn't mean to,
+
+69
+00:04:17,250 --> 00:04:20,730
+including a system process that is keeping your system running.
+
+70
+00:04:20,730 --> 00:04:23,280
+So before hitting enter make sure you review things,
+
+71
+00:04:23,280 --> 00:04:25,440
+and be sure it's really what you want to do.
+
+72
+00:04:25,440 --> 00:04:30,350
+Now based on permissions in your normal treehouse or normal user role,
+
+73
+00:04:30,350 --> 00:04:35,430
+you may be stopped from interacting with some processes that you don't own.
+
+74
+00:04:35,430 --> 00:04:39,050
+But, if you are using a tool like Pseudo to run as a super user
+
+75
+00:04:39,050 --> 00:04:41,610
+combined with kill, then all bets are off.
+
+76
+00:04:41,610 --> 00:04:45,410
+You need to make sure that you are running kill on the correct process,
+
+77
+00:04:45,410 --> 00:04:48,060
+otherwise who knows what could happen.
+
+78
+00:04:48,310 --> 00:04:51,960
+So 1450 is the target I want to kill.
+
+79
+00:04:51,960 --> 00:04:54,210
+And we can see that it's still running in tab 2.
+
+80
+00:04:54,210 --> 00:05:01,770
+So let's type in, "kill 1450." I am going to double check that I typed in the right number.
+
+81
+00:05:01,770 --> 00:05:03,840
+And just hit enter.
+
+82
+00:05:03,840 --> 00:05:06,380
+So let's take a look at what happened on tab 2.
+
+83
+00:05:06,380 --> 00:05:08,380
+You'll notice it's now quit out of it.
+
+84
+00:05:08,380 --> 00:05:13,650
+The process has been killed, and if we run "ps aux" through grep--
+
+85
+00:05:13,650 --> 00:05:15,730
+looking for top one more time.
+
+86
+00:05:15,730 --> 00:05:18,340
+We'll see that the only result we get is the search--
+
+87
+00:05:18,340 --> 00:05:20,860
+meaning that our process has ended.
+
+88
+00:05:20,860 --> 00:05:25,900
+Now--by default--kill sends the term or terminate signal to the process.
+
+89
+00:05:25,900 --> 00:05:29,030
+And this is usually what we want to do.
+
+90
+00:05:29,030 --> 00:05:32,470
+But sometimes a process can get in a state where it's
+
+91
+00:05:32,470 --> 00:05:35,100
+not even looking at those signals coming in.
+
+92
+00:05:35,100 --> 00:05:39,350
+So it can't even see that you're sending a terminate signal to it.
+
+93
+00:05:39,350 --> 00:05:42,530
+Now this is where we need to escalate things.
+
+94
+00:05:42,530 --> 00:05:45,510
+I don't have an easy way for me to emulate that,
+
+95
+00:05:45,510 --> 00:05:48,760
+but I want to show it to you just so you know what it looks like.
+
+96
+00:05:49,830 --> 00:05:52,360
+So I am going to open up top again from tab 2.
+
+97
+00:05:52,360 --> 00:05:55,580
+And we are going to use "ps" once more to find the new process ID
+
+98
+00:05:55,580 --> 00:05:59,810
+since it will have changed. It is now under 1456.
+
+99
+00:05:59,810 --> 00:06:03,340
+So using the kill command, we can send an option.
+
+100
+00:06:03,340 --> 00:06:07,590
+What we did before is equivalent to sending dash term.
+
+101
+00:06:07,590 --> 00:06:10,560
+But the actual names that you send could vary from system to system.
+
+102
+00:06:10,560 --> 00:06:16,720
+Usually term is dash term, or you could see it written as sig term meaning signal term.
+
+103
+00:06:17,180 --> 00:06:20,280
+And there's also numbers associated with them.
+
+104
+00:06:20,280 --> 00:06:22,920
+In our case, it could be 15.
+
+105
+00:06:23,440 --> 00:06:30,110
+And so by doing this--1456--we are sending a normal terminate signal.
+
+106
+00:06:30,110 --> 00:06:32,160
+But sometimes that doesn't work.
+
+107
+00:06:32,160 --> 00:06:42,850
+So if we wanted to send a different signal this is the last resort--dash kill or dash sig kill 
+
+108
+00:06:42,850 --> 00:06:48,110
+is the equivalent, and its number is usually 9.
+
+109
+00:06:48,110 --> 00:06:51,110
+So sometimes you might see kill dash 9--that means we are going to
+
+110
+00:06:51,110 --> 00:06:53,180
+send the kill signal.
+
+111
+00:06:53,180 --> 00:06:55,320
+And this overrides the process.
+
+112
+00:06:55,320 --> 00:06:57,790
+It's not a request to the process for it to clean up and stop.
+
+113
+00:06:57,790 --> 00:07:02,240
+It means we are going to turn this process off immediately.
+
+114
+00:07:02,240 --> 00:07:04,880
+Now there's nothing the process can do to stop it.
+
+115
+00:07:04,880 --> 00:07:09,480
+This is forcing it to kill the process, which is why it's our last resort.
+
+116
+00:07:09,480 --> 00:07:14,620
+Now we want to avoid this when we can, and only use it when the term signal is not working
+
+117
+00:07:14,620 --> 00:07:18,580
+because it may have files open, it could leave things in an unusual  state.
+
+118
+00:07:18,580 --> 00:07:20,920
+So use it with care
+
+119
+00:07:20,920 --> 00:07:26,030
+So I am going to send kill to our process just so you can see--1456.
+
+120
+00:07:26,030 --> 00:07:28,220
+And I am definitely double checking.
+
+121
+00:07:28,220 --> 00:07:32,720
+And now if we go to tab 2 we'll see something weird.
+
+122
+00:07:32,720 --> 00:07:37,430
+Our prompt is actually on this line right here.
+
+123
+00:07:37,430 --> 00:07:40,900
+And the previous text is still in our terminal.
+
+124
+00:07:40,900 --> 00:07:43,620
+Now it's just there because it hasn't been cleared.
+
+125
+00:07:43,620 --> 00:07:48,280
+We can continue writing, and anything we do will overwrite it.
+
+126
+00:07:48,280 --> 00:07:51,220
+But this just shows you what kill does.
+
+127
+00:07:51,220 --> 00:07:53,300
+When we send a normal terminate signal,
+
+128
+00:07:53,300 --> 00:07:57,090
+the top command was able to clear out anything that we saw before,
+
+129
+00:07:57,090 --> 00:08:01,610
+and appropriately place our new command line at the bottom of it.
+
+130
+00:08:01,610 --> 00:08:05,280
+However, the process just stopped, so our new cursor
+
+131
+00:08:05,280 --> 00:08:07,690
+kind of appeared wherever it needed to be.
+
+132
+00:08:07,690 --> 00:08:09,790
+And it didn't get a chance to clean up after itself.
+
+133
+00:08:09,790 --> 00:08:14,110
+So this is one of those things where you'll see that it leaves your computer in an usual state.
+
+134
+00:08:14,110 --> 00:08:17,910
+It will still work; we can run clear and it will bring everything back to normal.
+
+135
+00:08:18,530 --> 00:08:21,400
+But that's how you absolutely kill a process.
+
+136
+00:08:21,400 --> 00:08:25,120
+Let's just try one more thing--I am going to open up top one more time from tab 2.
+
+137
+00:08:25,120 --> 00:08:27,150
+Everything is still working.
+
+138
+00:08:27,150 --> 00:08:33,580
+Let's go ahead and clear, and I am going to us "ps" to find the new process ID of that top instance.
+
+139
+00:08:33,580 --> 00:08:37,780
+Let's try kill dash stop.
+
+140
+00:08:37,780 --> 00:08:39,990
+And then 1463.
+
+141
+00:08:39,990 --> 00:08:45,760
+So it is running right now in tab 2, and in tab 1 if I send stop--let's see what happened.
+
+142
+00:08:45,760 --> 00:08:48,500
+Again--we can see the same issue where our command line is in 
+
+143
+00:08:48,500 --> 00:08:50,970
+the middle of the output of our previous process.
+
+144
+00:08:50,970 --> 00:08:53,050
+This usually only happens when there's full screen apps
+
+145
+00:08:53,050 --> 00:08:56,500
+because of the way it is redrawing all the characters on the screen.
+
+146
+00:08:56,500 --> 00:09:01,830
+But you'll notice that it says 1 + stopped here, and let's go ahead and clear--
+
+147
+00:09:01,830 --> 00:09:03,930
+just so we can get all this mess out of here.
+
+148
+00:09:03,930 --> 00:09:09,150
+If we run jobs now, you'll see that it is exactly as though we hit CTRL + Z.
+
+149
+00:09:09,150 --> 00:09:14,450
+So I could--from this tab 2 here--"fg"--and we're back up.
+
+150
+00:09:14,450 --> 00:09:16,900
+So you can see that even from another terminal,
+
+151
+00:09:16,900 --> 00:09:20,020
+we are able to stop it by simply doing that.
+
+152
+00:09:20,020 --> 00:09:25,000
+Now if I do "ps aux" again, this didn't actually kill the process--
+
+153
+00:09:25,000 --> 00:09:27,770
+it just sent the signal to stop it.
+
+154
+00:09:27,770 --> 00:09:33,080
+So kill is really about sending signals, not necessarily entirely  destroying a process.
+
+155
+00:09:33,080 --> 00:09:37,960
+And you'll notice it's still is 1463 because it is still the same process and it's back up and running.
+

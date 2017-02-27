@@ -1,0 +1,720 @@
+1
+00:00:00,500 --> 00:00:02,500
+[Deep Dive]
+
+2
+00:00:02,500 --> 00:00:04,500
+[Setting up a Server - Introduction to Package Managers]
+
+3
+00:00:04,500 --> 00:00:06,500
+ [with Jim Hoskins]
+
+4
+00:00:06,500 --> 00:00:09,070
+Whenever we can, we are preferred to use a package manager 
+
+5
+00:00:09,070 --> 00:00:11,070
+to install our software. 
+
+6
+00:00:11,070 --> 00:00:13,610
+Besides making installs easy, it has many other benefits 
+
+7
+00:00:13,610 --> 00:00:17,830
+like managing dependencies, handling updates, and uninstalling.
+
+8
+00:00:17,830 --> 00:00:21,980
+The package manager for Ubuntu Linux is called APT.
+
+9
+00:00:21,980 --> 00:00:25,090
+Ubuntu is actually a member of a family of Linux distributions 
+
+10
+00:00:25,090 --> 00:00:27,700
+that are based on Debian Linux.
+
+11
+00:00:27,700 --> 00:00:31,360
+Linux comes in many different flavors and while they share the same core, 
+
+12
+00:00:31,360 --> 00:00:34,300
+the tools and configurations and options 
+
+13
+00:00:34,300 --> 00:00:36,950
+vary from distribution to distribution.
+
+14
+00:00:36,950 --> 00:00:39,350
+There are many different package managers for Linux, 
+
+15
+00:00:39,350 --> 00:00:41,850
+and they vary from distro to distro. 
+
+16
+00:00:41,850 --> 00:00:44,700
+APT is what is used for Debian-based Linuxes
+
+17
+00:00:44,700 --> 00:00:46,930
+ and its related distros.
+
+18
+00:00:46,930 --> 00:00:50,250
+Some others are Pacman, RPM, and YUM
+
+19
+00:00:50,250 --> 00:00:52,400
+on the various other distros. 
+
+20
+00:00:52,400 --> 00:00:55,760
+Mac OS X even has its own package manager called Homebrew
+
+21
+00:00:55,760 --> 00:00:57,410
+that you can install and use. 
+
+22
+00:00:57,410 --> 00:01:03,400
+Let's learn the basics of using APT on our Ubuntu Linux console.
+
+23
+00:01:03,400 --> 00:01:05,980
+So we saw how to install a program from source.
+
+24
+00:01:05,980 --> 00:01:07,980
+We don't usually need to do that. 
+
+25
+00:01:07,980 --> 00:01:10,070
+Instead we can use our package manager.
+
+26
+00:01:10,070 --> 00:01:13,260
+We used it briefly to install our initial build tools.
+
+27
+00:01:13,260 --> 00:01:16,600
+Now let's take a look at our tool in a little more depth.
+
+28
+00:01:16,600 --> 00:01:21,410
+APT or the advanced packaging tool is the package manager 
+
+29
+00:01:21,410 --> 00:01:25,310
+we use on Ubuntu Linux, as well as some other distributions 
+
+30
+00:01:25,310 --> 00:01:27,340
+of Linux based on Debian.
+
+31
+00:01:27,340 --> 00:01:35,560
+One of the first things that you should do is to run sudo apt-get update.
+
+32
+00:01:35,560 --> 00:01:38,640
+This command will update our local databases 
+
+33
+00:01:38,640 --> 00:01:40,840
+of the available packages.
+
+34
+00:01:40,840 --> 00:01:43,400
+You'll want to run this every once in awhile.
+
+35
+00:01:43,400 --> 00:01:46,370
+This will make sure that our database has the complete list 
+
+36
+00:01:46,370 --> 00:01:50,100
+of packages up to date including the most up-to-date versions.
+
+37
+00:01:50,100 --> 00:01:52,100
+If you attempt to install something 
+
+38
+00:01:52,100 --> 00:01:55,300
+and you have not run update in awhile, you may find that packages 
+
+39
+00:01:55,300 --> 00:01:59,360
+are unavailable because our local database is out of sync
+
+40
+00:01:59,360 --> 00:02:01,360
+ with what's really available. 
+
+41
+00:02:01,360 --> 00:02:05,500
+So it's a good idea to run sudo apt-get update every once in awhile.
+
+42
+00:02:05,500 --> 00:02:07,550
+Now you may have to type in your password 
+
+43
+00:02:07,550 --> 00:02:11,520
+depending on how recently you've used the sudo command. 
+
+44
+00:02:11,520 --> 00:02:14,570
+If it looks like this, everything should be up to date. 
+
+45
+00:02:14,570 --> 00:02:16,570
+I'm going to go ahead and clear our screen.
+
+46
+00:02:16,570 --> 00:02:20,120
+So let's say I wanted to install the program Git.
+
+47
+00:02:20,120 --> 00:02:24,100
+Git is a version control system that is very popular
+
+48
+00:02:24,100 --> 00:02:27,100
+ for managing the source code of our applications. 
+
+49
+00:02:27,100 --> 00:02:29,200
+There should be a Git command on our system.
+
+50
+00:02:29,200 --> 00:02:32,200
+If we try to type it, we'll see a message come back 
+
+51
+00:02:32,200 --> 00:02:34,200
+from our operating system saying,
+
+52
+00:02:34,200 --> 00:02:36,300
+ "The program Git is currently not installed." 
+
+53
+00:02:36,300 --> 00:02:41,320
+It's actually telling us how we can install Git using the APT system.
+
+54
+00:02:41,320 --> 00:02:43,320
+Sometimes when you try to run a command 
+
+55
+00:02:43,320 --> 00:02:45,570
+that you don't have installed, it'll simply say it's not found. 
+
+56
+00:02:45,570 --> 00:02:48,300
+But Ubuntu is a very friendly operating system, 
+
+57
+00:02:48,300 --> 00:02:50,910
+and it recognizes that Git is a thing; 
+
+58
+00:02:50,910 --> 00:02:53,200
+however, it's just not a thing it has installed, 
+
+59
+00:02:53,200 --> 00:02:55,740
+so it gives us this nice little tip. 
+
+60
+00:02:55,740 --> 00:02:58,930
+So if we wanted to find out how to install Git, 
+
+61
+00:02:58,930 --> 00:03:03,500
+we could just listen to this prompt and type sudo apt-get install get. 
+
+62
+00:03:03,500 --> 00:03:05,860
+But I want to show you how you can search for things 
+
+63
+00:03:05,860 --> 00:03:07,860
+using the APT system.
+
+64
+00:03:07,860 --> 00:03:11,080
+We can use a program called APT-Cache.
+
+65
+00:03:11,080 --> 00:03:16,580
+And one of the commands that APT-Cache allows us to use is search.
+
+66
+00:03:16,580 --> 00:03:20,700
+And this allows us to search for packages based on a pattern.
+
+67
+00:03:20,700 --> 00:03:23,400
+So let's say we wanted to find the packages 
+
+68
+00:03:23,400 --> 00:03:25,400
+that have the word Git in them.
+
+69
+00:03:25,400 --> 00:03:29,090
+Now there's quite a few of them, and if we want to scroll through 
+
+70
+00:03:29,090 --> 00:03:33,590
+we can see what they all are with a brief description.
+
+71
+00:03:33,590 --> 00:03:37,910
+Now I'm pretty sure that the package that we're looking for is called Git.
+
+72
+00:03:37,910 --> 00:03:41,580
+But sometimes there's a specific package name 
+
+73
+00:03:41,580 --> 00:03:43,580
+that may not be obvious to you, 
+
+74
+00:03:43,580 --> 00:03:49,180
+so using a search like this can be useful.
+
+75
+00:03:49,180 --> 00:03:52,070
+Now once we've looked through the list of programs we want to install 
+
+76
+00:03:52,070 --> 00:03:56,750
+and found what we're looking for, the apt-get install is what we'll use.
+
+77
+00:03:56,750 --> 00:04:06,500
+Let me clear our screen and we can run sudo apt-get install get.
+
+78
+00:04:06,500 --> 00:04:08,600
+Now it's given us a little bit of information 
+
+79
+00:04:08,600 --> 00:04:10,710
+about what it's about to install.
+
+80
+00:04:10,710 --> 00:04:13,150
+One of the really nice features of a package manager 
+
+81
+00:04:13,150 --> 00:04:16,899
+is that it understands the dependencies that programs have.
+
+82
+00:04:16,899 --> 00:04:19,600
+For instance, when we install Git, there are other tools 
+
+83
+00:04:19,600 --> 00:04:22,610
+that it depends on in order to run. 
+
+84
+00:04:22,610 --> 00:04:25,030
+Those tools we can see here are also the extra packages
+
+85
+00:04:25,030 --> 00:04:27,030
+ that are also going to be installed.
+
+86
+00:04:27,030 --> 00:04:29,120
+It even gives us some suggestive packages 
+
+87
+00:04:29,120 --> 00:04:33,370
+that will compliment the install that we're running nicely.
+
+88
+00:04:33,370 --> 00:04:36,320
+So it's saying we're about to install 3 new packages, 
+
+89
+00:04:36,320 --> 00:04:40,190
+and it doesn't need to update or remove anything else.
+
+90
+00:04:40,190 --> 00:04:42,190
+It even gives us a little bit of information 
+
+91
+00:04:42,190 --> 00:04:45,700
+about how much disk space is going to be used. 
+
+92
+00:04:45,700 --> 00:04:47,700
+We have a confirmation here. 
+
+93
+00:04:47,700 --> 00:04:51,250
+We can type in y to continue or n to cancel.
+
+94
+00:04:51,250 --> 00:04:54,360
+It looks good to me, so I'll hit y, and it's going to go ahead 
+
+95
+00:04:54,360 --> 00:04:58,720
+and download it, install it, install all the documentation that we need, 
+
+96
+00:04:58,720 --> 00:05:02,600
+and then we'll be done.
+
+97
+00:05:02,600 --> 00:05:07,960
+So if I type in clear, I can type in which git. 
+
+98
+00:05:07,960 --> 00:05:10,690
+We can see that Git is now installed. 
+
+99
+00:05:10,690 --> 00:05:14,100
+I can run Git, and it's giving me the help command, 
+
+100
+00:05:14,100 --> 00:05:18,800
+and everything looks good.
+
+101
+00:05:18,800 --> 00:05:21,320
+Let's go ahead and clear the screen.
+
+102
+00:05:21,320 --> 00:05:24,050
+Now we've installed our software, but every once in awhile 
+
+103
+00:05:24,050 --> 00:05:26,730
+we may want to make sure that we're keeping our software 
+
+104
+00:05:26,730 --> 00:05:28,730
+up to date.
+
+105
+00:05:28,730 --> 00:05:30,920
+For instance, a new version of Git or any of the other tools 
+
+106
+00:05:30,920 --> 00:05:34,420
+we have installed on our system may come out.
+
+107
+00:05:34,420 --> 00:05:38,000
+So it's good to periodically upgrade our packages.
+
+108
+00:05:38,000 --> 00:05:44,400
+In order to do this, we can run sudo apt-get upgrade. 
+
+109
+00:05:44,400 --> 00:05:46,400
+This is a good program to run. 
+
+110
+00:05:46,400 --> 00:05:48,210
+Not only to make sure we have all the latest features 
+
+111
+00:05:48,210 --> 00:05:52,200
+of all of our packages, but there may be security updates 
+
+112
+00:05:52,200 --> 00:05:56,040
+that are going to make our computer safer to use.
+
+113
+00:05:56,040 --> 00:05:59,240
+And we want to make sure we have all of the latest security patches.
+
+114
+00:05:59,240 --> 00:06:01,240
+This will allow us to do it.
+
+115
+00:06:01,240 --> 00:06:02,960
+So we're using the same apt-get command, 
+
+116
+00:06:02,960 --> 00:06:06,300
+but now we're doing upgrade instead of install.
+
+117
+00:06:06,300 --> 00:06:10,570
+Now by fault it's going to upgrade the packages that it knows about.
+
+118
+00:06:10,570 --> 00:06:12,740
+You'll usually want to run the upgrade command 
+
+119
+00:06:12,740 --> 00:06:15,200
+after you've done an update.
+
+120
+00:06:15,200 --> 00:06:17,200
+If we haven't updated our system, 
+
+121
+00:06:17,200 --> 00:06:19,260
+it won't be aware of any new packages, 
+
+122
+00:06:19,260 --> 00:06:25,400
+so run sudo apt-get update then sudo apt-get upgrade.
+
+123
+00:06:25,400 --> 00:06:28,080
+So again it's giving us a confirmation, and it's telling us 
+
+124
+00:06:28,080 --> 00:06:31,080
+about all the things that is about to upgrade.
+
+125
+00:06:31,080 --> 00:06:33,080
+Some of the things it will not upgrade, 
+
+126
+00:06:33,080 --> 00:06:35,080
+and some of the things it will.
+
+127
+00:06:35,080 --> 00:06:37,080
+And we can see there are quite a few packages 
+
+128
+00:06:37,080 --> 00:06:39,080
+that are about to be upgraded. 
+
+129
+00:06:39,080 --> 00:06:41,670
+There's 118 packages we're about to upgrade, and it didn't
+
+130
+00:06:41,670 --> 00:06:45,690
+require us installing any new ones or updating anything else.
+
+131
+00:06:45,690 --> 00:06:48,920
+It's telling us it's going to download about 70 megabytes, 
+
+132
+00:06:48,920 --> 00:06:54,480
+but it's only going to increase our disk space by 610 kilobytes. 
+
+133
+00:06:54,480 --> 00:06:57,560
+Again this all looks good to me, and so we can just go ahead 
+
+134
+00:06:57,560 --> 00:07:00,400
+and hit y and run it.
+
+135
+00:07:00,400 --> 00:07:03,030
+Now since there are quite a few upgrades that are going to happen, 
+
+136
+00:07:03,030 --> 00:07:06,190
+this command may take a little while to run.
+
+137
+00:07:06,190 --> 00:07:12,480
+But after we do, all of our packages will be up to date and ready to go. 
+
+138
+00:07:12,480 --> 00:07:15,210
+And now our sudo apt-get upgrade has run, 
+
+139
+00:07:15,210 --> 00:07:17,600
+and our packages are up to date.
+
+140
+00:07:17,600 --> 00:07:21,920
+Finally, a common thing you might want to do is uninstall the program.
+
+141
+00:07:21,920 --> 00:07:28,300
+To uninstall, we'll type sudo apt-get remove
+
+142
+00:07:28,300 --> 00:07:30,300
+and the name of the package.
+
+143
+00:07:30,300 --> 00:07:34,920
+Let's uninstall Git since that's what we most recently installed. 
+
+144
+00:07:34,920 --> 00:07:38,090
+Now it's only going to remove the package that we named.
+
+145
+00:07:38,090 --> 00:07:43,020
+Remember those 2 packages that it installed because we installed Git?
+
+146
+00:07:43,020 --> 00:07:47,530
+Those 2 are not going to be uninstalled by just typing 'remove'.
+
+147
+00:07:47,530 --> 00:07:49,530
+In fact, it tells us this. 
+
+148
+00:07:49,530 --> 00:07:51,800
+It says, "The following packages were automatically installed 
+
+149
+00:07:51,800 --> 00:07:55,380
+but are no longer required once we remove Git."
+
+150
+00:07:55,380 --> 00:07:59,090
+Later we can run sudo apt-get autoremove to remove 
+
+151
+00:07:59,090 --> 00:08:02,090
+any dependencies that were installed 
+
+152
+00:08:02,090 --> 00:08:06,710
+by consequence of installing it  on a package that is no longer needed.
+
+153
+00:08:06,710 --> 00:08:09,900
+It keeps track of this for us and knows that installed things like 
+
+154
+00:08:09,900 --> 00:08:15,500
+git-man and liberror-perl because we installed another program.
+
+155
+00:08:15,500 --> 00:08:17,870
+Once we uninstall the program that required them, 
+
+156
+00:08:17,870 --> 00:08:20,430
+it's able to automatically clean itself up 
+
+157
+00:08:20,430 --> 00:08:23,430
+using the app-get autoremove command.
+
+158
+00:08:23,430 --> 00:08:25,550
+For us we really don't need to worry about it.
+
+159
+00:08:25,550 --> 00:08:29,560
+If we want to save on space, we can use the autoremove to do that.
+
+160
+00:08:29,560 --> 00:08:33,610
+But for now let's just worry about removing the Git package,
+
+161
+00:08:33,610 --> 00:08:36,080
+and not worry about it's dependency.
+
+162
+00:08:36,080 --> 00:08:41,500
+Again it confirms with us, and through it we'll just hit y and enter,
+
+163
+00:08:41,500 --> 00:08:44,370
+and it's going to remove the Git command from our system.
+
+164
+00:08:44,370 --> 00:08:48,900
+So if we type git, there is no such file or directory.
+
+165
+00:08:48,900 --> 00:08:51,730
+You'll notice that it has now changed to a different error message 
+
+166
+00:08:51,730 --> 00:08:53,730
+than we used to have. 
+
+167
+00:08:53,730 --> 00:08:58,800
+Before, it told us that we could install it with the apt-get install command;
+
+168
+00:08:58,800 --> 00:09:04,000
+however, now we get these normal cannot find usr/bin/git.
+
+169
+00:09:04,000 --> 00:09:06,000
+It's been removed.
+
+170
+00:09:06,000 --> 00:09:08,270
+If we ever want to have Git installed again, 
+
+171
+00:09:08,270 --> 00:09:12,970
+we can simply do sudo apt-get install git, and it'll all work.
+
+172
+00:09:12,970 --> 00:09:16,480
+Now the packages can be used to install all sorts of things 
+
+173
+00:09:16,480 --> 00:09:21,640
+from utilities like Git all the way up to things like servers like Apache,
+
+174
+00:09:21,640 --> 00:09:24,710
+databases like MySQL or even SQLite, 
+
+175
+00:09:24,710 --> 00:09:27,150
+which we previously installed from source.
+
+176
+00:09:27,150 --> 00:09:29,330
+I recommend any time you need to install something, 
+
+177
+00:09:29,330 --> 00:09:33,130
+checking to make sure it's available in your package manager.
+
+178
+00:09:33,130 --> 00:09:36,290
+It's much easier to install as well as manage. 
+
+179
+00:09:36,290 --> 00:09:39,200
+And when you need to, it's also easier to uninstall 
+
+180
+00:09:39,200 --> 00:09:43,200
+than if you had installed from source.
+

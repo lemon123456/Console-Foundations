@@ -1,0 +1,744 @@
+1
+00:00:00,000 --> 00:00:03,310
+So now, we have our console open, now what do we do?
+
+2
+00:00:03,570 --> 00:00:05,700
+Let's take a look at what's going on.
+
+3
+00:00:05,700 --> 00:00:08,940
+The console is a text interface--we type in our commands
+
+4
+00:00:08,940 --> 00:00:12,370
+and the computer prints out information in response.
+
+5
+00:00:12,370 --> 00:00:17,460
+Information is printed from the top down, meaning that the latest info is always at the bottom.
+
+6
+00:00:17,460 --> 00:00:21,260
+At the bottom of the console is something called the command line. 
+
+7
+00:00:21,400 --> 00:00:23,580
+This is where we type our commands.
+
+8
+00:00:23,580 --> 00:00:25,420
+Now, the bottom is not always the command line.
+
+9
+00:00:25,700 --> 00:00:30,620
+If we have a program running in our console, it instead will be the latest output of the command,
+
+10
+00:00:30,620 --> 00:00:35,420
+and we can't enter a new command until that program ends or we get it out of the way.
+
+11
+00:00:36,230 --> 00:00:40,190
+On the command line, you should see some text followed by a blinking rectangle.
+
+12
+00:00:40,550 --> 00:00:45,517
+This rectangle is our cursor and it's where the text we type will be inserted.
+
+13
+00:00:45,517 --> 00:00:48,370
+To the left is some text called the prompt. 
+
+14
+00:00:48,370 --> 00:00:51,900
+The prompt tells us it is ready to accept some text.
+
+15
+00:00:51,900 --> 00:00:55,060
+The prompt can also give us some contextual information.
+
+16
+00:00:55,440 --> 00:00:59,160
+Here, it's telling us the username we are logged in as, treehouse,
+
+17
+00:00:59,160 --> 00:01:02,920
+as well as our current directory, which is here is the tilda.
+
+18
+00:01:02,920 --> 00:01:05,910
+We will learn a little bit more about that in a little while.
+
+19
+00:01:05,910 --> 00:01:10,010
+Finally, the last thing we see on a prompt is the dollar sign.
+
+20
+00:01:10,010 --> 00:01:12,240
+This is commonly the last character of the prompt
+
+21
+00:01:12,240 --> 00:01:16,130
+and tells us where the prompt ends and our input begins.
+
+22
+00:01:16,130 --> 00:01:19,990
+It's not always the dollar sign but 99% of the time it is.
+
+23
+00:01:19,990 --> 00:01:23,240
+The information on the prompt is completely customizable,
+
+24
+00:01:23,240 --> 00:01:26,860
+and from system to system you'll see different information displayed.
+
+25
+00:01:26,860 --> 00:01:30,410
+Don't get too used of this specific prompt.
+
+26
+00:01:30,410 --> 00:01:34,710
+It's just a prompt that we chose to give you for the most relevant info.
+
+27
+00:01:34,710 --> 00:01:37,720
+It was also different on different computers.
+
+28
+00:01:37,720 --> 00:01:39,460
+So, let's run a command.
+
+29
+00:01:39,460 --> 00:01:41,500
+So, here we are in the console.
+
+30
+00:01:41,500 --> 00:01:45,530
+We see some text at the top this is just a welcome message that is being provided to us
+
+31
+00:01:45,530 --> 00:01:51,140
+when we signed in to this computer and then at the bottom we see the command line.
+
+32
+00:01:51,140 --> 00:01:55,530
+The command line at the left here has our prompt, which is everything up to the dollar sign.
+
+33
+00:01:55,530 --> 00:02:00,770
+Here's our username we're signed in as, treehouse, our current directory, which is the tilda,
+
+34
+00:02:00,770 --> 00:02:03,190
+and the dollar sign ends our prompt.
+
+35
+00:02:03,190 --> 00:02:07,060
+Now, we have our cursor here and this is where we will type in our commands.
+
+36
+00:02:07,060 --> 00:02:11,570
+The first command that we're going to run is a command called ls.
+
+37
+00:02:11,570 --> 00:02:14,240
+Ls is short for list.
+
+38
+00:02:14,240 --> 00:02:17,500
+Many of the commands and programs that we used are shorten names
+
+39
+00:02:17,500 --> 00:02:20,140
+for the commands that we want to do.
+
+40
+00:02:20,140 --> 00:02:25,570
+Now, it maybe a little bit difficult to remember ls stands for list when you really just want to list
+
+41
+00:02:25,570 --> 00:02:31,800
+the directories, but as you used it more and more, the one, two, or three character shortcut names
+
+42
+00:02:31,800 --> 00:02:34,970
+are really going to be more convenient than if you were to type out
+
+43
+00:02:34,970 --> 00:02:38,130
+ what the command really actually means.
+
+44
+00:02:38,130 --> 00:02:42,550
+Now, while it might be cryptic at first, you have a bunch of small commands you need to remember
+
+45
+00:02:42,550 --> 00:02:46,410
+because you'll be using them so much you'll appreciate how short they are.
+
+46
+00:02:46,410 --> 00:02:48,730
+So, to run our command all we need to is type it in.
+
+47
+00:02:50,139 --> 00:02:52,540
+Type in the letters l and s.
+
+48
+00:02:52,540 --> 00:02:54,010
+So, for now, this is all I want to run--
+
+49
+00:02:54,010 --> 00:02:59,780
+the ls--command and all I need to do to actually execute it is now hit the Enter key.
+
+50
+00:02:59,780 --> 00:03:04,500
+So, I hit Enter and then the console gave me another line of text.
+
+51
+00:03:04,500 --> 00:03:10,090
+Here we see two items, documents and hello dot txt.
+
+52
+00:03:10,090 --> 00:03:14,690
+You noticed it printed out the contents below where I typed in my command
+
+53
+00:03:14,690 --> 00:03:18,920
+and then it gave me another command line with a fresh prompt and a new cursor.
+
+54
+00:03:18,920 --> 00:03:23,610
+So, the output of my ls command shows up directly beneath where I ran it.
+
+55
+00:03:23,610 --> 00:03:25,500
+So, what's the output?
+
+56
+00:03:25,500 --> 00:03:29,260
+We will see two things, documents and hello dot txt.
+
+57
+00:03:29,260 --> 00:03:34,620
+That means inside the folder I'm in right now there's a folder called documents
+
+58
+00:03:34,620 --> 00:03:38,010
+and a text file called hello.txt.
+
+59
+00:03:38,010 --> 00:03:43,370
+Now, these are files that I created for this computer and so I wrote with some hello.txt
+
+60
+00:03:43,370 --> 00:03:47,400
+and now they made the documents folder that exist inside this folder.
+
+61
+00:03:47,400 --> 00:03:53,100
+So, what that mean is there may not be this particular folder and text on the computer you're on
+
+62
+00:03:53,100 --> 00:03:57,240
+but it shows the files that happened to be on this computer and it should be similar on yours
+
+63
+00:03:57,240 --> 00:04:00,350
+if you're using the treehouse console.
+
+64
+00:04:00,350 --> 00:04:04,390
+Then, you'll notice the document is blue, but hello.txt is white.
+
+65
+00:04:04,390 --> 00:04:06,600
+That's one of the cool things about the console.
+
+66
+00:04:06,600 --> 00:04:11,570
+It can display colors and we can actually see there's plenty of colors in our welcome message.
+
+67
+00:04:11,570 --> 00:04:16,329
+Now, we can run perfectly fine without colors and in some cases that's the default.
+
+68
+00:04:16,329 --> 00:04:22,190
+You may not have the color it's really a luxury not a necessity, but the way our computer is configured
+
+69
+00:04:22,190 --> 00:04:27,350
+is a well do color and commands like ls can use color to differentiate things.
+
+70
+00:04:27,350 --> 00:04:30,200
+For instance, documents being written in blue.
+
+71
+00:04:30,200 --> 00:04:37,320
+In this specific configuration means the document is a folder while hello.txt is just a normal file.
+
+72
+00:04:37,320 --> 00:04:40,510
+Now, there are some other colors that may show up that signify other meanings of
+
+73
+00:04:40,510 --> 00:04:45,310
+how the file is configured or how it's permissions are set or what it contains,
+
+74
+00:04:45,310 --> 00:04:50,380
+but for now, we don't really need to worry about it but that's why they're different colors.
+
+75
+00:04:50,380 --> 00:04:54,270
+So, we saw a basic ls command, but let's try something else.
+
+76
+00:04:54,270 --> 00:04:57,490
+I'm going to type in ls and again we can just start typing again.
+
+77
+00:04:57,490 --> 00:05:02,470
+We have a new command line, so our text from our previous command is still visible and if we have 
+
+78
+00:05:02,470 --> 00:05:06,710
+so much texts it scrolls pass the screen we will be able to scroll up and down with our mouse
+
+79
+00:05:06,710 --> 00:05:11,070
+as normal to go back and see some previous commands that we ran.
+
+80
+00:05:11,070 --> 00:05:15,260
+So, this new command is going to be ls just like the last one and something going to put a space
+
+81
+00:05:15,260 --> 00:05:22,710
+and use a dash l with this specify is the option long and let see what happens when we run it.
+
+82
+00:05:24,000 --> 00:05:26,750
+Now, we see a slightly different output.
+
+83
+00:05:26,750 --> 00:05:29,240
+However, really the basics are the same.
+
+84
+00:05:29,240 --> 00:05:34,970
+There's two items, documents and hello.txt, but there are some more info.
+
+85
+00:05:34,970 --> 00:05:39,480
+The dash l just meant that we want to see a long form version of this listing.
+
+86
+00:05:39,480 --> 00:05:42,170
+It was nice seeing the items in the short form before
+
+87
+00:05:42,170 --> 00:05:46,140
+but if we want to get more information the dash l option gives that.
+
+88
+00:05:46,140 --> 00:05:50,860
+You can see the first line says total eight and that's because there are actually some files that are not
+
+89
+00:05:50,860 --> 00:05:56,300
+being listed here by default that actually are in this folder and we'll see that in a second.
+
+90
+00:05:56,300 --> 00:06:00,630
+And then, we see our two items and there are different columns of information.
+
+91
+00:06:00,630 --> 00:06:05,050
+To the left here, we see this line of letters and dashes.
+
+92
+00:06:05,050 --> 00:06:09,430
+This specifies the permissions of this particular file.
+
+93
+00:06:09,430 --> 00:06:14,570
+Permissions are used to make sure that files can only be viewed or written to
+
+94
+00:06:14,570 --> 00:06:16,640
+by a specific people on the system.
+
+95
+00:06:16,640 --> 00:06:22,640
+It's how security works in the Posix operating systems and there are three main settings,
+
+96
+00:06:22,640 --> 00:06:24,730
+and we'll see this a little more later.
+
+97
+00:06:24,730 --> 00:06:28,000
+The first column, however, specifies D for directory
+
+98
+00:06:28,000 --> 00:06:33,570
+then there are three triplets of read, write, and execute, word RWX.
+
+99
+00:06:33,570 --> 00:06:38,810
+RWX, then you can see the W is omitted and there's only a dash
+
+100
+00:06:38,810 --> 00:06:42,350
+which means that the W is not provided here.
+
+101
+00:06:42,350 --> 00:06:47,090
+So, these are triplets mean three differential levels of people who are able to access them.
+
+102
+00:06:47,090 --> 00:06:50,320
+The first triplet means the user who created it.
+
+103
+00:06:50,320 --> 00:06:52,090
+In this case, I created it.
+
+104
+00:06:52,090 --> 00:06:55,790
+It belongs to treehouse, which we can see in our later columns.
+
+105
+00:06:55,790 --> 00:07:00,190
+This means the user treehouse has the ability to read, write, and execute it
+
+106
+00:07:00,190 --> 00:07:03,710
+and we'll learn about what executing means a little bit later.
+
+107
+00:07:03,710 --> 00:07:09,250
+The second is a group, which is a lot like a user but it allows you to have multiple users in a group
+
+108
+00:07:09,250 --> 00:07:12,390
+and each file also has a group associated with it.
+
+109
+00:07:12,390 --> 00:07:16,800
+This means the treehouse group can also read, write, and executed.
+
+110
+00:07:16,800 --> 00:07:18,940
+Finally, this is for everybody else.
+
+111
+00:07:18,940 --> 00:07:22,490
+These are sort of public permissions and here we can see the W was omitted,
+
+112
+00:07:22,490 --> 00:07:26,570
+which means that everybody else can read it; however, they are not allow to write to it
+
+113
+00:07:26,570 --> 00:07:28,910
+but they may execute it.
+
+114
+00:07:28,910 --> 00:07:32,270
+Now, we'll be running a little bit more about this later, but if we take a look at this one,
+
+115
+00:07:32,270 --> 00:07:38,380
+we can see that nobody has access to execute the hello dot txt file because executing a txt file
+
+116
+00:07:38,380 --> 00:07:41,530
+doesn't make sense but don't really worry about that.
+
+117
+00:07:41,530 --> 00:07:46,490
+But here we can see the user who created it, treehouse can read and write to it.
+
+118
+00:07:46,490 --> 00:07:52,320
+The group treehouse can also read and write to it and then everybody else can simply read it.
+
+119
+00:07:52,320 --> 00:07:57,240
+We can change this using some other special commands, so that perhaps may be other people
+
+120
+00:07:57,240 --> 00:08:01,360
+couldn't even read it, but these are the default permissions that we've set up.
+
+121
+00:08:01,360 --> 00:08:05,530
+Now, I'm not going to go over every column, but you'll see two treehouses here.
+
+122
+00:08:05,530 --> 00:08:10,980
+There's actually the user treehouse and there's also a group called treehouse, which I belong to
+
+123
+00:08:10,980 --> 00:08:15,070
+and that's pretty common for what we've created a user on the system for there are also to be a group
+
+124
+00:08:15,070 --> 00:08:20,740
+with the same name and since treehouse is also my group and user that I belong to
+
+125
+00:08:20,740 --> 00:08:26,630
+when I created these files, these files are associated with my user and my group called treehouse.
+
+126
+00:08:26,630 --> 00:08:28,220
+Now, we don't really need to worry about group too much,
+
+127
+00:08:28,220 --> 00:08:31,950
+but when you see the second column here that's what it means.
+
+128
+00:08:31,950 --> 00:08:35,610
+Generally, though, we can really just worry about our user.
+
+129
+00:08:35,610 --> 00:08:38,190
+Then, we have our size.
+
+130
+00:08:38,190 --> 00:08:41,200
+For hello.txt, it's 175 bytes
+
+131
+00:08:41,200 --> 00:08:44,500
+but for documents directory, the size doesn't really make sense.
+
+132
+00:08:44,500 --> 00:08:50,110
+This is not the total size of the contents in it just when directories have a size listing
+
+133
+00:08:50,110 --> 00:08:56,810
+they are 4096 usually and then we have the date of the file and then finally the name at the end.
+
+134
+00:08:56,810 --> 00:09:01,230
+So, as we can see the dash l is longer version and that's what we called an option.
+
+135
+00:09:01,230 --> 00:09:03,200
+There's a lot of different options we could pass.
+
+136
+00:09:03,200 --> 00:09:06,350
+For instance, I told you that there's some files that is not listing
+
+137
+00:09:06,350 --> 00:09:09,700
+and that's actually something about Posix operating systems.
+
+138
+00:09:09,700 --> 00:09:16,370
+If you start a file with the dot at the beginning of the file, it will not by default show up in an ls listing.
+
+139
+00:09:16,370 --> 00:09:20,250
+Now, this is useful because it allows us to create sort of hidden files.
+
+140
+00:09:20,250 --> 00:09:24,540
+They exist but they really out of our way when we're navigating day to day.
+
+141
+00:09:24,540 --> 00:09:27,840
+In order to actually see them, we have to pass a different option to ls.
+
+142
+00:09:27,840 --> 00:09:35,860
+In our case, ls-a and now you can see a bunch more files have shown up with dots in front of them.
+
+143
+00:09:35,860 --> 00:09:37,590
+Now, we don't really have to worry about this.
+
+144
+00:09:37,590 --> 00:09:41,560
+These are usually configuration files created by other programs and
+
+145
+00:09:41,560 --> 00:09:45,890
+we generally don't have to worry about modifying them these are called dot files.
+
+146
+00:09:45,890 --> 00:09:51,070
+But, that's why you see total of eight files in here when we really only saw two.
+
+147
+00:09:51,070 --> 00:09:53,080
+Now, we can also pass something called an argument.
+
+148
+00:09:53,080 --> 00:09:58,990
+So, if we type an ls and now we can pass a specific directory that we want to list.
+
+149
+00:09:58,990 --> 00:10:04,330
+Currently, we've been only listing our current directory, but we could pass any other directory.
+
+150
+00:10:04,330 --> 00:10:11,330
+For instance, if I type any path like /etc, this is the name of a folder on our system
+
+151
+00:10:11,330 --> 00:10:13,770
+then its path name is /etc.
+
+152
+00:10:13,770 --> 00:10:20,300
+So, if we type in ls /etc, we can see all of the files at c directory.
+
+153
+00:10:20,300 --> 00:10:25,240
+As you can see, there's a lot of them and we can scroll using our mouse just like we normally can.
+
+154
+00:10:25,240 --> 00:10:27,250
+But, you don't have to worry about these files.
+
+155
+00:10:27,250 --> 00:10:30,580
+We won't be really editing too much in the etc directory
+
+156
+00:10:30,580 --> 00:10:33,560
+where you can just see what a longer directory would look like.
+
+157
+00:10:33,560 --> 00:10:38,970
+If we want to combine some of those options, we could type in ls pass the dash l option
+
+158
+00:10:38,970 --> 00:10:47,410
+and then list at c directory again, and now, we can see all these files, there we go if we just scroll up
+
+159
+00:10:47,410 --> 00:10:52,720
+and then scroll back down, you can see all those files in this long directory and you notice
+
+160
+00:10:52,720 --> 00:10:54,920
+they have different users associated with them.
+
+161
+00:10:54,920 --> 00:10:59,680
+These user called root that's the administrator user of our computer.
+
+162
+00:10:59,680 --> 00:11:05,360
+It's sort of the default all powerful users, which we usually don't use because we want the safety of
+
+163
+00:11:05,360 --> 00:11:11,710
+being restricted to our own file, so we don't accidentally may be delete a system file
+
+164
+00:11:11,710 --> 00:11:15,710
+and you can see there are various different permissions on all these files.
+
+165
+00:11:15,710 --> 00:11:17,680
+And, these are just important files to the computer.
+
+166
+00:11:17,680 --> 00:11:22,980
+Now, here's a quick tip if you want to clear out the backlog of all these commands you've written
+
+167
+00:11:22,980 --> 00:11:29,800
+you can type a command called clear and hit Enter and they'll put your prompt at the top of the screen.
+
+168
+00:11:29,800 --> 00:11:33,980
+You can, however, scroll up if you want to see everything, but if you want to get your prompt
+
+169
+00:11:33,980 --> 00:11:38,460
+from a bottom to a top the clear command will do that for you.
+
+170
+00:11:38,460 --> 00:11:41,090
+So, we see there are three main parts of the command.
+
+171
+00:11:41,090 --> 00:11:43,440
+The command name or the program.
+
+172
+00:11:43,440 --> 00:11:45,010
+This is what we want to do.
+
+173
+00:11:45,010 --> 00:11:47,070
+It's the verb of our sentence.
+
+174
+00:11:47,070 --> 00:11:50,120
+In our example, the command was ls for list
+
+175
+00:11:50,120 --> 00:11:54,340
+because we wanted the computer to list the files for us.
+
+176
+00:11:54,340 --> 00:11:57,870
+The options, which modify the behavior of the command was the second part.
+
+177
+00:11:57,870 --> 00:11:59,550
+This starts with dashes.
+
+178
+00:11:59,550 --> 00:12:02,250
+These were like adverbs modifying the verb.
+
+179
+00:12:02,250 --> 00:12:08,970
+In our example, we used the dash l option to specify that we wanted the long form of the list.
+
+180
+00:12:08,970 --> 00:12:14,420
+Finally, we have our arguments, which describes what we want our command to operate on.
+
+181
+00:12:14,420 --> 00:12:17,080
+Some commands may not require any arguments.
+
+182
+00:12:17,080 --> 00:12:21,410
+For instance, ls default to the current folder you are in, otherwise,
+
+183
+00:12:21,410 --> 00:12:24,980
+you can pass it which folder you would like as an argument.
+
+184
+00:12:24,980 --> 00:12:29,430
+Don't worry about remembering all the options or arguments nearly every command comes with a
+
+185
+00:12:29,430 --> 00:12:34,600
+manual that you can read if you want to know all the available options and usage patterns.
+
+186
+00:12:34,600 --> 00:12:36,350
+We'll see that a little bit later.
+

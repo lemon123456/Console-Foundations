@@ -1,0 +1,1100 @@
+1
+00:00:00,000 --> 00:00:06,340
+[Deep Dive Console Environment & Redirection: Pipes and Redirection with Jim Hoskins]
+
+2
+00:00:06,340 --> 00:00:08,330
+Most programs we've seen have been called 
+
+3
+00:00:08,330 --> 00:00:11,260
+simply by running the program with options and arguments. 
+
+4
+00:00:11,260 --> 00:00:13,210
+The output of those programs has
+
+5
+00:00:13,210 --> 00:00:16,020
+usually been printed as text to our console.
+
+6
+00:00:16,020 --> 00:00:19,690
+It turns out that almost all programs follow a special convention
+
+7
+00:00:19,690 --> 00:00:22,160
+when it comes to interacting with the outside world. 
+
+8
+00:00:22,160 --> 00:00:24,690
+When we run a program and create a process
+
+9
+00:00:24,690 --> 00:00:27,030
+there is a standard way of inputting to the program
+
+10
+00:00:27,030 --> 00:00:28,740
+and a standard way of outputting. 
+
+11
+00:00:28,740 --> 00:00:32,299
+These are actually referred to as standard in and standard out. 
+
+12
+00:00:32,299 --> 00:00:35,870
+Normally the standard out is the console's text
+
+13
+00:00:35,870 --> 00:00:39,970
+and the output from the program is printed as lines of text on the console
+
+14
+00:00:39,970 --> 00:00:43,050
+and the default standard input is our keyboard. 
+
+15
+00:00:43,050 --> 00:00:45,480
+However, we can change these around. 
+
+16
+00:00:45,480 --> 00:00:48,020
+We can change the standard out to be a file
+
+17
+00:00:48,020 --> 00:00:50,220
+so instead of printing to the terminal
+
+18
+00:00:50,220 --> 00:00:52,750
+all the info is stored in a file. 
+
+19
+00:00:52,750 --> 00:00:55,320
+We can also use a file as standard input
+
+20
+00:00:55,320 --> 00:00:58,650
+so that instead of a program reading our typed keys
+
+21
+00:00:58,650 --> 00:01:00,160
+it can just read from a file. 
+
+22
+00:01:00,160 --> 00:01:05,489
+Unix programs nearly always use a plain text format when handling input or output. 
+
+23
+00:01:05,489 --> 00:01:07,720
+This has an awesome consequence. 
+
+24
+00:01:07,720 --> 00:01:09,820
+You can take the output of one process
+
+25
+00:01:09,820 --> 00:01:12,410
+and make it the input of another process. 
+
+26
+00:01:12,410 --> 00:01:14,570
+This is called piping,
+
+27
+00:01:14,570 --> 00:01:18,580
+and it's one of the coolest features available in Unix-type operating systems. 
+
+28
+00:01:18,580 --> 00:01:22,620
+It means we can have several small programs that all do one thing
+
+29
+00:01:22,620 --> 00:01:26,320
+then use pipes to join them together into a multistep process
+
+30
+00:01:26,320 --> 00:01:28,390
+that does something really powerful. 
+
+31
+00:01:28,390 --> 00:01:30,510
+Let's check it out. 
+
+32
+00:01:30,510 --> 00:01:35,530
+So far most of the tools we've used have taken a file name as a parameter
+
+33
+00:01:35,530 --> 00:01:37,200
+for it to operate on. 
+
+34
+00:01:37,200 --> 00:01:39,500
+For instance when we've been doing grep
+
+35
+00:01:39,500 --> 00:01:45,610
+we've given it a pattern and then a file name in which to search for that pattern. 
+
+36
+00:01:45,610 --> 00:01:49,610
+But there's also another way that these tools can operate
+
+37
+00:01:49,610 --> 00:01:53,110
+using the standard in and standard out. 
+
+38
+00:01:53,110 --> 00:01:57,780
+This means, because the default for the standard in is actually our keyboard input,
+
+39
+00:01:57,780 --> 00:02:02,480
+if we omit a file name from a tool that can read from standard input
+
+40
+00:02:02,480 --> 00:02:07,440
+we can actually use our keyboard to input our text that we would want to—
+
+41
+00:02:07,440 --> 00:02:09,530
+in this case—search for a pattern in. 
+
+42
+00:02:09,530 --> 00:02:15,000
+So let's try "grep" and the pattern will be "hello."
+
+43
+00:02:15,000 --> 00:02:17,170
+Now if we don't pass a file name, 
+
+44
+00:02:17,170 --> 00:02:20,240
+you'll notice that we have just moved our cursor to a new line,
+
+45
+00:02:20,240 --> 00:02:22,310
+but we don't have a prompt. 
+
+46
+00:02:22,310 --> 00:02:25,610
+What's going on now is grep is using the standard input 
+
+47
+00:02:25,610 --> 00:02:28,220
+waiting for data to be put into it.
+
+48
+00:02:28,220 --> 00:02:32,320
+Now since the standard input is our keyboard via the console, 
+
+49
+00:02:32,320 --> 00:02:34,460
+it means that we can actually type in our data. 
+
+50
+00:02:34,460 --> 00:02:37,460
+So you can say "hello world."
+
+51
+00:02:37,460 --> 00:02:41,890
+And as we hit enter it's going to repeat back any line where it finds that pattern. 
+
+52
+00:02:41,890 --> 00:02:44,230
+Now it's still receiving input. 
+
+53
+00:02:44,230 --> 00:02:47,960
+So if i say "hi" you'll notice as soon as I return the line
+
+54
+00:02:47,960 --> 00:02:49,770
+I did not get anything back. 
+
+55
+00:02:49,770 --> 00:02:53,870
+That's because the way grep works is it's reading our input 
+
+56
+00:02:53,870 --> 00:02:58,080
+and the unit of work that it's actually doing is 1 line. 
+
+57
+00:02:58,080 --> 00:03:03,320
+So as soon as we hit enter our line "hello world" is fed to the grep process. 
+
+58
+00:03:03,320 --> 00:03:07,860
+It immediately looks at the information it was just fed from standard in
+
+59
+00:03:07,860 --> 00:03:11,490
+and it saw that the pattern that it was looking for was there. 
+
+60
+00:03:11,490 --> 00:03:13,770
+So it sent the output to standard out, 
+
+61
+00:03:13,770 --> 00:03:17,120
+which is also our terminal, which is why we see it here. 
+
+62
+00:03:17,120 --> 00:03:20,050
+However, when I sent "hi" it did not find the pattern 
+
+63
+00:03:20,050 --> 00:03:22,140
+so it had nothing to send to standard out 
+
+64
+00:03:22,140 --> 00:03:24,040
+so it did not appear in my console. 
+
+65
+00:03:24,040 --> 00:03:30,640
+So if I say "hello again," right now this information from standard in
+
+66
+00:03:30,640 --> 00:03:32,880
+hasn't been submitted to the grep process 
+
+67
+00:03:32,880 --> 00:03:35,080
+so it doesn't know that I've sent it, 
+
+68
+00:03:35,080 --> 00:03:36,830
+but as soon as I hit a new line, 
+
+69
+00:03:36,830 --> 00:03:39,320
+the computer will send that input over to grep,
+
+70
+00:03:39,320 --> 00:03:44,560
+and grep will do what it does, which is repeat it back to us if it finds the pattern. 
+
+71
+00:03:44,560 --> 00:03:48,060
+Now when it is capturing standard input from our keyboard
+
+72
+00:03:48,060 --> 00:03:53,830
+it will continue to do so until it finds a special marker called the end of file.
+
+73
+00:03:53,830 --> 00:03:57,240
+Now when it's reading a file that's signaled by the operating system
+
+74
+00:03:57,240 --> 00:03:59,520
+when it reaches the end of the file. 
+
+75
+00:03:59,520 --> 00:04:01,610
+However, when we're in keyboard mode here
+
+76
+00:04:01,610 --> 00:04:03,810
+there is no actual file to speak of.
+
+77
+00:04:03,810 --> 00:04:08,880
+So in order to simulate that we've hit the end of the file that we're typing right now
+
+78
+00:04:08,880 --> 00:04:13,090
+what we can do is hold down the control key and hit the letter D.
+
+79
+00:04:13,090 --> 00:04:16,089
+That signals that standard input file—
+
+80
+00:04:16,089 --> 00:04:19,829
+or the standard input stream that we have—is over, 
+
+81
+00:04:19,829 --> 00:04:24,200
+which means the grep process will exit, and we are back to our prompt. 
+
+82
+00:04:24,200 --> 00:04:26,530
+Now we can do this with other commands, too. 
+
+83
+00:04:26,530 --> 00:04:29,970
+For instance "echo" if we don't pass at anything.
+
+84
+00:04:29,970 --> 00:04:33,310
+Now while that might be useful, there are other things that we can do. 
+
+85
+00:04:33,310 --> 00:04:35,910
+Now while typing into the standard input 
+
+86
+00:04:35,910 --> 00:04:39,620
+may not be the ideal way to use a tool like grep, it can be useful.
+
+87
+00:04:39,620 --> 00:04:41,880
+But let's look at another technique. 
+
+88
+00:04:41,880 --> 00:04:46,790
+So if we take "grep this," and we say the pattern we're looking for is "this."
+
+89
+00:04:46,790 --> 00:04:50,620
+If we hit enter now the standard input would be our keyboard,
+
+90
+00:04:50,620 --> 00:04:54,060
+and it would read line by line everything we pass into the keyboard 
+
+91
+00:04:54,060 --> 00:04:56,300
+through grep processing it.
+
+92
+00:04:56,300 --> 00:05:00,570
+But we can also use a file as our standard input
+
+93
+00:05:00,570 --> 00:05:03,550
+replacing our keyboard for this particular process.
+
+94
+00:05:03,550 --> 00:05:07,440
+The way we can do that is with some redirection. 
+
+95
+00:05:07,440 --> 00:05:11,950
+The symbol for this is in our arguments we use the less than sign. 
+
+96
+00:05:11,950 --> 00:05:16,280
+Think of it as an arrow pointing at the process grep. 
+
+97
+00:05:16,280 --> 00:05:19,320
+What comes after that is the name of the file, 
+
+98
+00:05:19,320 --> 00:05:21,990
+which will serve as the new standard input
+
+99
+00:05:21,990 --> 00:05:25,170
+as opposed to our keyboard, which is the default standard input. 
+
+100
+00:05:25,170 --> 00:05:31,300
+So let's say our file is "hello.txt."
+
+101
+00:05:31,300 --> 00:05:34,520
+And we can put a space in front of it if it makes it easier. 
+
+102
+00:05:34,520 --> 00:05:40,170
+So this isn't actually much different than saying "grep this hello.txt"
+
+103
+00:05:40,170 --> 00:05:44,340
+because grep happens to also take file name arguments. 
+
+104
+00:05:44,340 --> 00:05:48,860
+However, some programs may only accept their input via standard in.
+
+105
+00:05:48,860 --> 00:05:54,690
+In that case, redirection is the way to route a file to the standard input.
+
+106
+00:05:54,690 --> 00:05:58,060
+So if I run this, we will see that the results are much the same
+
+107
+00:05:58,060 --> 00:06:01,870
+as if we had just passed "hello.txt" as a file name.
+
+108
+00:06:01,870 --> 00:06:05,450
+So we've seen how standard input can be changed, 
+
+109
+00:06:05,450 --> 00:06:08,480
+but we can also change the standard output. 
+
+110
+00:06:08,480 --> 00:06:11,740
+Remember our standard out is—right now—our terminal. 
+
+111
+00:06:11,740 --> 00:06:16,900
+When we've done things like "grep this hello.txt."
+
+112
+00:06:16,900 --> 00:06:21,140
+It's printed to our terminal and then a new prompt is given to us. 
+
+113
+00:06:21,140 --> 00:06:23,980
+But what if we wanted to print this to an output file?
+
+114
+00:06:23,980 --> 00:06:29,420
+Now some programs may offer an option—often with the dash O flag
+
+115
+00:06:29,420 --> 00:06:32,330
+as an output file for whatever that program does. 
+
+116
+00:06:32,330 --> 00:06:36,000
+But if it doesn't or if you choose not to use it
+
+117
+00:06:36,000 --> 00:06:38,080
+you can instead use your standard output
+
+118
+00:06:38,080 --> 00:06:40,370
+and redirect it to a file. 
+
+119
+00:06:40,370 --> 00:06:45,740
+So we'll do "grep this" and much like input was the less-than symbol
+
+120
+00:06:45,740 --> 00:06:49,480
+output redirection is done with the greater-than symbol.
+
+121
+00:06:49,480 --> 00:06:54,350
+So we can do "hello_grep.txt."
+
+122
+00:06:54,350 --> 00:06:56,650
+This will be a new file that will be created 
+
+123
+00:06:56,650 --> 00:06:59,260
+and filled with the output of running this command. 
+
+124
+00:06:59,260 --> 00:07:03,220
+Oops, it looks like I forgot to pass in the input
+
+125
+00:07:03,220 --> 00:07:07,060
+so right now it's using standard input to try to capture content. 
+
+126
+00:07:07,060 --> 00:07:13,630
+So if I were to say "this is my line another line."
+
+127
+00:07:13,630 --> 00:07:17,200
+This isn't what I intended to do, but I'll show you that it still works
+
+128
+00:07:17,200 --> 00:07:20,370
+because it's still capturing standard input from my keyboard;
+
+129
+00:07:20,370 --> 00:07:22,910
+however, you'll notice that it didn't echo back "this is my line"
+
+130
+00:07:22,910 --> 00:07:24,880
+even though it matched. 
+
+131
+00:07:24,880 --> 00:07:27,160
+That's because the output is no longer our terminal
+
+132
+00:07:27,160 --> 00:07:29,620
+it's the file "hello_grep.txt."
+
+133
+00:07:29,620 --> 00:07:33,750
+I'll use control-D to close out our standard input.
+
+134
+00:07:33,750 --> 00:07:36,330
+Now if we look—by using ls
+
+135
+00:07:36,330 --> 00:07:39,330
+there is now a file called "hello_grep.txt."
+
+136
+00:07:39,330 --> 00:07:43,060
+So if we were to output it using cat,
+
+137
+00:07:43,060 --> 00:07:48,410
+We'll see the only line that was put in there is "this is my line."
+
+138
+00:07:48,410 --> 00:07:53,070
+Now what happens if I run this as though I intended to the first time?
+
+139
+00:07:53,070 --> 00:07:56,880
+So we'll say "grep this hello.txt."
+
+140
+00:07:56,880 --> 00:08:01,140
+And then we're going to use the same output file using redirection.
+
+141
+00:08:01,140 --> 00:08:03,350
+What happens?
+
+142
+00:08:03,350 --> 00:08:06,750
+Well it looks like it ran immediately, but let's take a look at "hello_grep.txt."
+
+143
+00:08:06,750 --> 00:08:08,490
+There we go. 
+
+144
+00:08:08,490 --> 00:08:12,830
+Now it says "This is just some more text to make this file really long"
+
+145
+00:08:12,830 --> 00:08:15,820
+and "this" the line with this in it. 
+
+146
+00:08:15,820 --> 00:08:21,070
+But you'll notice that it overwrote the original copy of "hello_grep.txt"
+
+147
+00:08:21,070 --> 00:08:22,970
+"this is my line."
+
+148
+00:08:22,970 --> 00:08:27,440
+That's because when we do file redirection with 1 greater than sign
+
+149
+00:08:27,440 --> 00:08:30,020
+we are going to overwrite the contents of that file.
+
+150
+00:08:30,020 --> 00:08:32,539
+So anything existing would be removed. 
+
+151
+00:08:32,539 --> 00:08:35,929
+There is actually a way for us to append. 
+
+152
+00:08:35,929 --> 00:08:37,450
+So let's try it out. 
+
+153
+00:08:37,450 --> 00:08:39,679
+Let's clear the screen. 
+
+154
+00:08:39,679 --> 00:08:43,640
+So if I were to do "grep" let's search for "this" and "hello.txt"
+
+155
+00:08:43,640 --> 00:08:50,340
+redirected to "grep_output.txt."
+
+156
+00:08:50,340 --> 00:08:55,300
+Now if we take a look at grep ouput we will see that we get the 2 lines
+
+157
+00:08:55,300 --> 00:08:57,970
+where "this" is mentioned in the file.
+
+158
+00:08:57,970 --> 00:09:02,280
+But if I wanted to append to it now the results of searching 
+
+159
+00:09:02,280 --> 00:09:06,700
+for the pattern line in "hello.txt." 
+
+160
+00:09:06,700 --> 00:09:10,860
+This command with 1 greater than sign would overwrite the file; 
+
+161
+00:09:10,860 --> 00:09:14,150
+however, using 2 would append the contents to the end. 
+
+162
+00:09:14,150 --> 00:09:21,530
+So now if we look at "grep_output.txt" we'll see that it starts off with 
+
+163
+00:09:21,530 --> 00:09:23,660
+2 lines where "this" is mentioned
+
+164
+00:09:23,660 --> 00:09:26,460
+and then the run for where we searched for line
+
+165
+00:09:26,460 --> 00:09:28,540
+is also appended to the end. 
+
+166
+00:09:28,540 --> 00:09:30,770
+Let's go ahead and clear this out. 
+
+167
+00:09:30,770 --> 00:09:35,490
+You'll remember this command from when we were searching 
+
+168
+00:09:35,490 --> 00:09:39,380
+all of our files for a file called sudoers using the find method. 
+
+169
+00:09:39,380 --> 00:09:43,240
+If we were to run this, you'll notice we get many, many of these lines 
+
+170
+00:09:43,240 --> 00:09:45,050
+where it says "permission denied."
+
+171
+00:09:45,050 --> 00:09:50,420
+Now this comes because there is actually 2 output streams from a process. 
+
+172
+00:09:50,420 --> 00:09:52,790
+Standard out is the output stream 
+
+173
+00:09:52,790 --> 00:09:55,970
+that is the result of the process that you're running.
+
+174
+00:09:55,970 --> 00:09:58,970
+So if you're searching for something, it's the results for that search. 
+
+175
+00:09:58,970 --> 00:10:01,400
+However, there is also extra information.
+
+176
+00:10:01,400 --> 00:10:04,350
+For instance, when errors occur, how are those communicated?
+
+177
+00:10:04,350 --> 00:10:09,480
+Well, the system is set up so that there is also something called standard error. 
+
+178
+00:10:09,480 --> 00:10:12,540
+And by default that also prints to our terminal. 
+
+179
+00:10:12,540 --> 00:10:15,480
+But we can redirect it separately from standard out
+
+180
+00:10:15,480 --> 00:10:20,240
+so if we want to, we can separate the 2—maybe send one to a file
+
+181
+00:10:20,240 --> 00:10:23,410
+or even tell one to be completely ignored. 
+
+182
+00:10:23,410 --> 00:10:25,550
+So let's clear the screen.
+
+183
+00:10:25,550 --> 00:10:29,600
+And let's run it again, but in this case I'm going to say
+
+184
+00:10:29,600 --> 00:10:34,320
+I want to redirect all the standard error to a file called "error log."
+
+185
+00:10:34,320 --> 00:10:37,040
+In order to do that I am going to use a new redirect.
+
+186
+00:10:37,040 --> 00:10:40,640
+Instead of simply doing greater than we'll do the number 2, 
+
+187
+00:10:40,640 --> 00:10:46,490
+which means we're going to redirect stream #2, which is standard error,
+
+188
+00:10:46,490 --> 00:10:47,110
+and a greater than sign. 
+
+189
+00:10:47,110 --> 00:10:49,080
+And where do we want to redirect it?
+
+190
+00:10:49,080 --> 00:10:52,730
+We'll say "error_log.txt."
+
+191
+00:10:52,730 --> 00:10:58,660
+So now if I run this, all of those find permission denied errors are gone. 
+
+192
+00:10:58,660 --> 00:11:02,260
+Because standard output is still at our terminal
+
+193
+00:11:02,260 --> 00:11:05,650
+the standard error has been redirected away from our terminal
+
+194
+00:11:05,650 --> 00:11:07,740
+and is now going to a file. 
+
+195
+00:11:07,740 --> 00:11:12,110
+And we can see that the file captured all of that error information
+
+196
+00:11:12,110 --> 00:11:15,780
+by doing "cat error_log.txt."
+
+197
+00:11:15,780 --> 00:11:18,880
+And these are all of the lines in that file. 
+
+198
+00:11:18,880 --> 00:11:22,520
+Now in the case of this find command
+
+199
+00:11:22,520 --> 00:11:24,150
+I really don't care about the errors—
+
+200
+00:11:24,150 --> 00:11:25,490
+I'm expecting them to happen.
+
+201
+00:11:25,490 --> 00:11:27,710
+I want to search everything that I can. 
+
+202
+00:11:27,710 --> 00:11:31,120
+If I don't have access, that's fine I probably don't care. 
+
+203
+00:11:31,120 --> 00:11:34,760
+So even creating a file for it is probably unecessary. 
+
+204
+00:11:34,760 --> 00:11:42,020
+So let's go ahead and delete that error log file by doing "rm error_log.txt."
+
+205
+00:11:42,020 --> 00:11:45,140
+And now it's gone. 
+
+206
+00:11:45,140 --> 00:11:49,940
+But if I want to do this and not be worrying about the standard error output,
+
+207
+00:11:49,940 --> 00:11:52,730
+nor having to deal with an output file
+
+208
+00:11:52,730 --> 00:11:57,100
+there is a special file we can redirect to that will just get rid of all of that data. 
+
+209
+00:11:57,100 --> 00:12:00,920
+It's called "/dev/null."
+
+210
+00:12:00,920 --> 00:12:06,740
+And this is a file that anything you put into it will just disappear. 
+
+211
+00:12:06,740 --> 00:12:10,270
+And this is useful largely for the redirection purposes. 
+
+212
+00:12:10,270 --> 00:12:15,460
+So if we route this to a file called "/dev/null" all that data will be just discarded
+
+213
+00:12:15,460 --> 00:12:18,120
+so we can get it out of our way—perfect.
+
+214
+00:12:18,120 --> 00:12:22,820
+So we've seen how to redirect to and from files, but we can also redirect
+
+215
+00:12:22,820 --> 00:12:26,240
+through individual processes using the pipe. 
+
+216
+00:12:26,240 --> 00:12:31,870
+So we just saw how grep can take standard input and search through it
+
+217
+00:12:31,870 --> 00:12:34,660
+in addition to taking a file name.
+
+218
+00:12:34,660 --> 00:12:38,950
+So if we combine that with some piece of information that we're interested in,
+
+219
+00:12:38,950 --> 00:12:41,390
+we can use grep as an amazing tool. 
+
+220
+00:12:41,390 --> 00:12:43,830
+And we've already done that before. 
+
+221
+00:12:43,830 --> 00:12:48,740
+For instance, when we do "ps aux" to search our process statuses, 
+
+222
+00:12:48,740 --> 00:12:53,400
+we see a lot of processes; however, if we want to narrow it down
+
+223
+00:12:53,400 --> 00:12:56,750
+for instance to anything with "bash" in it
+
+224
+00:12:56,750 --> 00:12:58,890
+it's going to be pretty difficult. 
+
+225
+00:12:58,890 --> 00:13:02,710
+However, this is exactly what grep does, and it's exactly what we've done before. 
+
+226
+00:13:02,710 --> 00:13:04,940
+So let's clear this out.
+
+227
+00:13:04,940 --> 00:13:11,270
+If we type in "ps aux" right now we could redirect this to a file
+
+228
+00:13:11,270 --> 00:13:15,650
+and then use another command to call grep and route that file into grep.
+
+229
+00:13:15,650 --> 00:13:18,880
+Or we can skip a step entirely and use pipe.
+
+230
+00:13:18,880 --> 00:13:22,020
+So what pipe does is it takes the standard output 
+
+231
+00:13:22,020 --> 00:13:26,470
+of the process to the left of it and makes it the standard input 
+
+232
+00:13:26,470 --> 00:13:28,940
+to the process on the right. 
+
+233
+00:13:28,940 --> 00:13:34,130
+So if we do "grep bash" we're going to get "ps aux" 
+
+234
+00:13:34,130 --> 00:13:37,220
+it's going to not print the information out to our terminal
+
+235
+00:13:37,220 --> 00:13:39,870
+because standard out is now this pipe
+
+236
+00:13:39,870 --> 00:13:45,690
+and that output from "ps aux" will now become the standard input to grep.
+
+237
+00:13:45,690 --> 00:13:48,320
+And we've seen how the standard input can be used with grep
+
+238
+00:13:48,320 --> 00:13:51,490
+to find lines in a stream or in a file. 
+
+239
+00:13:51,490 --> 00:13:53,980
+And this is exactly what we get. 
+
+240
+00:13:53,980 --> 00:13:56,260
+Now this can be chained together.
+
+241
+00:13:56,260 --> 00:14:00,820
+For instance most utilities work with standard input and standard output
+
+242
+00:14:00,820 --> 00:14:03,730
+using plain text, which means we can chain things together 
+
+243
+00:14:03,730 --> 00:14:08,340
+in very interesting ways and get a lot of work done with 1 line of code. 
+
+244
+00:14:08,340 --> 00:14:11,040
+And this is the Unix philosophy. 
+
+245
+00:14:11,040 --> 00:14:15,410
+It has a lot of small tools that do exactly 1 thing, 
+
+246
+00:14:15,410 --> 00:14:17,670
+but because they can be chained together
+
+247
+00:14:17,670 --> 00:14:22,090
+they can be used as building blocks to build really powerful commands. 
+
+248
+00:14:22,090 --> 00:14:26,560
+So what if I wanted all of this; however, I wanted it sorted. 
+
+249
+00:14:26,560 --> 00:14:31,400
+Well there is a sort program that takes its standard input 
+
+250
+00:14:31,400 --> 00:14:37,260
+and for each line in the standard input it will output all of those lines sorted. 
+
+251
+00:14:37,260 --> 00:14:41,010
+And there are options you can pass to modify how it works exactly,
+
+252
+00:14:41,010 --> 00:14:45,040
+but by default it will sort it just by plain string comparison.
+
+253
+00:14:45,040 --> 00:14:51,460
+So if I do "ps aux" pipe it to grep to filter out only bash things
+
+254
+00:14:51,460 --> 00:14:56,160
+I could then pipe that output, and instead of printing it to our screen
+
+255
+00:14:56,160 --> 00:14:58,300
+pipe it to the sort command. 
+
+256
+00:14:58,300 --> 00:15:02,490
+And now the sort standard input will be grep's standard output. 
+
+257
+00:15:02,490 --> 00:15:05,190
+So now sort's input will be grep's output
+
+258
+00:15:05,190 --> 00:15:08,030
+and sort's output will be the standard output, 
+
+259
+00:15:08,030 --> 00:15:10,590
+which by default now will be our terminal. 
+
+260
+00:15:10,590 --> 00:15:13,850
+So what we'll see in the terminal is the sorted information. 
+
+261
+00:15:13,850 --> 00:15:16,080
+And there we have it. 
+
+262
+00:15:16,080 --> 00:15:21,620
+You'll notice that the way sort works, it seems to have stripped out the coloring
+
+263
+00:15:21,620 --> 00:15:23,860
+from the grep information, which is fine for our case. 
+
+264
+00:15:23,860 --> 00:15:26,930
+What if we wanted to send it to a file?
+
+265
+00:15:26,930 --> 00:15:30,740
+Well we could use normal redirection
+
+266
+00:15:30,740 --> 00:15:36,700
+to just create a file like this. 
+
+267
+00:15:36,700 --> 00:15:40,520
+And so now if we take a look at "sorted_bash_procs.txt"
+
+268
+00:15:40,520 --> 00:15:42,150
+we'll see that output. 
+
+269
+00:15:42,150 --> 00:15:45,410
+You'll notice it changes just because of the processes that are running. 
+
+270
+00:15:45,410 --> 00:15:49,390
+So by combining pipes and input and output redirection 
+
+271
+00:15:49,390 --> 00:15:53,670
+we can get a lot of work done even if the sources of our data 
+
+272
+00:15:53,670 --> 00:15:56,530
+and the destination of our output is changing. 
+
+273
+00:15:56,530 --> 00:16:00,860
+It's really easy to manipulate these things because most programs in Unix
+
+274
+00:16:00,860 --> 00:16:03,750
+follow the same philosophy, which means they can fit together easily
+
+275
+00:16:03,750 --> 00:16:06,070
+even though they are all separate programs. 
+
